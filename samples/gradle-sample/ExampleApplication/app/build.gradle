@@ -25,5 +25,5 @@ dependencies {
 }
 
 dependencies {
-    compile 'org.lineageos:platform.sdk:2.0-SNAPSHOT'
+    compile 'org.portalrom:platform.sdk:2.0-SNAPSHOT'
 }
