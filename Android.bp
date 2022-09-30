@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2018-2021 The LineageOS Project
+// Copyright (C) 2022The Portal Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,11 +15,11 @@
 //
 
 android_app {
-    name: "org.lineageos.platform-res",
+    name: "org.portalrom.platform-res",
     sdk_version: "core_platform",
     certificate: "platform",
 
-    manifest: "lineage/res/AndroidManifest.xml",
+    manifest: "portalrom/res/AndroidManifest.xml",
 
     // Disable dexpreopt and verify_uses_libraries check as the app
     // contains no Java code to be dexpreopted.
@@ -28,12 +28,12 @@ android_app {
         enabled: false,
     },
 
-    // Soong special-cases org.lineageos.platform-res to install this alongside
-    // the libraries at /system_ext/framework/org.lineageos.platform-res.apk.
+    // Soong special-cases org.portalrom.platform-res to install this alongside
+    // the libraries at /system_ext/framework/org.portalrom.platform-res.apk.
 
     aaptflags: [
         "--private-symbols",
-        "org.lineageos.platform.internal",
+        "org.portalrom.platform.internal",
 
         // Framework doesn't need versioning since it IS the platform.
         "--no-auto-version",
@@ -50,7 +50,7 @@ android_app {
     ],
 
     resource_dirs: [
-        "lineage/res/res",
+        "portalrom/res/res",
         "sdk/res/res",
     ],
 
@@ -59,24 +59,24 @@ android_app {
     export_package_resources: true,
 }
 
-// The LineageOS Platform Framework Library
+// The portalrom Platform Framework Library
 // ============================================================
 
-lineage_sdk_src = "sdk/src/java/lineageos"
-lineage_sdk_internal_src = "sdk/src/java/org/lineageos/internal"
-library_src = "lineage/lib/main/java"
+portalrom_sdk_src = "sdk/src/java/portalrom"
+portalrom_sdk_internal_src = "sdk/src/java/org/portalrom/internal"
+library_src = "portalrom/lib/main/java"
 
-lineage_sdk_LOCAL_STATIC_ANDROID_LIBRARIES = [
+portalrom_sdk_LOCAL_STATIC_ANDROID_LIBRARIES = [
     "androidx.preference_preference",
     "SettingsLibMainSwitchPreference",
 ]
 
-lineage_sdk_LOCAL_STATIC_JAVA_LIBRARIES = [
+portalrom_sdk_LOCAL_STATIC_JAVA_LIBRARIES = [
     "android.hardware.usb-V1.3-java",
-    "vendor.lineage.livedisplay-V2.0-java",
-    "vendor.lineage.livedisplay-V2.1-java",
-    "vendor.lineage.touch-V1.0-java",
-    "vendor.lineage.trust-V1.0-java",
+    "vendor.portalrom.livedisplay-V2.0-java",
+    "vendor.portalrom.livedisplay-V2.1-java",
+    "vendor.portalrom.touch-V1.0-java",
+    "vendor.portalrom.trust-V1.0-java",
 ]
 
 // READ ME: ########################################################
@@ -91,10 +91,10 @@ lineage_sdk_LOCAL_STATIC_JAVA_LIBRARIES = [
 // READ ME: ########################################################
 
 java_library {
-    name: "org.lineageos.platform",
+    name: "org.portalrom.platform",
     installable: true,
     sdk_version: "core_platform",
-    static_libs: lineage_sdk_LOCAL_STATIC_ANDROID_LIBRARIES + lineage_sdk_LOCAL_STATIC_JAVA_LIBRARIES,
+    static_libs: portalrom_sdk_LOCAL_STATIC_ANDROID_LIBRARIES + portalrom_sdk_LOCAL_STATIC_JAVA_LIBRARIES,
 
     libs: [
         "framework",
@@ -102,17 +102,17 @@ java_library {
     ],
 
     srcs: [
-        lineage_sdk_src + "/**/*.java",
-        lineage_sdk_internal_src + "/**/*.java",
+        portalrom_sdk_src + "/**/*.java",
+        portalrom_sdk_internal_src + "/**/*.java",
         library_src + "/**/*.java",
-        lineage_sdk_src + "/**/I*.aidl",
-        lineage_sdk_internal_src + "/**/I*.aidl",
+        portalrom_sdk_src + "/**/I*.aidl",
+        portalrom_sdk_internal_src + "/**/I*.aidl",
 
         // For the generated R.java and Manifest.java
-        ":org.lineageos.platform-res{.aapt.srcjar}",
+        ":org.portalrom.platform-res{.aapt.srcjar}",
     ],
 
-    // Include aidl files from lineageos.app namespace as well as internal src aidl files
+    // Include aidl files from portalrom.app namespace as well as internal src aidl files
     aidl: {
         local_include_dirs: ["sdk/src/java"],
     },
@@ -122,18 +122,18 @@ java_library {
 // ============================================================
 
 java_library {
-    name: "org.lineageos.platform.internal",
+    name: "org.portalrom.platform.internal",
     required: ["services"],
-    static_libs: lineage_sdk_LOCAL_STATIC_ANDROID_LIBRARIES + lineage_sdk_LOCAL_STATIC_JAVA_LIBRARIES,
+    static_libs: portalrom_sdk_LOCAL_STATIC_ANDROID_LIBRARIES + portalrom_sdk_LOCAL_STATIC_JAVA_LIBRARIES,
 
     srcs: [
-        lineage_sdk_src + "/**/*.java",
-        lineage_sdk_internal_src + "/**/*.java",
-        lineage_sdk_src + "/**/I*.aidl",
-        lineage_sdk_internal_src + "/**/I*.aidl",
+        portalrom_sdk_src + "/**/*.java",
+        portalrom_sdk_internal_src + "/**/*.java",
+        portalrom_sdk_src + "/**/I*.aidl",
+        portalrom_sdk_internal_src + "/**/I*.aidl",
 
         // For the generated R.java and Manifest.java
-        ":org.lineageos.platform-res{.aapt.srcjar}",
+        ":org.portalrom.platform-res{.aapt.srcjar}",
     ],
 
     aidl: {
@@ -144,19 +144,19 @@ java_library {
 // The SDK
 // ============================================================
 
-// Included aidl files from lineageos.app namespace
+// Included aidl files from portalrom.app namespace
 
 java_library {
-    name: "org.lineageos.platform.sdk",
+    name: "org.portalrom.platform.sdk",
     required: ["services"],
-    static_libs: lineage_sdk_LOCAL_STATIC_ANDROID_LIBRARIES + lineage_sdk_LOCAL_STATIC_JAVA_LIBRARIES,
+    static_libs: portalrom_sdk_LOCAL_STATIC_ANDROID_LIBRARIES + portalrom_sdk_LOCAL_STATIC_JAVA_LIBRARIES,
 
     srcs: [
-        lineage_sdk_src + "/**/*.java",
-        lineage_sdk_src + "/**/I*.aidl",
+        portalrom_sdk_src + "/**/*.java",
+        portalrom_sdk_src + "/**/I*.aidl",
 
         // For the generated R.java and Manifest.java
-        ":org.lineageos.platform-res{.aapt.srcjar}",
+        ":org.portalrom.platform-res{.aapt.srcjar}",
     ],
 
     aidl: {
@@ -164,22 +164,22 @@ java_library {
     },
 }
 
-// Minimal LineageSettings lib for apex use.
+// Minimal PortalRom lib for apex use.
 // ============================================================
 
 java_library {
-    name: "org.lineageos.platform.lineagesettings",
+    name: "org.portalrom.platform.portalromsettings",
     min_sdk_version: "30",
 
-    // LineageSettings is our main target, the rest are deps.
+    // PortalRom is our main target, the rest are deps.
     srcs: [
-        lineage_sdk_src + "/app/LineageContextConstants.java",
-        lineage_sdk_src + "/providers/LineageSettings.java",
-        lineage_sdk_src + "/trust/ITrustInterface.aidl",
-        lineage_sdk_src + "/trust/TrustInterface.java",
+        portalrom_sdk_src + "/app/PortalRomContextConstants.java",
+        portalrom_sdk_src + "/providers/PortalRomSettings.java",
+        portalrom_sdk_src + "/trust/ITrustInterface.aidl",
+        portalrom_sdk_src + "/trust/TrustInterface.java",
 
         // For the generated R.java and Manifest.java
-        ":org.lineageos.platform-res{.aapt.srcjar}",
+        ":org.portalrom.platform-res{.aapt.srcjar}",
     ],
 
     // List of apex modules that can link against this lib

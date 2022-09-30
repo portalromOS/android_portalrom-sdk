@@ -1,40 +1,40 @@
-package lineageos.app {
+package portalrom.app {
 
   public final class Profile implements java.lang.Comparable android.os.Parcelable {
     ctor public Profile(java.lang.String);
     method public void addSecondaryUuid(java.util.UUID);
     method public int compareTo(java.lang.Object);
     method public int describeContents();
-    method public lineageos.profiles.AirplaneModeSettings getAirplaneMode();
-    method public lineageos.profiles.BrightnessSettings getBrightness();
-    method public lineageos.profiles.ConnectionSettings getConnectionSettingWithSubId(int);
-    method public java.util.Collection<lineageos.profiles.ConnectionSettings> getConnectionSettings();
+    method public portalrom.profiles.AirplaneModeSettings getAirplaneMode();
+    method public portalrom.profiles.BrightnessSettings getBrightness();
+    method public portalrom.profiles.ConnectionSettings getConnectionSettingWithSubId(int);
+    method public java.util.Collection<portalrom.profiles.ConnectionSettings> getConnectionSettings();
     method public int getDozeMode();
     method public java.lang.String getName();
     method public int getNotificationLightMode();
     method public int getProfileType();
-    method public lineageos.profiles.RingModeSettings getRingMode();
-    method public lineageos.profiles.LockSettings getScreenLockMode();
+    method public portalrom.profiles.RingModeSettings getRingMode();
+    method public portalrom.profiles.LockSettings getScreenLockMode();
     method public java.util.UUID[] getSecondaryUuids();
-    method public lineageos.profiles.ConnectionSettings getSettingsForConnection(int);
-    method public lineageos.profiles.StreamSettings getSettingsForStream(int);
-    method public java.util.Collection<lineageos.profiles.StreamSettings> getStreamSettings();
+    method public portalrom.profiles.ConnectionSettings getSettingsForConnection(int);
+    method public portalrom.profiles.StreamSettings getSettingsForStream(int);
+    method public java.util.Collection<portalrom.profiles.StreamSettings> getStreamSettings();
     method public int getTriggerState(int, java.lang.String);
-    method public java.util.ArrayList<lineageos.app.Profile.ProfileTrigger> getTriggersFromType(int);
+    method public java.util.ArrayList<portalrom.app.Profile.ProfileTrigger> getTriggersFromType(int);
     method public java.util.UUID getUuid();
     method public boolean isConditionalType();
-    method public void setAirplaneMode(lineageos.profiles.AirplaneModeSettings);
-    method public void setBrightness(lineageos.profiles.BrightnessSettings);
-    method public void setConnectionSettings(lineageos.profiles.ConnectionSettings);
+    method public void setAirplaneMode(portalrom.profiles.AirplaneModeSettings);
+    method public void setBrightness(portalrom.profiles.BrightnessSettings);
+    method public void setConnectionSettings(portalrom.profiles.ConnectionSettings);
     method public void setDozeMode(int);
     method public void setName(java.lang.String);
     method public void setNotificationLightMode(int);
     method public void setProfileType(int);
-    method public void setRingMode(lineageos.profiles.RingModeSettings);
-    method public void setScreenLockMode(lineageos.profiles.LockSettings);
+    method public void setRingMode(portalrom.profiles.RingModeSettings);
+    method public void setScreenLockMode(portalrom.profiles.LockSettings);
     method public void setSecondaryUuids(java.util.List<java.util.UUID>);
-    method public void setStreamSettings(lineageos.profiles.StreamSettings);
-    method public void setTrigger(lineageos.app.Profile.ProfileTrigger);
+    method public void setStreamSettings(portalrom.profiles.StreamSettings);
+    method public void setTrigger(portalrom.app.Profile.ProfileTrigger);
     method public void writeToParcel(android.os.Parcel, int);
   }
 
@@ -91,41 +91,41 @@ package lineageos.app {
   }
 
   public class ProfileManager {
-    method public void addProfile(lineageos.app.Profile);
-    method public lineageos.app.Profile getActiveProfile();
-    method public static lineageos.app.ProfileManager getInstance(android.content.Context);
-    method public lineageos.app.Profile getProfile(java.util.UUID);
+    method public void addProfile(portalrom.app.Profile);
+    method public portalrom.app.Profile getActiveProfile();
+    method public static portalrom.app.ProfileManager getInstance(android.content.Context);
+    method public portalrom.app.Profile getProfile(java.util.UUID);
     method public java.lang.String[] getProfileNames();
-    method public lineageos.app.Profile[] getProfiles();
+    method public portalrom.app.Profile[] getProfiles();
     method public boolean isProfilesEnabled();
     method public boolean profileExists(java.lang.String);
     method public boolean profileExists(java.util.UUID);
-    method public void removeProfile(lineageos.app.Profile);
+    method public void removeProfile(portalrom.app.Profile);
     method public void resetAll();
     method public void setActiveProfile(java.util.UUID);
-    method public void updateProfile(lineageos.app.Profile);
-    field public static final java.lang.String ACTION_PROFILE_PICKER = "lineageos.platform.intent.action.PROFILE_PICKER";
+    method public void updateProfile(portalrom.app.Profile);
+    field public static final java.lang.String ACTION_PROFILE_PICKER = "portalrom.platform.intent.action.PROFILE_PICKER";
     field public static final java.lang.String EXTRA_LAST_PROFILE_NAME = "lastName";
     field public static final java.lang.String EXTRA_LAST_PROFILE_UUID = "lastUuid";
     field public static final java.lang.String EXTRA_PROFILES_STATE = "profile_state";
-    field public static final java.lang.String EXTRA_PROFILE_DIALOG_THEME = "lineageos.platform.intent.extra.profile.DIALOG_THEME";
-    field public static final java.lang.String EXTRA_PROFILE_EXISTING_UUID = "lineageos.platform.extra.profile.EXISTING_UUID";
+    field public static final java.lang.String EXTRA_PROFILE_DIALOG_THEME = "portalrom.platform.intent.extra.profile.DIALOG_THEME";
+    field public static final java.lang.String EXTRA_PROFILE_EXISTING_UUID = "portalrom.platform.extra.profile.EXISTING_UUID";
     field public static final java.lang.String EXTRA_PROFILE_NAME = "name";
-    field public static final java.lang.String EXTRA_PROFILE_PICKED_UUID = "lineageos.platform.intent.extra.profile.PICKED_UUID";
-    field public static final java.lang.String EXTRA_PROFILE_SHOW_NONE = "lineageos.platform.intent.extra.profile.SHOW_NONE";
-    field public static final java.lang.String EXTRA_PROFILE_TITLE = "lineageos.platform.intent.extra.profile.TITLE";
+    field public static final java.lang.String EXTRA_PROFILE_PICKED_UUID = "portalrom.platform.intent.extra.profile.PICKED_UUID";
+    field public static final java.lang.String EXTRA_PROFILE_SHOW_NONE = "portalrom.platform.intent.extra.profile.SHOW_NONE";
+    field public static final java.lang.String EXTRA_PROFILE_TITLE = "portalrom.platform.intent.extra.profile.TITLE";
     field public static final java.lang.String EXTRA_PROFILE_UUID = "uuid";
-    field public static final java.lang.String INTENT_ACTION_PROFILE_SELECTED = "lineageos.platform.intent.action.PROFILE_SELECTED";
-    field public static final java.lang.String INTENT_ACTION_PROFILE_UPDATED = "lineageos.platform.intent.action.PROFILE_UPDATED";
+    field public static final java.lang.String INTENT_ACTION_PROFILE_SELECTED = "portalrom.platform.intent.action.PROFILE_SELECTED";
+    field public static final java.lang.String INTENT_ACTION_PROFILE_UPDATED = "portalrom.platform.intent.action.PROFILE_UPDATED";
     field public static final java.util.UUID NO_PROFILE;
-    field public static final java.lang.String PROFILES_STATE_CHANGED_ACTION = "lineageos.platform.app.profiles.PROFILES_STATE_CHANGED";
+    field public static final java.lang.String PROFILES_STATE_CHANGED_ACTION = "portalrom.platform.app.profiles.PROFILES_STATE_CHANGED";
     field public static final int PROFILES_STATE_DISABLED = 0; // 0x0
     field public static final int PROFILES_STATE_ENABLED = 1; // 0x1
   }
 
 }
 
-package lineageos.content {
+package portalrom.content {
 
   public class Intent {
     ctor public Intent();
@@ -133,7 +133,7 @@ package lineageos.content {
 
 }
 
-package lineageos.hardware {
+package portalrom.hardware {
 
   public class DisplayMode implements android.os.Parcelable {
     ctor public DisplayMode(int, java.lang.String);
@@ -147,7 +147,7 @@ package lineageos.hardware {
     ctor public HSIC(float, float, float, float, float);
     method public int describeContents();
     method public java.lang.String flatten();
-    method public static lineageos.hardware.HSIC fromFloatArray(float[]);
+    method public static portalrom.hardware.HSIC fromFloatArray(float[]);
     method public float getContrast();
     method public float getHue();
     method public float getIntensity();
@@ -155,25 +155,25 @@ package lineageos.hardware {
     method public float getSaturationThreshold();
     method public float[] toFloatArray();
     method public int[] toRGB();
-    method public static lineageos.hardware.HSIC unflattenFrom(java.lang.String) throws java.lang.NumberFormatException;
+    method public static portalrom.hardware.HSIC unflattenFrom(java.lang.String) throws java.lang.NumberFormatException;
     method public void writeToParcel(android.os.Parcel, int);
   }
 
-  public final class LineageHardwareManager {
+  public final class PortalRomHardwareManager {
     method public boolean get(int);
     method public int getColorBalance();
     method public android.util.Range<java.lang.Integer> getColorBalanceRange();
-    method public lineageos.hardware.DisplayMode getCurrentDisplayMode();
-    method public lineageos.hardware.DisplayMode getDefaultDisplayMode();
-    method public lineageos.hardware.HSIC getDefaultPictureAdjustment();
+    method public portalrom.hardware.DisplayMode getCurrentDisplayMode();
+    method public portalrom.hardware.DisplayMode getDefaultDisplayMode();
+    method public portalrom.hardware.HSIC getDefaultPictureAdjustment();
     method public int[] getDisplayColorCalibration();
     method public int getDisplayColorCalibrationMax();
     method public int getDisplayColorCalibrationMin();
-    method public lineageos.hardware.DisplayMode[] getDisplayModes();
-    method public static lineageos.hardware.LineageHardwareManager getInstance(android.content.Context);
-    method public lineageos.hardware.HSIC getPictureAdjustment();
+    method public portalrom.hardware.DisplayMode[] getDisplayModes();
+    method public static portalrom.hardware.PortalRomHardwareManager getInstance(android.content.Context);
+    method public portalrom.hardware.HSIC getPictureAdjustment();
     method public java.util.List<android.util.Range<java.lang.Float>> getPictureAdjustmentRanges();
-    method public lineageos.hardware.TouchscreenGesture[] getTouchscreenGestures();
+    method public portalrom.hardware.TouchscreenGesture[] getTouchscreenGestures();
     method public int getVibratorDefaultIntensity();
     method public int getVibratorIntensity();
     method public int getVibratorMaxIntensity();
@@ -185,9 +185,9 @@ package lineageos.hardware {
     method public boolean set(int, boolean);
     method public boolean setColorBalance(int);
     method public boolean setDisplayColorCalibration(int[]);
-    method public boolean setDisplayMode(lineageos.hardware.DisplayMode, boolean);
-    method public boolean setPictureAdjustment(lineageos.hardware.HSIC);
-    method public boolean setTouchscreenGestureEnabled(lineageos.hardware.TouchscreenGesture, boolean);
+    method public boolean setDisplayMode(portalrom.hardware.DisplayMode, boolean);
+    method public boolean setPictureAdjustment(portalrom.hardware.HSIC);
+    method public boolean setTouchscreenGestureEnabled(portalrom.hardware.TouchscreenGesture, boolean);
     method public boolean setVibratorIntensity(int);
     field public static final int FEATURE_ADAPTIVE_BACKLIGHT = 1; // 0x1
     field public static final int FEATURE_ANTI_FLICKER = 2097152; // 0x200000
@@ -234,13 +234,13 @@ package lineageos.hardware {
 
   public class LiveDisplayManager {
     method public float[] getColorAdjustment();
-    method public lineageos.hardware.LiveDisplayConfig getConfig();
+    method public portalrom.hardware.LiveDisplayConfig getConfig();
     method public int getDayColorTemperature();
-    method public lineageos.hardware.HSIC getDefaultPictureAdjustment();
-    method public static synchronized lineageos.hardware.LiveDisplayManager getInstance(android.content.Context);
+    method public portalrom.hardware.HSIC getDefaultPictureAdjustment();
+    method public static synchronized portalrom.hardware.LiveDisplayManager getInstance(android.content.Context);
     method public int getMode();
     method public int getNightColorTemperature();
-    method public lineageos.hardware.HSIC getPictureAdjustment();
+    method public portalrom.hardware.HSIC getPictureAdjustment();
     method public boolean isAntiFlickerEnabled();
     method public boolean isAutoContrastEnabled();
     method public boolean isAutomaticOutdoorModeEnabled();
@@ -255,7 +255,7 @@ package lineageos.hardware {
     method public boolean setDayColorTemperature(int);
     method public boolean setMode(int);
     method public boolean setNightColorTemperature(int);
-    method public boolean setPictureAdjustment(lineageos.hardware.HSIC);
+    method public boolean setPictureAdjustment(portalrom.hardware.HSIC);
     field public static final int ADJUSTMENT_CONTRAST = 3; // 0x3
     field public static final int ADJUSTMENT_HUE = 0; // 0x0
     field public static final int ADJUSTMENT_INTENSITY = 2; // 0x2
@@ -288,23 +288,23 @@ package lineageos.hardware {
 
 }
 
-package lineageos.os {
+package portalrom.os {
 
   public class Build {
     ctor public Build();
     method public static java.lang.String getNameForSDKInt(int);
-    field public static final java.lang.String LINEAGEOS_DISPLAY_VERSION;
-    field public static final java.lang.String LINEAGEOS_VERSION;
+    field public static final java.lang.String portalrom_DISPLAY_VERSION;
+    field public static final java.lang.String portalrom_VERSION;
     field public static final java.lang.String UNKNOWN = "unknown";
   }
 
-  public static class Build.LINEAGE_VERSION {
-    ctor public Build.LINEAGE_VERSION();
+  public static class Build.PORTALROM_VERSION {
+    ctor public Build.PORTALROM_VERSION();
     field public static final int SDK_INT;
   }
 
-  public static class Build.LINEAGE_VERSION_CODES {
-    ctor public Build.LINEAGE_VERSION_CODES();
+  public static class Build.PORTALROM_VERSION_CODES {
+    ctor public Build.PORTALROM_VERSION_CODES();
     field public static final int APRICOT = 1; // 0x1
     field public static final int BOYSENBERRY = 2; // 0x2
     field public static final int CANTALOUPE = 3; // 0x3
@@ -317,8 +317,8 @@ package lineageos.os {
   }
 
   public final class Concierge {
-    method public static lineageos.os.Concierge.ParcelInfo prepareParcel(android.os.Parcel);
-    method public static lineageos.os.Concierge.ParcelInfo receiveParcel(android.os.Parcel);
+    method public static portalrom.os.Concierge.ParcelInfo prepareParcel(android.os.Parcel);
+    method public static portalrom.os.Concierge.ParcelInfo receiveParcel(android.os.Parcel);
   }
 
   public static final class Concierge.ParcelInfo {
@@ -328,7 +328,7 @@ package lineageos.os {
 
 }
 
-package lineageos.platform {
+package portalrom.platform {
 
   public final class Manifest {
     ctor public Manifest();
@@ -336,14 +336,14 @@ package lineageos.platform {
 
   public static final class Manifest.permission {
     ctor public Manifest.permission();
-    field public static final java.lang.String HARDWARE_ABSTRACTION_ACCESS = "lineageos.permission.HARDWARE_ABSTRACTION_ACCESS";
-    field public static final java.lang.String MANAGE_LIVEDISPLAY = "lineageos.permission.MANAGE_LIVEDISPLAY";
-    field public static final java.lang.String MANAGE_REMOTE_PREFERENCES = "lineageos.permission.MANAGE_REMOTE_PREFERENCES";
-    field public static final java.lang.String MODIFY_PROFILES = "lineageos.permission.MODIFY_PROFILES";
-    field public static final java.lang.String PERFORMANCE_ACCESS = "lineageos.permission.PERFORMANCE_ACCESS";
-    field public static final java.lang.String TRUST_INTERFACE = "lineageos.permission.TRUST_INTERFACE";
-    field public static final java.lang.String WRITE_SECURE_SETTINGS = "lineageos.permission.WRITE_SECURE_SETTINGS";
-    field public static final java.lang.String WRITE_SETTINGS = "lineageos.permission.WRITE_SETTINGS";
+    field public static final java.lang.String HARDWARE_ABSTRACTION_ACCESS = "portalrom.permission.HARDWARE_ABSTRACTION_ACCESS";
+    field public static final java.lang.String MANAGE_LIVEDISPLAY = "portalrom.permission.MANAGE_LIVEDISPLAY";
+    field public static final java.lang.String MANAGE_REMOTE_PREFERENCES = "portalrom.permission.MANAGE_REMOTE_PREFERENCES";
+    field public static final java.lang.String MODIFY_PROFILES = "portalrom.permission.MODIFY_PROFILES";
+    field public static final java.lang.String PERFORMANCE_ACCESS = "portalrom.permission.PERFORMANCE_ACCESS";
+    field public static final java.lang.String TRUST_INTERFACE = "portalrom.permission.TRUST_INTERFACE";
+    field public static final java.lang.String WRITE_SECURE_SETTINGS = "portalrom.permission.WRITE_SECURE_SETTINGS";
+    field public static final java.lang.String WRITE_SETTINGS = "portalrom.permission.WRITE_SETTINGS";
   }
 
   public final class R {
@@ -402,70 +402,70 @@ package lineageos.platform {
 
 }
 
-package lineageos.preference {
+package portalrom.preference {
 
-  public class GlobalSettingSwitchPreference extends lineageos.preference.SelfRemovingSwitchPreference {
+  public class GlobalSettingSwitchPreference extends portalrom.preference.SelfRemovingSwitchPreference {
     ctor public GlobalSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
     ctor public GlobalSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
     ctor public GlobalSettingSwitchPreference(android.content.Context);
   }
 
-  public class LineageGlobalSettingSwitchPreference extends lineageos.preference.SelfRemovingSwitchPreference {
-    ctor public LineageGlobalSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
-    ctor public LineageGlobalSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
-    ctor public LineageGlobalSettingSwitchPreference(android.content.Context);
+  public class PortalRomGlobalSettingSwitchPreference extends portalrom.preference.SelfRemovingSwitchPreference {
+    ctor public PortalRomGlobalSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
+    ctor public PortalRomGlobalSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
+    ctor public PortalRomGlobalSettingSwitchPreference(android.content.Context);
   }
 
-    public class LineageGlobalSettingListPreference extends lineageos.preference.SelfRemovingListPreference {
-      ctor public LineageGlobalSettingListPreference(android.content.Context, android.util.AttributeSet, int);
-      ctor public LineageGlobalSettingListPreference(android.content.Context, android.util.AttributeSet);
+    public class PortalRomGlobalSettingListPreference extends portalrom.preference.SelfRemovingListPreference {
+      ctor public PortalRomGlobalSettingListPreference(android.content.Context, android.util.AttributeSet, int);
+      ctor public PortalRomGlobalSettingListPreference(android.content.Context, android.util.AttributeSet);
       method public int getIntValue(int);
     }
 
-  public class LineageSecureSettingListPreference extends lineageos.preference.SelfRemovingListPreference {
-    ctor public LineageSecureSettingListPreference(android.content.Context, android.util.AttributeSet, int);
-    ctor public LineageSecureSettingListPreference(android.content.Context, android.util.AttributeSet);
+  public class PortalRomSecureSettingListPreference extends portalrom.preference.SelfRemovingListPreference {
+    ctor public PortalRomSecureSettingListPreference(android.content.Context, android.util.AttributeSet, int);
+    ctor public PortalRomSecureSettingListPreference(android.content.Context, android.util.AttributeSet);
     method public int getIntValue(int);
   }
 
-  public class LineageSecureSettingSwitchPreference extends lineageos.preference.SelfRemovingSwitchPreference {
-    ctor public LineageSecureSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
-    ctor public LineageSecureSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
-    ctor public LineageSecureSettingSwitchPreference(android.content.Context);
+  public class PortalRomSecureSettingSwitchPreference extends portalrom.preference.SelfRemovingSwitchPreference {
+    ctor public PortalRomSecureSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
+    ctor public PortalRomSecureSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
+    ctor public PortalRomSecureSettingSwitchPreference(android.content.Context);
   }
 
-  public class LineageSystemSettingDropDownPreference extends lineageos.preference.SelfRemovingDropDownPreference {
-    ctor public LineageSystemSettingDropDownPreference(android.content.Context, android.util.AttributeSet, int);
-    ctor public LineageSystemSettingDropDownPreference(android.content.Context, android.util.AttributeSet);
+  public class PortalRomSystemSettingDropDownPreference extends portalrom.preference.SelfRemovingDropDownPreference {
+    ctor public PortalRomSystemSettingDropDownPreference(android.content.Context, android.util.AttributeSet, int);
+    ctor public PortalRomSystemSettingDropDownPreference(android.content.Context, android.util.AttributeSet);
     method public int getIntValue(int);
   }
 
-  public class LineageSystemSettingListPreference extends lineageos.preference.SelfRemovingListPreference {
-    ctor public LineageSystemSettingListPreference(android.content.Context, android.util.AttributeSet, int);
-    ctor public LineageSystemSettingListPreference(android.content.Context, android.util.AttributeSet);
+  public class PortalRomSystemSettingListPreference extends portalrom.preference.SelfRemovingListPreference {
+    ctor public PortalRomSystemSettingListPreference(android.content.Context, android.util.AttributeSet, int);
+    ctor public PortalRomSystemSettingListPreference(android.content.Context, android.util.AttributeSet);
     method public int getIntValue(int);
   }
 
-  public class LineageSystemSettingSwitchPreference extends lineageos.preference.SelfRemovingSwitchPreference {
-    ctor public LineageSystemSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
-    ctor public LineageSystemSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
-    ctor public LineageSystemSettingSwitchPreference(android.content.Context);
+  public class PortalRomSystemSettingSwitchPreference extends portalrom.preference.SelfRemovingSwitchPreference {
+    ctor public PortalRomSystemSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
+    ctor public PortalRomSystemSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
+    ctor public PortalRomSystemSettingSwitchPreference(android.content.Context);
   }
 
-  public class RemotePreference extends lineageos.preference.SelfRemovingPreference {
+  public class RemotePreference extends portalrom.preference.SelfRemovingPreference {
     ctor public RemotePreference(android.content.Context, android.util.AttributeSet, int, int);
     ctor public RemotePreference(android.content.Context, android.util.AttributeSet, int);
     ctor public RemotePreference(android.content.Context, android.util.AttributeSet);
     method public android.content.Intent getReceiverIntent();
     method protected java.lang.String getRemoteKey(android.os.Bundle);
     method public void onRemoteUpdated(android.os.Bundle);
-    field public static final java.lang.String ACTION_REFRESH_PREFERENCE = "lineageos.intent.action.REFRESH_PREFERENCE";
-    field public static final java.lang.String ACTION_UPDATE_PREFERENCE = "lineageos.intent.action.UPDATE_PREFERENCE";
-    field public static final java.lang.String EXTRA_ENABLED = ":lineage:pref_enabled";
-    field public static final java.lang.String EXTRA_KEY = ":lineage:pref_key";
-    field public static final java.lang.String EXTRA_SUMMARY = ":lineage:pref_summary";
-    field public static final java.lang.String META_REMOTE_KEY = "org.lineageos.settings.summary.key";
-    field public static final java.lang.String META_REMOTE_RECEIVER = "org.lineageos.settings.summary.receiver";
+    field public static final java.lang.String ACTION_REFRESH_PREFERENCE = "portalrom.intent.action.REFRESH_PREFERENCE";
+    field public static final java.lang.String ACTION_UPDATE_PREFERENCE = "portalrom.intent.action.UPDATE_PREFERENCE";
+    field public static final java.lang.String EXTRA_ENABLED = ":portalrom:pref_enabled";
+    field public static final java.lang.String EXTRA_KEY = ":portalrom:pref_key";
+    field public static final java.lang.String EXTRA_SUMMARY = ":portalrom:pref_summary";
+    field public static final java.lang.String META_REMOTE_KEY = "org.portalrom.settings.summary.key";
+    field public static final java.lang.String META_REMOTE_RECEIVER = "org.portalrom.settings.summary.receiver";
     field protected final android.content.Context mContext;
   }
 
@@ -477,7 +477,7 @@ package lineageos.preference {
     method public void onReceive(android.content.Context, android.content.Intent);
   }
 
-  public class SecureSettingSwitchPreference extends lineageos.preference.SelfRemovingSwitchPreference {
+  public class SecureSettingSwitchPreference extends portalrom.preference.SelfRemovingSwitchPreference {
     ctor public SecureSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
     ctor public SecureSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
     ctor public SecureSettingSwitchPreference(android.content.Context);
@@ -517,22 +517,22 @@ package lineageos.preference {
   }
 
   public class SettingsHelper {
-    method public static synchronized lineageos.preference.SettingsHelper get(android.content.Context);
+    method public static synchronized portalrom.preference.SettingsHelper get(android.content.Context);
     method public boolean getBoolean(android.net.Uri, boolean);
     method public int getInt(android.net.Uri, int);
     method public java.lang.String getString(android.net.Uri);
     method public void putBoolean(android.net.Uri, boolean);
     method public void putInt(android.net.Uri, int);
     method public void putString(android.net.Uri, java.lang.String);
-    method public void startWatching(lineageos.preference.SettingsHelper.OnSettingsChangeListener, android.net.Uri...);
-    method public void stopWatching(lineageos.preference.SettingsHelper.OnSettingsChangeListener);
+    method public void startWatching(portalrom.preference.SettingsHelper.OnSettingsChangeListener, android.net.Uri...);
+    method public void stopWatching(portalrom.preference.SettingsHelper.OnSettingsChangeListener);
   }
 
   public static abstract interface SettingsHelper.OnSettingsChangeListener {
     method public abstract void onSettingsChanged(android.net.Uri);
   }
 
-  public class SystemSettingSwitchPreference extends lineageos.preference.SelfRemovingSwitchPreference {
+  public class SystemSettingSwitchPreference extends portalrom.preference.SelfRemovingSwitchPreference {
     ctor public SystemSettingSwitchPreference(android.content.Context, android.util.AttributeSet, int);
     ctor public SystemSettingSwitchPreference(android.content.Context, android.util.AttributeSet);
     ctor public SystemSettingSwitchPreference(android.content.Context);
@@ -540,7 +540,7 @@ package lineageos.preference {
 
 }
 
-package lineageos.profiles {
+package portalrom.profiles {
 
   public final class AirplaneModeSettings implements android.os.Parcelable {
     ctor public AirplaneModeSettings(android.os.Parcel);
@@ -641,24 +641,24 @@ package lineageos.profiles {
 
 }
 
-package lineageos.providers {
+package portalrom.providers {
 
-  public final class LineageSettings {
-    ctor public LineageSettings();
-    field public static final java.lang.String ACTION_DATA_USAGE = "lineageos.settings.ACTION_DATA_USAGE";
-    field public static final java.lang.String ACTION_LIVEDISPLAY_SETTINGS = "lineageos.settings.LIVEDISPLAY_SETTINGS";
-    field public static final java.lang.String ACTION_TRUST_INTERFACE = "lineageos.settings.TRUST_INTERFACE";
-    field public static final java.lang.String AUTHORITY = "lineagesettings";
+  public final class PortalRomSettings {
+    ctor public PortalRomSettings();
+    field public static final java.lang.String ACTION_DATA_USAGE = "portalrom.settings.ACTION_DATA_USAGE";
+    field public static final java.lang.String ACTION_LIVEDISPLAY_SETTINGS = "portalrom.settings.LIVEDISPLAY_SETTINGS";
+    field public static final java.lang.String ACTION_TRUST_INTERFACE = "portalrom.settings.TRUST_INTERFACE";
+    field public static final java.lang.String AUTHORITY = "portalromsettings";
   }
 
-  public static final class LineageSettings.Global extends android.provider.Settings.NameValueTable {
-    ctor public LineageSettings.Global();
+  public static final class PortalRomSettings.Global extends android.provider.Settings.NameValueTable {
+    ctor public PortalRomSettings.Global();
     method public static float getFloat(android.content.ContentResolver, java.lang.String, float);
-    method public static float getFloat(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static float getFloat(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static int getInt(android.content.ContentResolver, java.lang.String, int);
-    method public static int getInt(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static int getInt(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static long getLong(android.content.ContentResolver, java.lang.String, long);
-    method public static long getLong(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static long getLong(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static java.lang.String getString(android.content.ContentResolver, java.lang.String);
     method public static java.lang.String getString(android.content.ContentResolver, java.lang.String, java.lang.String);
     method public static android.net.Uri getUriFor(java.lang.String);
@@ -667,21 +667,21 @@ package lineageos.providers {
     method public static boolean putLong(android.content.ContentResolver, java.lang.String, long);
     method public static boolean putString(android.content.ContentResolver, java.lang.String, java.lang.String);
     field public static final android.net.Uri CONTENT_URI;
-    field public static final java.lang.String SYS_PROP_LINEAGE_SETTING_VERSION = "sys.lineage_settings_global_version";
+    field public static final java.lang.String SYS_PROP_PORTALROM_SETTING_VERSION = "sys.portalrom_settings_global_version";
   }
 
-  public static class LineageSettings.LineageSettingNotFoundException extends android.util.AndroidException {
-    ctor public LineageSettings.LineageSettingNotFoundException(java.lang.String);
+  public static class PortalRomSettings.PortalRomSettingNotFoundException extends android.util.AndroidException {
+    ctor public PortalRomSettings.PortalRomSettingNotFoundException(java.lang.String);
   }
 
-  public static final class LineageSettings.Secure extends android.provider.Settings.NameValueTable {
-    ctor public LineageSettings.Secure();
+  public static final class PortalRomSettings.Secure extends android.provider.Settings.NameValueTable {
+    ctor public PortalRomSettings.Secure();
     method public static float getFloat(android.content.ContentResolver, java.lang.String, float);
-    method public static float getFloat(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static float getFloat(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static int getInt(android.content.ContentResolver, java.lang.String, int);
-    method public static int getInt(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static int getInt(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static long getLong(android.content.ContentResolver, java.lang.String, long);
-    method public static long getLong(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static long getLong(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static java.lang.String getString(android.content.ContentResolver, java.lang.String);
     method public static java.lang.String getString(android.content.ContentResolver, java.lang.String, java.lang.String);
     method public static android.net.Uri getUriFor(java.lang.String);
@@ -690,18 +690,18 @@ package lineageos.providers {
     method public static boolean putLong(android.content.ContentResolver, java.lang.String, long);
     method public static boolean putString(android.content.ContentResolver, java.lang.String, java.lang.String);
     field public static final android.net.Uri CONTENT_URI;
-    field public static final java.lang.String SYS_PROP_LINEAGE_SETTING_VERSION = "sys.lineage_settings_secure_version";
+    field public static final java.lang.String SYS_PROP_PORTALROM_SETTING_VERSION = "sys.portalrom_settings_secure_version";
     field public static final java.lang.String TRUST_WARNINGS = "trust_warnings";
   }
 
-  public static final class LineageSettings.System extends android.provider.Settings.NameValueTable {
-    ctor public LineageSettings.System();
+  public static final class PortalRomSettings.System extends android.provider.Settings.NameValueTable {
+    ctor public PortalRomSettings.System();
     method public static float getFloat(android.content.ContentResolver, java.lang.String, float);
-    method public static float getFloat(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static float getFloat(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static int getInt(android.content.ContentResolver, java.lang.String, int);
-    method public static int getInt(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static int getInt(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static long getLong(android.content.ContentResolver, java.lang.String, long);
-    method public static long getLong(android.content.ContentResolver, java.lang.String) throws lineageos.providers.LineageSettings.LineageSettingNotFoundException;
+    method public static long getLong(android.content.ContentResolver, java.lang.String) throws portalrom.providers.PortalRomSettings.PortalRomSettingNotFoundException;
     method public static java.lang.String getString(android.content.ContentResolver, java.lang.String);
     method public static java.lang.String getString(android.content.ContentResolver, java.lang.String, java.lang.String);
     method public static android.net.Uri getUriFor(java.lang.String);
@@ -791,7 +791,7 @@ package lineageos.providers {
     field public static final java.lang.String STYLUS_ICON_ENABLED = "stylus_icon_enabled";
     field public static final java.lang.String SWAP_VOLUME_KEYS_ON_ROTATION = "swap_volume_keys_on_rotation";
     field public static final java.lang.String SYSTEM_PROFILES_ENABLED = "system_profiles_enabled";
-    field public static final java.lang.String SYS_PROP_LINEAGE_SETTING_VERSION = "sys.lineage_settings_system_version";
+    field public static final java.lang.String SYS_PROP_PORTALROM_SETTING_VERSION = "sys.portalrom_settings_system_version";
     field public static final java.lang.String T9_SEARCH_INPUT_LOCALE = "t9_search_input_locale";
     field public static final java.lang.String TORCH_LONG_PRESS_POWER_GESTURE = "torch_long_press_power_gesture";
     field public static final java.lang.String TORCH_LONG_PRESS_POWER_TIMEOUT = "torch_long_press_power_timeout";
@@ -807,10 +807,10 @@ package lineageos.providers {
 
 }
 
-package lineageos.trust {
+package portalrom.trust {
 
   public class TrustInterface {
-    method public static lineageos.trust.TrustInterface getInstance(android.content.Context);
+    method public static portalrom.trust.TrustInterface getInstance(android.content.Context);
     method public int getLevelForFeature(int);
     method public boolean postNotificationForFeature(int);
     method public boolean removeNotificationForFeature(int);
@@ -823,14 +823,14 @@ package lineageos.trust {
     field public static final int TRUST_FEATURE_PLATFORM_SECURITY_PATCH = 2; // 0x2
     field public static final int TRUST_FEATURE_SELINUX = 0; // 0x0
     field public static final int TRUST_FEATURE_VENDOR_SECURITY_PATCH = 3; // 0x3
-    field public static final java.lang.String TRUST_INTERFACE_PERMISSION = "lineageos.permission.TRUST_INTERFACE";
+    field public static final java.lang.String TRUST_INTERFACE_PERMISSION = "portalrom.permission.TRUST_INTERFACE";
     field public static final int TRUST_WARN_PUBLIC_KEY = 4; // 0x4
     field public static final int TRUST_WARN_SELINUX = 1; // 0x1
   }
 
 }
 
-package lineageos.util {
+package portalrom.util {
 
   public class ColorUtils {
     ctor public ColorUtils();
@@ -840,7 +840,7 @@ package lineageos.util {
     method public static int findPerceptuallyNearestColor(int, int[]);
     method public static int findPerceptuallyNearestSolidColor(int);
     method public static int generateAlertColorFromDrawable(android.graphics.drawable.Drawable);
-    method public static lineageos.util.palette.Palette.Swatch getDominantSwatch(lineageos.util.palette.Palette);
+    method public static portalrom.util.palette.Palette.Swatch getDominantSwatch(portalrom.util.palette.Palette);
     method public static float[] temperatureToRGB(int);
   }
 
