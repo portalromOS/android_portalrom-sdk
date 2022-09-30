@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.internal.util;
+package org.portalrom.internal.util;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

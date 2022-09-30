@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The LineageOS Project
+ * Copyright (C) 2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -23,22 +23,22 @@ import androidx.preference.PreferenceDataStore;
 
 import com.android.settingslib.widget.MainSwitchPreference;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
-public class LineageSecureSettingMainSwitchPreference extends MainSwitchPreference {
+public class PortalRomSecureSettingMainSwitchPreference extends MainSwitchPreference {
 
-    public LineageSecureSettingMainSwitchPreference(Context context, AttributeSet attrs,
+    public PortalRomSecureSettingMainSwitchPreference(Context context, AttributeSet attrs,
             int defStyle) {
         super(context, attrs, defStyle);
         setPreferenceDataStore(new DataStore());
     }
 
-    public LineageSecureSettingMainSwitchPreference(Context context, AttributeSet attrs) {
+    public PortalRomSecureSettingMainSwitchPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         setPreferenceDataStore(new DataStore());
     }
 
-    public LineageSecureSettingMainSwitchPreference(Context context) {
+    public PortalRomSecureSettingMainSwitchPreference(Context context) {
         super(context);
         setPreferenceDataStore(new DataStore());
     }
@@ -46,12 +46,12 @@ public class LineageSecureSettingMainSwitchPreference extends MainSwitchPreferen
     private class DataStore extends PreferenceDataStore {
         @Override
         public void putBoolean(String key, boolean value) {
-            LineageSettings.Secure.putInt(getContext().getContentResolver(), key, value ? 1 : 0);
+            PortalRomSettings.Secure.putInt(getContext().getContentResolver(), key, value ? 1 : 0);
         }
 
         @Override
         public boolean getBoolean(String key, boolean defaultValue) {
-            return LineageSettings.Secure.getInt(getContext().getContentResolver(), key,
+            return PortalRomSettings.Secure.getInt(getContext().getContentResolver(), key,
                     defaultValue ? 1 : 0) != 0;
         }
     }

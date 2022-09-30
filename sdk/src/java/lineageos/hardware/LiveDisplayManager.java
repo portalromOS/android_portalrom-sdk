@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- *               2018-2021 The LineageOS Project
+ *               2018-2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.hardware;
+package portalrom.hardware;
 
 import android.content.Context;
 import android.os.IBinder;
@@ -22,7 +22,7 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.util.Log;
 
-import lineageos.app.LineageContextConstants;
+import portalrom.app.PortalRomContextConstants;
 
 /**
  * LiveDisplay is an advanced set of features for improving
@@ -30,7 +30,7 @@ import lineageos.app.LineageContextConstants;
  *
  * The backend service is constructed with a set of LiveDisplayFeatures
  * which provide capabilities such as outdoor mode, night mode,
- * and calibration. It interacts with LineageHardwareService to relay
+ * and calibration. It interacts with PortalRomHardwareService to relay
  * changes down to the lower layers.
  *
  * Multiple adaptive modes are supported, and various hardware
@@ -157,7 +157,7 @@ public class LiveDisplayManager {
         sService = getService();
 
         if (!context.getPackageManager().hasSystemFeature(
-                LineageContextConstants.Features.LIVEDISPLAY) || !checkService()) {
+                PortalRomContextConstants.Features.LIVEDISPLAY) || !checkService()) {
             Log.wtf(TAG, "Unable to get LiveDisplayService. The service either" +
                     " crashed, was not started, or the interface has been called to early in" +
                     " SystemServer init");
@@ -165,7 +165,7 @@ public class LiveDisplayManager {
     }
 
     /**
-     * Get or create an instance of the {@link lineageos.hardware.LiveDisplayManager}
+     * Get or create an instance of the {@link portalrom.hardware.LiveDisplayManager}
      * @param context
      * @return {@link LiveDisplayManager}
      */
@@ -181,7 +181,7 @@ public class LiveDisplayManager {
         if (sService != null) {
             return sService;
         }
-        IBinder b = ServiceManager.getService(LineageContextConstants.LINEAGE_LIVEDISPLAY_SERVICE);
+        IBinder b = ServiceManager.getService(PortalRomContextConstants.PORTALROM_LIVEDISPLAY_SERVICE);
         if (b != null) {
             sService = ILiveDisplayService.Stub.asInterface(b);
             return sService;
@@ -194,7 +194,7 @@ public class LiveDisplayManager {
      */
     private boolean checkService() {
         if (sService == null) {
-            Log.w(TAG, "not connected to LineageHardwareManagerService");
+            Log.w(TAG, "not connected to PortalRomHardwareManagerService");
             return false;
         }
         return true;

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.notification;
+package org.portalrom.internal.notification;
 
 public class LedValues {
     public static final int LIGHT_BRIGHTNESS_MAXIMUM = 255;

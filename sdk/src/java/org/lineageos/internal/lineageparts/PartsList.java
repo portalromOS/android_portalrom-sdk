@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.internal.lineageparts;
+package org.portalrom.internal.portalromparts;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -42,8 +42,8 @@ import static com.android.internal.R.styleable.Preference_icon;
 import static com.android.internal.R.styleable.Preference_key;
 import static com.android.internal.R.styleable.Preference_summary;
 import static com.android.internal.R.styleable.Preference_title;
-import static lineageos.platform.R.styleable.lineage_Searchable;
-import static lineageos.platform.R.styleable.lineage_Searchable_xmlRes;
+import static portalrom.platform.R.styleable.portalrom_Searchable;
+import static portalrom.platform.R.styleable.portalrom_Searchable_xmlRes;
 
 public class PartsList {
 
@@ -51,14 +51,14 @@ public class PartsList {
 
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.VERBOSE);
 
-    public static final String EXTRA_PART = ":lineage:part";
+    public static final String EXTRA_PART = ":portalrom:part";
 
-    public static final String LINEAGEPARTS_PACKAGE = "org.lineageos.lineageparts";
+    public static final String PORTALROMPARTS_PACKAGE = "org.portalrom.portalromparts";
 
-    public static final ComponentName LINEAGEPARTS_ACTIVITY = new ComponentName(
-            LINEAGEPARTS_PACKAGE, LINEAGEPARTS_PACKAGE + ".PartsActivity");
+    public static final ComponentName PORTALROMPARTS_ACTIVITY = new ComponentName(
+            PORTALROMPARTS_PACKAGE, PORTALROMPARTS_PACKAGE + ".PartsActivity");
 
-    public static final String PARTS_ACTION_PREFIX = LINEAGEPARTS_PACKAGE + ".parts";
+    public static final String PARTS_ACTION_PREFIX = PORTALROMPARTS_PACKAGE + ".parts";
 
     private final Map<String, PartInfo> mParts = new ArrayMap<>();
 
@@ -85,16 +85,16 @@ public class PartsList {
         synchronized (mParts) {
             final PackageManager pm = mContext.getPackageManager();
             try {
-                final Resources r = pm.getResourcesForApplication(LINEAGEPARTS_PACKAGE);
+                final Resources r = pm.getResourcesForApplication(PORTALROMPARTS_PACKAGE);
                 if (r == null) {
                     return;
                 }
-                int resId = r.getIdentifier("parts_catalog", "xml", LINEAGEPARTS_PACKAGE);
+                int resId = r.getIdentifier("parts_catalog", "xml", PORTALROMPARTS_PACKAGE);
                 if (resId > 0) {
                     loadPartsFromResourceLocked(r, resId, mParts);
                 }
             } catch (PackageManager.NameNotFoundException e) {
-                // no lineageparts installed
+                // no portalromparts installed
             }
         }
     }
@@ -190,8 +190,8 @@ public class PartsList {
                     info.setFragmentClass(sa.getString(Preference_fragment));
                     info.setIconRes(sa.getResourceId(Preference_icon, 0));
 
-                    sa = res.obtainAttributes(attrs, lineage_Searchable);
-                    info.setXmlRes(sa.getResourceId(lineage_Searchable_xmlRes, 0));
+                    sa = res.obtainAttributes(attrs, portalrom_Searchable);
+                    info.setXmlRes(sa.getResourceId(portalrom_Searchable_xmlRes, 0));
 
                     sa.recycle();
 

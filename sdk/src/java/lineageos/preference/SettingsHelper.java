@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
 public class SettingsHelper {
 
@@ -37,9 +37,9 @@ public class SettingsHelper {
     private static final String SETTINGS_SECURE = Settings.Secure.CONTENT_URI.toString();
     private static final String SETTINGS_SYSTEM = Settings.System.CONTENT_URI.toString();
 
-    private static final String LINEAGESETTINGS_GLOBAL = LineageSettings.Global.CONTENT_URI.toString();
-    private static final String LINEAGESETTINGS_SECURE = LineageSettings.Secure.CONTENT_URI.toString();
-    private static final String LINEAGESETTINGS_SYSTEM = LineageSettings.System.CONTENT_URI.toString();
+    private static final String PORTALROMSETTINGS_GLOBAL = PortalRomSettings.Global.CONTENT_URI.toString();
+    private static final String PORTALROMSETTINGS_SECURE = PortalRomSettings.Secure.CONTENT_URI.toString();
+    private static final String PORTALROMSETTINGS_SYSTEM = PortalRomSettings.System.CONTENT_URI.toString();
 
     private static SettingsHelper sInstance;
 
@@ -68,12 +68,12 @@ public class SettingsHelper {
             return Settings.System.getString(resolver, uri.substring(SETTINGS_SYSTEM.length()));
         } else if (uri.startsWith(SETTINGS_GLOBAL)) {
             return Settings.Global.getString(resolver, uri.substring(SETTINGS_GLOBAL.length()));
-        } else if (uri.startsWith(LINEAGESETTINGS_SECURE)) {
-            return LineageSettings.Secure.getString(resolver, uri.substring(LINEAGESETTINGS_SECURE.length()));
-        } else if (uri.startsWith(LINEAGESETTINGS_SYSTEM)) {
-            return LineageSettings.System.getString(resolver, uri.substring(LINEAGESETTINGS_SYSTEM.length()));
-        } else if (uri.startsWith(LINEAGESETTINGS_GLOBAL)) {
-            return LineageSettings.Global.getString(resolver, uri.substring(LINEAGESETTINGS_GLOBAL.length()));
+        } else if (uri.startsWith(PORTALROMSETTINGS_SECURE)) {
+            return PortalRomSettings.Secure.getString(resolver, uri.substring(PORTALROMSETTINGS_SECURE.length()));
+        } else if (uri.startsWith(PORTALROMSETTINGS_SYSTEM)) {
+            return PortalRomSettings.System.getString(resolver, uri.substring(PORTALROMSETTINGS_SYSTEM.length()));
+        } else if (uri.startsWith(PORTALROMSETTINGS_GLOBAL)) {
+            return PortalRomSettings.Global.getString(resolver, uri.substring(PORTALROMSETTINGS_GLOBAL.length()));
         }
         return null;
     }
@@ -88,12 +88,12 @@ public class SettingsHelper {
             return Settings.System.getInt(resolver, uri.substring(SETTINGS_SYSTEM.length()), def);
         } else if (uri.startsWith(SETTINGS_GLOBAL)) {
             return Settings.Global.getInt(resolver, uri.substring(SETTINGS_GLOBAL.length()), def);
-        } else if (uri.startsWith(LINEAGESETTINGS_SECURE)) {
-            return LineageSettings.Secure.getInt(resolver, uri.substring(LINEAGESETTINGS_SECURE.length()), def);
-        } else if (uri.startsWith(LINEAGESETTINGS_SYSTEM)) {
-            return LineageSettings.System.getInt(resolver, uri.substring(LINEAGESETTINGS_SYSTEM.length()), def);
-        } else if (uri.startsWith(LINEAGESETTINGS_GLOBAL)) {
-            return LineageSettings.Global.getInt(resolver, uri.substring(LINEAGESETTINGS_GLOBAL.length()), def);
+        } else if (uri.startsWith(PORTALROMSETTINGS_SECURE)) {
+            return PortalRomSettings.Secure.getInt(resolver, uri.substring(PORTALROMSETTINGS_SECURE.length()), def);
+        } else if (uri.startsWith(PORTALROMSETTINGS_SYSTEM)) {
+            return PortalRomSettings.System.getInt(resolver, uri.substring(PORTALROMSETTINGS_SYSTEM.length()), def);
+        } else if (uri.startsWith(PORTALROMSETTINGS_GLOBAL)) {
+            return PortalRomSettings.Global.getInt(resolver, uri.substring(PORTALROMSETTINGS_GLOBAL.length()), def);
         }
         return def;
     }
@@ -113,12 +113,12 @@ public class SettingsHelper {
             Settings.System.putString(resolver, uri.substring(SETTINGS_SYSTEM.length()), value);
         } else if (uri.startsWith(SETTINGS_GLOBAL)) {
             Settings.Global.putString(resolver, uri.substring(SETTINGS_GLOBAL.length()), value);
-        } else if (uri.startsWith(LINEAGESETTINGS_SECURE)) {
-            LineageSettings.Secure.putString(resolver, uri.substring(LINEAGESETTINGS_SECURE.length()), value);
-        } else if (uri.startsWith(LINEAGESETTINGS_SYSTEM)) {
-            LineageSettings.System.putString(resolver, uri.substring(LINEAGESETTINGS_SYSTEM.length()), value);
-        } else if (uri.startsWith(LINEAGESETTINGS_GLOBAL)) {
-            LineageSettings.Global.putString(resolver, uri.substring(LINEAGESETTINGS_GLOBAL.length()), value);
+        } else if (uri.startsWith(PORTALROMSETTINGS_SECURE)) {
+            PortalRomSettings.Secure.putString(resolver, uri.substring(PORTALROMSETTINGS_SECURE.length()), value);
+        } else if (uri.startsWith(PORTALROMSETTINGS_SYSTEM)) {
+            PortalRomSettings.System.putString(resolver, uri.substring(PORTALROMSETTINGS_SYSTEM.length()), value);
+        } else if (uri.startsWith(PORTALROMSETTINGS_GLOBAL)) {
+            PortalRomSettings.Global.putString(resolver, uri.substring(PORTALROMSETTINGS_GLOBAL.length()), value);
         }
     }
 
@@ -132,12 +132,12 @@ public class SettingsHelper {
             Settings.System.putInt(resolver, uri.substring(SETTINGS_SYSTEM.length()), value);
         } else if (uri.startsWith(SETTINGS_GLOBAL)) {
             Settings.Global.putInt(resolver, uri.substring(SETTINGS_GLOBAL.length()), value);
-        } else if (uri.startsWith(LINEAGESETTINGS_SECURE)) {
-            LineageSettings.Secure.putInt(resolver, uri.substring(LINEAGESETTINGS_SECURE.length()), value);
-        } else if (uri.startsWith(LINEAGESETTINGS_SYSTEM)) {
-            LineageSettings.System.putInt(resolver, uri.substring(LINEAGESETTINGS_SYSTEM.length()), value);
-        } else if (uri.startsWith(LINEAGESETTINGS_GLOBAL)) {
-            LineageSettings.Global.putInt(resolver, uri.substring(LINEAGESETTINGS_GLOBAL.length()), value);
+        } else if (uri.startsWith(PORTALROMSETTINGS_SECURE)) {
+            PortalRomSettings.Secure.putInt(resolver, uri.substring(PORTALROMSETTINGS_SECURE.length()), value);
+        } else if (uri.startsWith(PORTALROMSETTINGS_SYSTEM)) {
+            PortalRomSettings.System.putInt(resolver, uri.substring(PORTALROMSETTINGS_SYSTEM.length()), value);
+        } else if (uri.startsWith(PORTALROMSETTINGS_GLOBAL)) {
+            PortalRomSettings.Global.putInt(resolver, uri.substring(PORTALROMSETTINGS_GLOBAL.length()), value);
         }
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.preference.deviceinfo;
+package org.portalrom.internal.preference.deviceinfo;
 
 import android.content.Context;
 import android.os.SystemProperties;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import org.lineageos.platform.internal.R;
+import org.portalrom.platform.internal.R;
 
-public class LineageBuildDateTextView extends TextView {
-    private static final String TAG = "LineageAPIVersionTextView";
+public class PortalRomBuildDateTextView extends TextView {
+    private static final String TAG = "PortalRomAPIVersionTextView";
 
     private static final String KEY_BUILD_DATE_PROP = "ro.build.date";
 
-    public LineageBuildDateTextView(Context context, AttributeSet attrs) {
+    public PortalRomBuildDateTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setText(SystemProperties.get(KEY_BUILD_DATE_PROP,
                 getContext().getResources().getString(R.string.unknown)));

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.util;
+package portalrom.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -22,7 +22,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.MathUtils;
 
-import lineageos.util.palette.Palette;
+import portalrom.util.palette.Palette;
 
 import java.util.Collections;
 import java.util.Comparator;

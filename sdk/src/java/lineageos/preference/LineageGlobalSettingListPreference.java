@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 The LineageOS Project
+ * Copyright (C) 2022 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
-public class LineageGlobalSettingListPreference extends SelfRemovingListPreference {
+public class PortalRomGlobalSettingListPreference extends SelfRemovingListPreference {
 
-    public LineageGlobalSettingListPreference(Context context, AttributeSet attrs, int defStyle) {
+    public PortalRomGlobalSettingListPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public LineageGlobalSettingListPreference(Context context, AttributeSet attrs) {
+    public PortalRomGlobalSettingListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -37,18 +37,18 @@ public class LineageGlobalSettingListPreference extends SelfRemovingListPreferen
 
     @Override
     protected boolean isPersisted() {
-        return LineageSettings.Global.getString(getContext().getContentResolver(),
+        return PortalRomSettings.Global.getString(getContext().getContentResolver(),
                 getKey()) != null;
     }
 
     @Override
     protected void putString(String key, String value) {
-        LineageSettings.Global.putString(getContext().getContentResolver(), key, value);
+        PortalRomSettings.Global.putString(getContext().getContentResolver(), key, value);
     }
 
     @Override
     protected String getString(String key, String defaultValue) {
-        return LineageSettings.Global.getString(getContext().getContentResolver(),
+        return PortalRomSettings.Global.getString(getContext().getContentResolver(),
                 key, defaultValue);
     }
 }

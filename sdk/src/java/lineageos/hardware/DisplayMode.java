@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package lineageos.hardware;
+package portalrom.hardware;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import lineageos.os.Build;
-import lineageos.os.Concierge;
-import lineageos.os.Concierge.ParcelInfo;
+import portalrom.os.Build;
+import portalrom.os.Concierge;
+import portalrom.os.Concierge.ParcelInfo;
 
 /**
  * Display Modes API
@@ -55,7 +55,7 @@ public class DisplayMode implements Parcelable {
         int tmpId = -1;
         String tmpName = null;
 
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
             tmpId = parcel.readInt();
             if (parcel.readInt() != 0) {
                 tmpName = parcel.readString();

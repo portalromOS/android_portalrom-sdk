@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2015-2016 The CyanogenMod Project
- *               2017-2022 The LineageOS Project
+ *               2017-2022 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.hardware;
+package portalrom.hardware;
 
 import android.content.Context;
 import android.hidl.base.V1_0.IBase;
@@ -28,24 +28,24 @@ import android.util.Range;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.ArrayUtils;
 
-import lineageos.app.LineageContextConstants;
+import portalrom.app.PortalRomContextConstants;
 
-import vendor.lineage.livedisplay.V2_0.IAdaptiveBacklight;
-import vendor.lineage.livedisplay.V2_0.IAutoContrast;
-import vendor.lineage.livedisplay.V2_0.IColorBalance;
-import vendor.lineage.livedisplay.V2_0.IColorEnhancement;
-import vendor.lineage.livedisplay.V2_0.IDisplayColorCalibration;
-import vendor.lineage.livedisplay.V2_0.IDisplayModes;
-import vendor.lineage.livedisplay.V2_0.IPictureAdjustment;
-import vendor.lineage.livedisplay.V2_0.IReadingEnhancement;
-import vendor.lineage.livedisplay.V2_0.ISunlightEnhancement;
-import vendor.lineage.livedisplay.V2_1.IAntiFlicker;
-import vendor.lineage.touch.V1_0.IGloveMode;
-import vendor.lineage.touch.V1_0.IHighTouchPollingRate;
-import vendor.lineage.touch.V1_0.IKeyDisabler;
-import vendor.lineage.touch.V1_0.IKeySwapper;
-import vendor.lineage.touch.V1_0.IStylusMode;
-import vendor.lineage.touch.V1_0.ITouchscreenGesture;
+import vendor.portalrom.livedisplay.V2_0.IAdaptiveBacklight;
+import vendor.portalrom.livedisplay.V2_0.IAutoContrast;
+import vendor.portalrom.livedisplay.V2_0.IColorBalance;
+import vendor.portalrom.livedisplay.V2_0.IColorEnhancement;
+import vendor.portalrom.livedisplay.V2_0.IDisplayColorCalibration;
+import vendor.portalrom.livedisplay.V2_0.IDisplayModes;
+import vendor.portalrom.livedisplay.V2_0.IPictureAdjustment;
+import vendor.portalrom.livedisplay.V2_0.IReadingEnhancement;
+import vendor.portalrom.livedisplay.V2_0.ISunlightEnhancement;
+import vendor.portalrom.livedisplay.V2_1.IAntiFlicker;
+import vendor.portalrom.touch.V1_0.IGloveMode;
+import vendor.portalrom.touch.V1_0.IHighTouchPollingRate;
+import vendor.portalrom.touch.V1_0.IKeyDisabler;
+import vendor.portalrom.touch.V1_0.IKeySwapper;
+import vendor.portalrom.touch.V1_0.IStylusMode;
+import vendor.portalrom.touch.V1_0.ITouchscreenGesture;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -55,15 +55,15 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
- * Manages access to LineageOS hardware extensions
+ * Manages access to PortalRomOS hardware extensions
  *
  *  <p>
  *  This manager requires the HARDWARE_ABSTRACTION_ACCESS permission.
  *  <p>
- *  To get the instance of this class, utilize LineageHardwareManager#getInstance(Context context)
+ *  To get the instance of this class, utilize PortalRomHardwareManager#getInstance(Context context)
  */
-public final class LineageHardwareManager {
-    private static final String TAG = "LineageHardwareManager";
+public final class PortalRomHardwareManager {
+    private static final String TAG = "PortalRomHardwareManager";
 
     // The VisibleForTesting annotation is to ensure Proguard doesn't remove these
     // fields, as they might be used via reflection. When the @Keep annotation in
@@ -186,8 +186,8 @@ public final class LineageHardwareManager {
         FEATURE_READING_ENHANCEMENT
     );
 
-    private static ILineageHardwareService sService;
-    private static LineageHardwareManager sLineageHardwareManagerInstance;
+    private static IPortalRomHardwareService sService;
+    private static PortalRomHardwareManager sPortalRomHardwareManagerInstance;
 
     private Context mContext;
 
@@ -200,7 +200,7 @@ public final class LineageHardwareManager {
     /**
      * @hide to prevent subclassing from outside of the framework
      */
-    private LineageHardwareManager(Context context) {
+    private PortalRomHardwareManager(Context context) {
         Context appContext = context.getApplicationContext();
         if (appContext != null) {
             mContext = appContext;
@@ -210,14 +210,14 @@ public final class LineageHardwareManager {
         sService = getService();
 
         if (context.getPackageManager().hasSystemFeature(
-                LineageContextConstants.Features.HARDWARE_ABSTRACTION) && !checkService()) {
-            Log.wtf(TAG, "Unable to get LineageHardwareService. The service either" +
+                PortalRomContextConstants.Features.HARDWARE_ABSTRACTION) && !checkService()) {
+            Log.wtf(TAG, "Unable to get PortalRomHardwareService. The service either" +
                     " crashed, was not started, or the interface has been called to early in" +
                     " SystemServer init");
         }
 
         final String[] mappings = mContext.getResources().getStringArray(
-                org.lineageos.platform.internal.R.array.config_displayModeMappings);
+                org.portalrom.platform.internal.R.array.config_displayModeMappings);
         if (mappings != null && mappings.length > 0) {
             for (String mapping : mappings) {
                 String[] split = mapping.split(":");
@@ -227,38 +227,38 @@ public final class LineageHardwareManager {
             }
         }
         mFilterDisplayModes = mContext.getResources().getBoolean(
-                org.lineageos.platform.internal.R.bool.config_filterDisplayModes);
+                org.portalrom.platform.internal.R.bool.config_filterDisplayModes);
     }
 
     /**
-     * Get or create an instance of the {@link lineageos.hardware.LineageHardwareManager}
+     * Get or create an instance of the {@link portalrom.hardware.PortalRomHardwareManager}
      * @param context
-     * @return {@link LineageHardwareManager}
+     * @return {@link PortalRomHardwareManager}
      */
-    public static LineageHardwareManager getInstance(Context context) {
-        if (sLineageHardwareManagerInstance == null) {
-            sLineageHardwareManagerInstance = new LineageHardwareManager(context);
+    public static PortalRomHardwareManager getInstance(Context context) {
+        if (sPortalRomHardwareManagerInstance == null) {
+            sPortalRomHardwareManagerInstance = new PortalRomHardwareManager(context);
         }
-        return sLineageHardwareManagerInstance;
+        return sPortalRomHardwareManagerInstance;
     }
 
     /** @hide */
-    public static ILineageHardwareService getService() {
+    public static IPortalRomHardwareService getService() {
         if (sService != null) {
             return sService;
         }
-        IBinder b = ServiceManager.getService(LineageContextConstants.LINEAGE_HARDWARE_SERVICE);
+        IBinder b = ServiceManager.getService(PortalRomContextConstants.PORTALROM_HARDWARE_SERVICE);
         if (b != null) {
-            sService = ILineageHardwareService.Stub.asInterface(b);
+            sService = IPortalRomHardwareService.Stub.asInterface(b);
             return sService;
         }
         return null;
     }
 
     /**
-     * Determine if a Lineage Hardware feature is supported on this device
+     * Determine if a PortalRom Hardware feature is supported on this device
      *
-     * @param feature The Lineage Hardware feature to query
+     * @param feature The PortalRom Hardware feature to query
      *
      * @return true if the feature is supported, false otherwise.
      */
@@ -349,7 +349,7 @@ public final class LineageHardwareManager {
      *
      * Only used for features which have simple enable/disable controls.
      *
-     * @param feature the Lineage Hardware feature to query
+     * @param feature the PortalRom Hardware feature to query
      *
      * @return true if the feature is enabled, false otherwise.
      */
@@ -409,7 +409,7 @@ public final class LineageHardwareManager {
      *
      * Only used for features which have simple enable/disable controls.
      *
-     * @param feature the Lineage Hardware feature to set
+     * @param feature the PortalRom Hardware feature to set
      * @param enable true to enable, false to disale
      *
      * @return true if the feature is enabled, false otherwise.
@@ -819,7 +819,7 @@ public final class LineageHardwareManager {
      */
     private boolean checkService() {
         if (sService == null) {
-            Log.w(TAG, "not connected to LineageHardwareManagerService");
+            Log.w(TAG, "not connected to PortalRomHardwareManagerService");
             return false;
         }
         return true;

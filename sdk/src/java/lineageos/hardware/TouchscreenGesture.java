@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- *               2017 The LineageOS Project
+ *               2017 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package lineageos.hardware;
+package portalrom.hardware;
 
 import android.os.Parcel;
 import android.os.Parcelable;

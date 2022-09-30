@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.util;
+package org.portalrom.internal.util;
 
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.os.UserHandle;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
 public final class PowerMenuUtils {
     public static boolean isAdvancedRestartPossible(final Context context) {
         KeyguardManager km = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
         boolean keyguardLocked = km.inKeyguardRestrictedInputMode() && km.isKeyguardSecure();
-        boolean advancedRestartEnabled = LineageSettings.Secure.getInt(context.getContentResolver(),
-                LineageSettings.Secure.ADVANCED_REBOOT, 0) == 1;
+        boolean advancedRestartEnabled = PortalRomSettings.Secure.getInt(context.getContentResolver(),
+                PortalRomSettings.Secure.ADVANCED_REBOOT, 0) == 1;
         boolean isPrimaryUser = UserHandle.getCallingUserId() == UserHandle.USER_SYSTEM;
 
         return advancedRestartEnabled && !keyguardLocked && isPrimaryUser;

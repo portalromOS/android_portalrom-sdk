@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2016, The CyanogenMod Project
- *               2021 The LineageOS Project
+ *               2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-package lineageos.hardware;
+package portalrom.hardware;
 
-import lineageos.hardware.HSIC;
-import lineageos.hardware.LiveDisplayConfig;
+import portalrom.hardware.HSIC;
+import portalrom.hardware.LiveDisplayConfig;
 
 /** @hide */
 interface ILiveDisplayService {

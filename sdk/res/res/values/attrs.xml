@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2016 The CyanogenMod Project
-     Copyright (C) 2018 The LineageOS Project
+     Copyright (C) 2018 The PortalRomOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
      limitations under the License.
 -->
 <resources>
-    <declare-styleable name="lineage_SelfRemovingPreference">
+    <declare-styleable name="portalrom_SelfRemovingPreference">
         <attr name="requiresPackage" format="string" />
         <attr name="requiresFeature" format="string" />
         <attr name="requiresConfig" format="string" />
@@ -29,7 +29,7 @@
     </declare-styleable>
 
     <!--Settings search providers-->
-    <declare-styleable name="lineage_Searchable">
+    <declare-styleable name="portalrom_Searchable">
         <attr name="xmlRes" format="reference" />
     </declare-styleable>
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package lineageos.app;
+package portalrom.app;
 
 import android.content.Context;
 import android.media.AudioManager;
@@ -27,16 +27,16 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.policy.IKeyguardService;
-import lineageos.os.Build;
-import lineageos.profiles.AirplaneModeSettings;
-import lineageos.profiles.BrightnessSettings;
-import lineageos.profiles.ConnectionSettings;
-import lineageos.profiles.LockSettings;
-import lineageos.profiles.RingModeSettings;
-import lineageos.profiles.StreamSettings;
+import portalrom.os.Build;
+import portalrom.profiles.AirplaneModeSettings;
+import portalrom.profiles.BrightnessSettings;
+import portalrom.profiles.ConnectionSettings;
+import portalrom.profiles.LockSettings;
+import portalrom.profiles.RingModeSettings;
+import portalrom.profiles.StreamSettings;
 
-import lineageos.os.Concierge;
-import lineageos.os.Concierge.ParcelInfo;
+import portalrom.os.Concierge;
+import portalrom.os.Concierge.ParcelInfo;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -222,7 +222,7 @@ public final class Profile implements Parcelable, Comparable {
             // Pattern here is that all new members should be added to the end of
             // the writeToParcel method. Then we step through each version, until the latest
             // API release to help unravel this parcel
-            if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+            if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
                 mType = in.readInt();
                 mId = in.readString();
                 mState = in.readInt();
@@ -631,7 +631,7 @@ public final class Profile implements Parcelable, Comparable {
         // Pattern here is that all new members should be added to the end of
         // the writeToParcel method. Then we step through each version, until the latest
         // API release to help unravel this parcel
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
             if (in.readInt() != 0) {
                 mName = in.readString();
             }
@@ -686,7 +686,7 @@ public final class Profile implements Parcelable, Comparable {
             }
             mDozeMode = in.readInt();
         }
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.ELDERBERRY) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.ELDERBERRY) {
             mNotificationLightMode = in.readInt();
             if (in.readInt() != 0) {
                 for (ConnectionSettings connection :
@@ -1085,7 +1085,7 @@ public final class Profile implements Parcelable, Comparable {
 
         if (value != null) {
             profileNameResId = context.getResources().getIdentifier(value, "string",
-                    "lineageos.platform");
+                    "portalrom.platform");
             if (profileNameResId > 0) {
                 profileName = context.getResources().getString(profileNameResId);
             }
@@ -1161,7 +1161,7 @@ public final class Profile implements Parcelable, Comparable {
                 }
                 if (name.equals("connectionDescriptor")) {
                     ConnectionSettings cs = ConnectionSettings.fromXml(xpp, context);
-                    if (Build.LINEAGE_VERSION.SDK_INT >= Build.LINEAGE_VERSION_CODES.ELDERBERRY
+                    if (Build.PORTALROM_VERSION.SDK_INT >= Build.PORTALROM_VERSION_CODES.ELDERBERRY
                             && cs.getConnectionId() == ConnectionSettings.PROFILE_CONNECTION_2G3G4G) {
                         profile.networkConnectionSubIds.put(cs.getSubId(), cs);
                     } else {

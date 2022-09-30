@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-package lineageos.app;
+package portalrom.app;
 
 parcelable Profile;

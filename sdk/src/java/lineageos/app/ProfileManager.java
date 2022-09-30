@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package lineageos.app;
+package portalrom.app;
 
 import java.util.UUID;
 
@@ -51,7 +51,7 @@ import android.util.Log;
  * <p>
  * This manager requires the MODIFY_PROFILES permission.
  *
- * @see lineageos.app.Profile
+ * @see portalrom.app.Profile
  */
 public class ProfileManager {
 
@@ -66,7 +66,7 @@ public class ProfileManager {
      * or by calls to the ProfileManagerService / Profile.</p>
      */
     public static final String INTENT_ACTION_PROFILE_SELECTED =
-            "lineageos.platform.intent.action.PROFILE_SELECTED";
+            "portalrom.platform.intent.action.PROFILE_SELECTED";
 
     /**
      * <p>Broadcast Action: Current profile has been updated. This is triggered every time the
@@ -75,14 +75,14 @@ public class ProfileManager {
      * trigger a profile selection, but causes its name to change.</p>
      */
     public static final String INTENT_ACTION_PROFILE_UPDATED =
-            "lineageos.platform.intent.action.PROFILE_UPDATED";
+            "portalrom.platform.intent.action.PROFILE_UPDATED";
 
 
     /**
      * @hide
      */
     public static final String INTENT_ACTION_PROFILE_TRIGGER_STATE_CHANGED =
-            "lineageos.platform.intent.action.INTENT_ACTION_PROFILE_TRIGGER_STATE_CHANGED";
+            "portalrom.platform.intent.action.INTENT_ACTION_PROFILE_TRIGGER_STATE_CHANGED";
 
     /**
      * @hide
@@ -134,7 +134,7 @@ public class ProfileManager {
      */
     @SdkConstant(SdkConstantType.ACTIVITY_INTENT_ACTION)
     public static final String ACTION_PROFILE_PICKER =
-            "lineageos.platform.intent.action.PROFILE_PICKER";
+            "portalrom.platform.intent.action.PROFILE_PICKER";
 
     /**
      * Constant for NO_PROFILE
@@ -150,7 +150,7 @@ public class ProfileManager {
      * @see #ACTION_PROFILE_PICKER
      */
     public static final String EXTRA_PROFILE_SHOW_NONE =
-            "lineageos.platform.intent.extra.profile.SHOW_NONE";
+            "portalrom.platform.intent.extra.profile.SHOW_NONE";
 
     /**
      * Given to the profile picker as a {@link UUID} string representation. The {@link UUID}
@@ -162,7 +162,7 @@ public class ProfileManager {
      * @see #ACTION_PROFILE_PICKER
      */
     public static final String EXTRA_PROFILE_EXISTING_UUID =
-            "lineageos.platform.extra.profile.EXISTING_UUID";
+            "portalrom.platform.extra.profile.EXISTING_UUID";
 
     /**
      * Given to the profile picker as a {@link CharSequence}. The title to
@@ -172,7 +172,7 @@ public class ProfileManager {
      * @see #ACTION_PROFILE_PICKER
      */
     public static final String EXTRA_PROFILE_TITLE =
-            "lineageos.platform.intent.extra.profile.TITLE";
+            "portalrom.platform.intent.extra.profile.TITLE";
 
     /**
      * Returned from the profile picker as a {@link UUID} string representation.
@@ -184,7 +184,7 @@ public class ProfileManager {
      * @see #ACTION_PROFILE_PICKER
      */
     public static final String EXTRA_PROFILE_PICKED_UUID =
-            "lineageos.platform.intent.extra.profile.PICKED_UUID";
+            "portalrom.platform.intent.extra.profile.PICKED_UUID";
 
     /**
      * Broadcast intent action indicating that Profiles has been enabled or disabled.
@@ -194,7 +194,7 @@ public class ProfileManager {
      */
     @SdkConstant(SdkConstantType.BROADCAST_INTENT_ACTION)
     public static final String PROFILES_STATE_CHANGED_ACTION =
-        "lineageos.platform.app.profiles.PROFILES_STATE_CHANGED";
+        "portalrom.platform.app.profiles.PROFILES_STATE_CHANGED";
 
     /**
      * The lookup key for an int that indicates whether Profiles are enabled or
@@ -212,7 +212,7 @@ public class ProfileManager {
      * @see #ACTION_PROFILE_PICKER
      */
     public static final String EXTRA_PROFILE_DIALOG_THEME =
-            "lineageos.platform.intent.extra.profile.DIALOG_THEME";
+            "portalrom.platform.intent.extra.profile.DIALOG_THEME";
 
     /**
      * Profiles are disabled.
@@ -244,7 +244,7 @@ public class ProfileManager {
         }
 
         if (context.getPackageManager().hasSystemFeature(
-                lineageos.app.LineageContextConstants.Features.PROFILES) && sService == null) {
+                portalrom.app.PortalRomContextConstants.Features.PROFILES) && sService == null) {
             Log.wtf(TAG, "Unable to get ProfileManagerService. The service either" +
                     " crashed, was not started, or the interface has been called to early in" +
                     " SystemServer init");
@@ -252,7 +252,7 @@ public class ProfileManager {
     }
 
     /**
-     * Get or create an instance of the {@link lineageos.app.ProfileManager}
+     * Get or create an instance of the {@link portalrom.app.ProfileManager}
      * @param context
      * @return {@link ProfileManager}
      */
@@ -268,12 +268,12 @@ public class ProfileManager {
         if (sService != null) {
             return sService;
         }
-        IBinder b = ServiceManager.getService(LineageContextConstants.LINEAGE_PROFILE_SERVICE);
+        IBinder b = ServiceManager.getService(PortalRomContextConstants.PORTALROM_PROFILE_SERVICE);
         sService = IProfileManager.Stub.asInterface(b);
 
         if (sService == null) {
             throw new RemoteException("Couldn't get " +
-                                      LineageContextConstants.LINEAGE_PROFILE_SERVICE +
+                                      PortalRomContextConstants.PORTALROM_PROFILE_SERVICE +
                                       " on binder");
         }
         return sService;

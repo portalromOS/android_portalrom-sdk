@@ -13,27 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.internal.lineageparts;
+package org.portalrom.internal.portalromparts;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
 
-import lineageos.preference.RemotePreference;
+import portalrom.preference.RemotePreference;
 
 /**
  * A link to a remote preference screen which can be used with a minimum amount
  * of information. Supports summary updates asynchronously.
  */
-public class LineagePartsPreference extends RemotePreference {
+public class PortalRomPartsPreference extends RemotePreference {
 
-    private static final String TAG = "LineagePartsPreference";
+    private static final String TAG = "PortalRomPartsPreference";
 
     private final PartInfo mPart;
 
     private final Context mContext;
 
-    public LineagePartsPreference(Context context, AttributeSet attrs,
+    public PortalRomPartsPreference(Context context, AttributeSet attrs,
                             int defStyle, int defStyleRes) {
         super(context, attrs, defStyle, defStyleRes);
         mContext = context;
@@ -46,11 +46,11 @@ public class LineagePartsPreference extends RemotePreference {
         setIntent(mPart.getIntentForActivity());
     }
 
-    public LineagePartsPreference(Context context, AttributeSet attrs, int defStyle) {
+    public PortalRomPartsPreference(Context context, AttributeSet attrs, int defStyle) {
         this(context, attrs, defStyle, 0);
     }
 
-    public LineagePartsPreference(Context context, AttributeSet attrs) {
+    public PortalRomPartsPreference(Context context, AttributeSet attrs) {
         this(context, attrs, androidx.preference.R.attr.preferenceStyle);
     }
 

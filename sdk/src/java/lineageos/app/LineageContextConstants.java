@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2015, The CyanogenMod Project
- *               2017-2022 The LineageOS Project
+ *               2017-2022 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package lineageos.app;
+package portalrom.app;
 
 import android.annotation.SdkConstant;
 
@@ -23,137 +23,137 @@ import android.annotation.SdkConstant;
  * @hide
  * TODO: We need to somehow make these managers accessible via getSystemService
  */
-public final class LineageContextConstants {
+public final class PortalRomContextConstants {
 
     /**
      * @hide
      */
-    private LineageContextConstants() {
+    private PortalRomContextConstants() {
         // Empty constructor
     }
 
     /**
      * Use with {@link android.content.Context#getSystemService} to retrieve a
-     * {@link lineageos.app.ProfileManager} for informing the user of
+     * {@link portalrom.app.ProfileManager} for informing the user of
      * background events.
      *
      * @see android.content.Context#getSystemService
-     * @see lineageos.app.ProfileManager
+     * @see portalrom.app.ProfileManager
      *
      * @hide
      */
-    public static final String LINEAGE_PROFILE_SERVICE = "profile";
+    public static final String PORTALROM_PROFILE_SERVICE = "profile";
 
     /**
      * Use with {@link android.content.Context#getSystemService} to retrieve a
-     * {@link lineageos.hardware.LineageHardwareManager} to manage the extended
+     * {@link portalrom.hardware.PortalRomHardwareManager} to manage the extended
      * hardware features of the device.
      *
      * @see android.content.Context#getSystemService
-     * @see lineageos.hardware.LineageHardwareManager
+     * @see portalrom.hardware.PortalRomHardwareManager
      *
      * @hide
      */
-    public static final String LINEAGE_HARDWARE_SERVICE = "lineagehardware";
+    public static final String PORTALROM_HARDWARE_SERVICE = "portalromhardware";
 
     /**
      * Control device power profile and characteristics.
      *
      * @hide
      */
-    public static final String LINEAGE_PERFORMANCE_SERVICE = "lineageperformance";
+    public static final String PORTALROM_PERFORMANCE_SERVICE = "portalromperformance";
 
     /**
      * Manages display color adjustments
      *
      * @hide
      */
-    public static final String LINEAGE_LIVEDISPLAY_SERVICE = "lineagelivedisplay";
+    public static final String PORTALROM_LIVEDISPLAY_SERVICE = "portalromlivedisplay";
 
     /**
      * Use with {@link android.content.Context#getSystemService} to retrieve a
-     * {@link lineageos.trust.TrustInterface} to access the Trust interface.
+     * {@link portalrom.trust.TrustInterface} to access the Trust interface.
      *
      * @see android.content.Context#getSystemService
-     * @see lineageos.trust.TrustInterface
+     * @see portalrom.trust.TrustInterface
      *
      * @hide
      */
-    public static final String LINEAGE_TRUST_INTERFACE = "lineagetrust";
+    public static final String PORTALROM_TRUST_INTERFACE = "portalromtrust";
 
     /**
      * Update power menu (GlobalActions)
      *
      * @hide
      */
-    public static final String LINEAGE_GLOBAL_ACTIONS_SERVICE = "lineageglobalactions";
+    public static final String PORTALROM_GLOBAL_ACTIONS_SERVICE = "portalromglobalactions";
 
     /**
-     * Features supported by the Lineage SDK.
+     * Features supported by the PortalRom SDK.
      */
     public static class Features {
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
          * {@link PackageManager#hasSystemFeature}: The device includes the hardware abstraction
-         * framework service utilized by the lineage sdk.
+         * framework service utilized by the portalrom sdk.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String HARDWARE_ABSTRACTION = "org.lineageos.hardware";
+        public static final String HARDWARE_ABSTRACTION = "org.portalrom.hardware";
 
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
-         * {@link PackageManager#hasSystemFeature}: The device includes the lineage profiles service
-         * utilized by the lineage sdk.
+         * {@link PackageManager#hasSystemFeature}: The device includes the portalrom profiles service
+         * utilized by the portalrom sdk.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String PROFILES = "org.lineageos.profiles";
+        public static final String PROFILES = "org.portalrom.profiles";
 
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
-         * {@link PackageManager#hasSystemFeature}: The device includes the lineage performance service
-         * utilized by the lineage sdk.
+         * {@link PackageManager#hasSystemFeature}: The device includes the portalrom performance service
+         * utilized by the portalrom sdk.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String PERFORMANCE = "org.lineageos.performance";
+        public static final String PERFORMANCE = "org.portalrom.performance";
 
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
          * {@link PackageManager#hasSystemFeature}: The device includes the LiveDisplay service
-         * utilized by the lineage sdk.
+         * utilized by the portalrom sdk.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String LIVEDISPLAY = "org.lineageos.livedisplay";
+        public static final String LIVEDISPLAY = "org.portalrom.livedisplay";
 
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
-         * {@link PackageManager#hasSystemFeature}: The device includes the Lineage audio extensions
-         * utilized by the lineage sdk.
+         * {@link PackageManager#hasSystemFeature}: The device includes the PortalRom audio extensions
+         * utilized by the portalrom sdk.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String AUDIO = "org.lineageos.audio";
+        public static final String AUDIO = "org.portalrom.audio";
 
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
-         * {@link PackageManager#hasSystemFeature}: The device includes the lineage trust service
-         * utilized by the lineage sdk.
+         * {@link PackageManager#hasSystemFeature}: The device includes the portalrom trust service
+         * utilized by the portalrom sdk.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String TRUST = "org.lineageos.trust";
+        public static final String TRUST = "org.portalrom.trust";
 
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
-         * {@link PackageManager#hasSystemFeature}: The device includes the lineage settings service
-         * utilized by the lineage sdk.
+         * {@link PackageManager#hasSystemFeature}: The device includes the portalrom settings service
+         * utilized by the portalrom sdk.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String SETTINGS = "org.lineageos.settings";
+        public static final String SETTINGS = "org.portalrom.settings";
 
         /**
          * Feature for {@link PackageManager#getSystemAvailableFeatures} and
-         * {@link PackageManager#hasSystemFeature}: The device includes the lineage globalactions
-         * service utilized by the lineage sdk and LineageParts.
+         * {@link PackageManager#hasSystemFeature}: The device includes the portalrom globalactions
+         * service utilized by the portalrom sdk and PortalRomParts.
          */
         @SdkConstant(SdkConstant.SdkConstantType.FEATURE)
-        public static final String GLOBAL_ACTIONS = "org.lineageos.globalactions";
+        public static final String GLOBAL_ACTIONS = "org.portalrom.globalactions";
     }
 }

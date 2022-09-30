@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.internal.util;
+package org.portalrom.internal.util;
 
 import android.content.Context;
 
 import com.android.internal.widget.LockPatternUtils;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
-public class LineageLockPatternUtils extends LockPatternUtils {
-    public LineageLockPatternUtils(Context context) {
+public class PortalRomLockPatternUtils extends LockPatternUtils {
+    public PortalRomLockPatternUtils(Context context) {
         super(context);
     }
 
     public boolean shouldPassToSecurityView(int userId) {
-        return getBoolean(LineageSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW, false, userId);
+        return getBoolean(PortalRomSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW, false, userId);
     }
 
     public void setPassToSecurityView(boolean enabled, int userId) {
-        setBoolean(LineageSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW, enabled, userId);
+        setBoolean(PortalRomSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW, enabled, userId);
     }
 }

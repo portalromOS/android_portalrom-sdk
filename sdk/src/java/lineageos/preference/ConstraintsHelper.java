@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- *               2017,2019-2020 The LineageOS Project
+ *               2017,2019-2020 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.Context;
 import android.content.Intent;
@@ -42,8 +42,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import lineageos.hardware.LineageHardwareManager;
-import lineageos.platform.R;
+import portalrom.hardware.PortalRomHardwareManager;
+import portalrom.platform.R;
 
 
 /**
@@ -77,9 +77,9 @@ public class ConstraintsHelper {
         mPref = pref;
 
         TypedArray a = context.getResources().obtainAttributes(attrs,
-                R.styleable.lineage_SelfRemovingPreference);
-        mSummaryMinLines = a.getInteger(R.styleable.lineage_SelfRemovingPreference_minSummaryLines, -1);
-        String replacesKey = a.getString(R.styleable.lineage_SelfRemovingPreference_replacesKey);
+                R.styleable.portalrom_SelfRemovingPreference);
+        mSummaryMinLines = a.getInteger(R.styleable.portalrom_SelfRemovingPreference_minSummaryLines, -1);
+        String replacesKey = a.getString(R.styleable.portalrom_SelfRemovingPreference_replacesKey);
         if (replacesKey != null) {
             mReplacesKey = replacesKey.split("\\|");
         }
@@ -141,18 +141,18 @@ public class ConstraintsHelper {
         }
 
         TypedArray a = mContext.getResources().obtainAttributes(mAttrs,
-                R.styleable.lineage_SelfRemovingPreference);
+                R.styleable.portalrom_SelfRemovingPreference);
 
         try {
 
             // Check if the current user is an owner
-            boolean rOwner = a.getBoolean(R.styleable.lineage_SelfRemovingPreference_requiresOwner, false);
+            boolean rOwner = a.getBoolean(R.styleable.portalrom_SelfRemovingPreference_requiresOwner, false);
             if (rOwner && UserHandle.myUserId() != UserHandle.USER_SYSTEM) {
                 return false;
             }
 
             // Check if a specific package is installed
-            String rPackage = a.getString(R.styleable.lineage_SelfRemovingPreference_requiresPackage);
+            String rPackage = a.getString(R.styleable.portalrom_SelfRemovingPreference_requiresPackage);
             if (rPackage != null) {
                 boolean negated = isNegated(rPackage);
                 if (negated) {
@@ -165,7 +165,7 @@ public class ConstraintsHelper {
             }
 
             // Check if an intent can be resolved to handle the given action
-            String rAction = a.getString(R.styleable.lineage_SelfRemovingPreference_requiresAction);
+            String rAction = a.getString(R.styleable.portalrom_SelfRemovingPreference_requiresAction);
             if (rAction != null) {
                 boolean negated = isNegated(rAction);
                 if (negated) {
@@ -178,15 +178,15 @@ public class ConstraintsHelper {
             }
 
             // Check if a system feature is available
-            String rFeature = a.getString(R.styleable.lineage_SelfRemovingPreference_requiresFeature);
+            String rFeature = a.getString(R.styleable.portalrom_SelfRemovingPreference_requiresFeature);
             if (rFeature != null) {
                 boolean negated = isNegated(rFeature);
                 if (negated) {
                     rFeature = rFeature.substring(1);
                 }
-                boolean available = rFeature.startsWith("lineagehardware:") ?
-                        LineageHardwareManager.getInstance(mContext).isSupported(
-                                rFeature.substring("lineagehardware:".length())) :
+                boolean available = rFeature.startsWith("portalromhardware:") ?
+                        PortalRomHardwareManager.getInstance(mContext).isSupported(
+                                rFeature.substring("portalromhardware:".length())) :
                         hasSystemFeature(mContext, rFeature);
                 if (available == negated) {
                     return false;
@@ -194,7 +194,7 @@ public class ConstraintsHelper {
             }
 
             // Check a boolean system property
-            String rProperty = a.getString(R.styleable.lineage_SelfRemovingPreference_requiresProperty);
+            String rProperty = a.getString(R.styleable.portalrom_SelfRemovingPreference_requiresProperty);
             if (rProperty != null) {
                 boolean negated = isNegated(rProperty);
                 if (negated) {
@@ -214,7 +214,7 @@ public class ConstraintsHelper {
             // * An integer resource is zero.
             // * An integer is non-zero and when bitwise logically ANDed with
             //   attribute requiresConfigMask, the result is zero.
-            TypedValue tv = a.peekValue(R.styleable.lineage_SelfRemovingPreference_requiresConfig);
+            TypedValue tv = a.peekValue(R.styleable.portalrom_SelfRemovingPreference_requiresConfig);
             if (tv != null && tv.resourceId != 0) {
                 if (tv.type == TypedValue.TYPE_STRING &&
                         mContext.getResources().getString(tv.resourceId) == null) {
@@ -223,7 +223,7 @@ public class ConstraintsHelper {
                     return false;
                 } else if (tv.type == TypedValue.TYPE_INT_DEC) {
                     int mask = a.getInt(
-                            R.styleable.lineage_SelfRemovingPreference_requiresConfigMask, -1);
+                            R.styleable.portalrom_SelfRemovingPreference_requiresConfigMask, -1);
                     if (tv.data == 0 || (mask >= 0 && (tv.data & mask) == 0)) {
                         return false;
                     }

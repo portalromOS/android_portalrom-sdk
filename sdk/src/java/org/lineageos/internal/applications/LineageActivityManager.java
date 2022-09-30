@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2018 The LineageOS project
+ * Copyright (C) 2018 The PortalRomOS project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.applications;
+package org.portalrom.internal.applications;
 
 import android.content.Context;
 
-public class LineageActivityManager {
+public class PortalRomActivityManager {
     private Context mContext;
 
     // Long screen related activity settings
     private LongScreen mLongScreen;
 
-    public LineageActivityManager(Context context) {
+    public PortalRomActivityManager(Context context) {
         mContext = context;
 
         mLongScreen = new LongScreen(context);

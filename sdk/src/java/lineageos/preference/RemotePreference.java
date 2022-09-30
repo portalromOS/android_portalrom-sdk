@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -65,20 +65,20 @@ public class RemotePreference extends SelfRemovingPreference
     private static final boolean DEBUG = Log.isLoggable(TAG, Log.VERBOSE);
 
     public static final String ACTION_REFRESH_PREFERENCE =
-            "lineageos.intent.action.REFRESH_PREFERENCE";
+            "portalrom.intent.action.REFRESH_PREFERENCE";
 
     public static final String ACTION_UPDATE_PREFERENCE =
-            "lineageos.intent.action.UPDATE_PREFERENCE";
+            "portalrom.intent.action.UPDATE_PREFERENCE";
 
     public static final String META_REMOTE_RECEIVER =
-            "org.lineageos.settings.summary.receiver";
+            "org.portalrom.settings.summary.receiver";
 
     public static final String META_REMOTE_KEY =
-            "org.lineageos.settings.summary.key";
+            "org.portalrom.settings.summary.key";
 
-    public static final String EXTRA_ENABLED = ":lineage:pref_enabled";
-    public static final String EXTRA_KEY = ":lineage:pref_key";
-    public static final String EXTRA_SUMMARY = ":lineage:pref_summary";
+    public static final String EXTRA_ENABLED = ":portalrom:pref_enabled";
+    public static final String EXTRA_KEY = ":portalrom:pref_key";
+    public static final String EXTRA_SUMMARY = ":portalrom:pref_summary";
 
     protected final Context mContext;
 

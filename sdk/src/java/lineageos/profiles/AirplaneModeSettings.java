@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2015 The CyanogenMod Project
- *               2020 The LineageOS Project
+ *               2020 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package lineageos.profiles;
+package portalrom.profiles;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,9 +23,9 @@ import android.provider.Settings;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import lineageos.os.Build;
-import lineageos.os.Concierge;
-import lineageos.os.Concierge.ParcelInfo;
+import portalrom.os.Build;
+import portalrom.os.Concierge;
+import portalrom.os.Concierge.ParcelInfo;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -213,7 +213,7 @@ public final class AirplaneModeSettings implements Parcelable {
         // Pattern here is that all new members should be added to the end of
         // the writeToParcel method. Then we step through each version, until the latest
         // API release to help unravel this parcel
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
             mOverride = in.readInt() != 0;
             mValue = in.readInt();
             mDirty = in.readInt() != 0;

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017-2019,2021 The LineageOS Project
+ * Copyright (C) 2017-2019,2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.notification;
+package org.portalrom.internal.notification;
 
 import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
@@ -30,10 +30,10 @@ import android.os.UserHandle;
 import android.provider.Settings.Global;
 import android.util.Slog;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
-public final class LineageBatteryLights {
-    private final String TAG = "LineageBatteryLights";
+public final class PortalRomBatteryLights {
+    private final String TAG = "PortalRomBatteryLights";
     private final boolean DEBUG = false;
 
     // Battery light capabilities.
@@ -66,7 +66,7 @@ public final class LineageBatteryLights {
     }
     private final LedUpdater mLedUpdater;
 
-    public LineageBatteryLights(Context context, LedUpdater ledUpdater) {
+    public PortalRomBatteryLights(Context context, LedUpdater ledUpdater) {
         mContext = context;
         mLedUpdater = ledUpdater;
 
@@ -216,41 +216,41 @@ public final class LineageBatteryLights {
             ContentResolver resolver = mContext.getContentResolver();
 
             // Battery light enabled
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.BATTERY_LIGHT_ENABLED), false, this,
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.BATTERY_LIGHT_ENABLED), false, this,
                     UserHandle.USER_ALL);
 
             // Battery light disabled if fully charged
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.BATTERY_LIGHT_FULL_CHARGE_DISABLED), false, this,
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.BATTERY_LIGHT_FULL_CHARGE_DISABLED), false, this,
                     UserHandle.USER_ALL);
 
             // Low battery pulse
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.BATTERY_LIGHT_PULSE), false, this,
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.BATTERY_LIGHT_PULSE), false, this,
                     UserHandle.USER_ALL);
 
             if (mMultiColorBatteryLed) {
                 // Light colors
-                resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                        LineageSettings.System.BATTERY_LIGHT_LOW_COLOR), false, this,
+                resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                        PortalRomSettings.System.BATTERY_LIGHT_LOW_COLOR), false, this,
                         UserHandle.USER_ALL);
-                resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                        LineageSettings.System.BATTERY_LIGHT_MEDIUM_COLOR), false, this,
+                resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                        PortalRomSettings.System.BATTERY_LIGHT_MEDIUM_COLOR), false, this,
                         UserHandle.USER_ALL);
-                resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                        LineageSettings.System.BATTERY_LIGHT_FULL_COLOR), false, this,
+                resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                        PortalRomSettings.System.BATTERY_LIGHT_FULL_COLOR), false, this,
                         UserHandle.USER_ALL);
             }
 
             if (mCanAdjustBrightness) {
                 // Battery brightness level
-                resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                        LineageSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL), false, this,
+                resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                        PortalRomSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL), false, this,
                         UserHandle.USER_ALL);
                 // Battery brightness level in Do Not Disturb mode
-                resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                        LineageSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL_ZEN), false, this,
+                resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                        PortalRomSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL_ZEN), false, this,
                         UserHandle.USER_ALL);
             }
 
@@ -267,43 +267,43 @@ public final class LineageBatteryLights {
             Resources res = mContext.getResources();
 
             // Battery light enabled
-            mLightEnabled = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.BATTERY_LIGHT_ENABLED,
+            mLightEnabled = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.BATTERY_LIGHT_ENABLED,
                     1, UserHandle.USER_CURRENT) != 0;
 
             // Battery light disabled if fully charged
-            mLightFullChargeDisabled = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.BATTERY_LIGHT_FULL_CHARGE_DISABLED,
+            mLightFullChargeDisabled = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.BATTERY_LIGHT_FULL_CHARGE_DISABLED,
                     1, UserHandle.USER_CURRENT) != 0;
 
             // Low battery pulse
-            mLedPulseEnabled = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.BATTERY_LIGHT_PULSE,
+            mLedPulseEnabled = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.BATTERY_LIGHT_PULSE,
                     1, UserHandle.USER_CURRENT) != 0;
 
             // Light colors
-            mBatteryLowARGB = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.BATTERY_LIGHT_LOW_COLOR, res.getInteger(
+            mBatteryLowARGB = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.BATTERY_LIGHT_LOW_COLOR, res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryLowARGB),
                     UserHandle.USER_CURRENT);
-            mBatteryMediumARGB = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.BATTERY_LIGHT_MEDIUM_COLOR, res.getInteger(
+            mBatteryMediumARGB = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.BATTERY_LIGHT_MEDIUM_COLOR, res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryMediumARGB),
                     UserHandle.USER_CURRENT);
-            mBatteryFullARGB = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.BATTERY_LIGHT_FULL_COLOR, res.getInteger(
+            mBatteryFullARGB = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.BATTERY_LIGHT_FULL_COLOR, res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryFullARGB),
                     UserHandle.USER_CURRENT);
 
             // Adustable battery LED brightness.
             if (mCanAdjustBrightness) {
                 // Battery brightness level
-                mBatteryBrightnessLevel = LineageSettings.System.getIntForUser(resolver,
-                        LineageSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL,
+                mBatteryBrightnessLevel = PortalRomSettings.System.getIntForUser(resolver,
+                        PortalRomSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL,
                         LedValues.LIGHT_BRIGHTNESS_MAXIMUM, UserHandle.USER_CURRENT);
                 // Battery brightness level in Do Not Disturb mode
-                mBatteryBrightnessZenLevel = LineageSettings.System.getIntForUser(resolver,
-                        LineageSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL_ZEN,
+                mBatteryBrightnessZenLevel = PortalRomSettings.System.getIntForUser(resolver,
+                        PortalRomSettings.System.BATTERY_LIGHT_BRIGHTNESS_LEVEL_ZEN,
                         LedValues.LIGHT_BRIGHTNESS_MAXIMUM, UserHandle.USER_CURRENT);
             }
 

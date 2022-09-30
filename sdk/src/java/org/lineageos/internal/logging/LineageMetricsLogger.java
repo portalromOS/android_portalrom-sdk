@@ -1,6 +1,6 @@
 /**
  * Copyright (c) 2016 The CyanogenMod Project
- *               2018-2021 The LineageOS Project
+ *               2018-2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,14 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.logging;
+package org.portalrom.internal.logging;
 
 import com.android.internal.logging.MetricsLogger;
 
 /**
  * Serves as a central location for logging constants that is android release agnostic.
  */
-public class LineageMetricsLogger extends MetricsLogger {
+public class PortalRomMetricsLogger extends MetricsLogger {
     private static final int BASE = -Integer.MAX_VALUE;
     //Since we never want to collide, lets start at the back and move inward
     public static final int DONT_LOG = BASE + 1;

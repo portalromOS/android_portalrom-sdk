@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package lineageos.os;
+package portalrom.os;
 
 import android.os.Parcel;
 
-import lineageos.os.Build.LINEAGE_VERSION_CODES;
+import portalrom.os.Build.PORTALROM_VERSION_CODES;
 
 /**
  * Simply, Concierge handles your parcels and makes sure they get marshalled and unmarshalled
@@ -56,15 +56,15 @@ public final class Concierge {
     }
 
     /**
-     * Since there might be a case where new versions of the lineage framework use applications running
+     * Since there might be a case where new versions of the portalrom framework use applications running
      * old versions of the protocol (and thus old versions of this class), we need a versioning
      * system for the parcels sent between the core framework and its sdk users.
      *
      * This parcelable version should be the latest version API version listed in
-     * {@link LINEAGE_VERSION_CODES}
+     * {@link PORTALROM_VERSION_CODES}
      * @hide
      */
-    public static final int PARCELABLE_VERSION = LINEAGE_VERSION_CODES.ILAMA;
+    public static final int PARCELABLE_VERSION = PORTALROM_VERSION_CODES.ILAMA;
 
     /**
      * Tell the concierge to receive our parcel, so we can get information from it.

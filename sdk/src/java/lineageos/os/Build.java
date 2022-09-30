@@ -14,55 +14,55 @@
  * limitations under the License.
  */
 
-package lineageos.os;
+package portalrom.os;
 
 import android.os.SystemProperties;
 import android.text.TextUtils;
 import android.util.SparseArray;
 
 /**
- * Information about the current LineageOS build, extracted from system properties.
+ * Information about the current PortalRomOS build, extracted from system properties.
  */
 public class Build {
     /** Value used for when a build property is unknown. */
     public static final String UNKNOWN = "unknown";
 
-    /** A build ID utilized to distinguish lineageos versions */
-    public static final String LINEAGEOS_VERSION = getString("ro.lineage.version");
+    /** A build ID utilized to distinguish portalrom versions */
+    public static final String PORTALROMOS_VERSION = getString("ro.portalrom.version");
 
     /** A build ID string meant for displaying to the user */
-    public static final String LINEAGEOS_DISPLAY_VERSION = getString("ro.lineage.display.version");
+    public static final String PORTALROMOS_DISPLAY_VERSION = getString("ro.portalrom.display.version");
 
     private static final SparseArray<String> sdkMap;
     static
     {
         sdkMap = new SparseArray<String>();
-        sdkMap.put(LINEAGE_VERSION_CODES.APRICOT, "Apricot");
-        sdkMap.put(LINEAGE_VERSION_CODES.BOYSENBERRY, "Boysenberry");
-        sdkMap.put(LINEAGE_VERSION_CODES.CANTALOUPE, "Cantaloupe");
-        sdkMap.put(LINEAGE_VERSION_CODES.DRAGON_FRUIT, "Dragon Fruit");
-        sdkMap.put(LINEAGE_VERSION_CODES.ELDERBERRY, "Elderberry");
-        sdkMap.put(LINEAGE_VERSION_CODES.FIG, "Fig");
-        sdkMap.put(LINEAGE_VERSION_CODES.GUAVA, "Guava");
-        sdkMap.put(LINEAGE_VERSION_CODES.HACKBERRY, "Hackberry");
-        sdkMap.put(LINEAGE_VERSION_CODES.ILAMA, "Ilama");
+        sdkMap.put(PORTALROM_VERSION_CODES.APRICOT, "Apricot");
+        sdkMap.put(PORTALROM_VERSION_CODES.BOYSENBERRY, "Boysenberry");
+        sdkMap.put(PORTALROM_VERSION_CODES.CANTALOUPE, "Cantaloupe");
+        sdkMap.put(PORTALROM_VERSION_CODES.DRAGON_FRUIT, "Dragon Fruit");
+        sdkMap.put(PORTALROM_VERSION_CODES.ELDERBERRY, "Elderberry");
+        sdkMap.put(PORTALROM_VERSION_CODES.FIG, "Fig");
+        sdkMap.put(PORTALROM_VERSION_CODES.GUAVA, "Guava");
+        sdkMap.put(PORTALROM_VERSION_CODES.HACKBERRY, "Hackberry");
+        sdkMap.put(PORTALROM_VERSION_CODES.ILAMA, "Ilama");
     }
 
     /** Various version strings. */
-    public static class LINEAGE_VERSION {
+    public static class PORTALROM_VERSION {
         /**
          * The user-visible SDK version of the framework; its possible
-         * values are defined in {@link Build.LINEAGE_VERSION_CODES}.
+         * values are defined in {@link Build.PORTALROM_VERSION_CODES}.
          *
-         * Will return 0 if the device does not support the Lineage SDK.
+         * Will return 0 if the device does not support the PortalRom SDK.
          */
         public static final int SDK_INT = SystemProperties.getInt(
-                "ro.lineage.build.version.plat.sdk", 0);
+                "ro.portalrom.build.version.plat.sdk", 0);
     }
 
     /**
      * Enumeration of the currently known SDK version codes.  These are the
-     * values that can be found in {@link LINEAGE_VERSION#SDK_INT}.  Version numbers
+     * values that can be found in {@link PORTALROM_VERSION#SDK_INT}.  Version numbers
      * increment monotonically with each official platform release.
      *
      * To programmatically validate that a given API is available for use on the device,
@@ -73,7 +73,7 @@ public class Build {
      * <pre class="prettyprint">
      * private void removeActiveProfile() {
      *     Make sure we're running on BoysenBerry or higher to use Profiles API
-     *     if (Build.LINEAGE_VERSION.SDK_INT >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+     *     if (Build.PORTALROM_VERSION.SDK_INT >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
      *         ProfileManager profileManager = ProfileManager.getInstance(this);
      *         Profile activeProfile = profileManager.getActiveProfile();
      *         if (activeProfile != null) {
@@ -83,7 +83,7 @@ public class Build {
      * }
      * </pre>
      */
-    public static class LINEAGE_VERSION_CODES {
+    public static class PORTALROM_VERSION_CODES {
         /**
          * June 2015: The first version of the platform sdk for CyanogenMod
          */
@@ -95,10 +95,10 @@ public class Build {
          * <p>Applications targeting this or a later release will get these
          * new features:</p>
          * <ul>
-         * <li>Profiles API via {@link lineageos.app.ProfileManager}
+         * <li>Profiles API via {@link portalrom.app.ProfileManager}
          * <li>Hardware Abstraction Framework Access via
-         * {@link lineageos.hardware.LineageHardwareManager} (Not for use by 3rd parties)
-         * <li>Introductory Settings Provider {@link lineageos.providers.LineageSettings}
+         * {@link portalrom.hardware.PortalRomHardwareManager} (Not for use by 3rd parties)
+         * <li>Introductory Settings Provider {@link portalrom.providers.PortalRomSettings}
          * </ul>
          */
         public static final int BOYSENBERRY = 2;
@@ -117,9 +117,9 @@ public class Build {
          * <ul>
          * <li>Inclusion of the PerformanceManager interfaces, allowing an application to specify
          * the type of mode to have the device be placed in via
-         * {@link lineageos.power.PerformanceManager}</li>
+         * {@link portalrom.power.PerformanceManager}</li>
          * <li>Numerous new "System" settings exposed via the
-         * {@link lineageos.providers.LineageSettings.System} interface</li>
+         * {@link portalrom.providers.PortalRomSettings.System} interface</li>
          * </ul>
          */
         public static final int DRAGON_FRUIT = 4;
@@ -131,10 +131,10 @@ public class Build {
          * new features!</p>
          * <ul>
          * <li>Weather request api to fetch weather data from providers on the device
-         * {@link lineageos.weather.LineageWeatherManager}</li>
+         * {@link portalrom.weather.PortalRomWeatherManager}</li>
          * <li>Weather provider api to provide weather data to any listener on the device
-         * {@link lineageos.weatherservice.WeatherProviderService}</li>
-         * <li>Parceling helper class {@link lineageos.os.Concierge} to help with parcel
+         * {@link portalrom.weatherservice.WeatherProviderService}</li>
+         * <li>Parceling helper class {@link portalrom.os.Concierge} to help with parcel
          * headers and protocol revisions</li>
          * </ul>
          */
@@ -147,12 +147,12 @@ public class Build {
          * new features!</p>
          * <ul>
          * <li>Ability to query and color balance ranges from the
-         * {@link lineageos.hardware.LineageHardwareManager}, as well as do picture adjustment</li>
+         * {@link portalrom.hardware.PortalRomHardwareManager}, as well as do picture adjustment</li>
          * <li>Extended capabilities of the LiveDisplay interfaces, now providing
-         * {@link lineageos.hardware.LiveDisplayConfig} and a dedicated
-         * {@link lineageos.hardware.LiveDisplayManager}</li>
+         * {@link portalrom.hardware.LiveDisplayConfig} and a dedicated
+         * {@link portalrom.hardware.LiveDisplayManager}</li>
          * <li>Added new settings, such as LOCKSCREEN_ROTATION and DISPLAY_LOW_POWER
-         * to {@link lineageos.providers.LineageSettings}</li>
+         * to {@link portalrom.providers.PortalRomSettings}</li>
          * </ul>
          *
          * Signing out, Adnan \u270C
@@ -165,13 +165,13 @@ public class Build {
         public static final int GUAVA = 7;
 
         /**
-         * February 2018: Unreleased preliminary version starting from LineageOS 15.1
+         * February 2018: Unreleased preliminary version starting from PortalRomOS 15.1
          * <p>Unused APIs have been removed.</p>
          */
         public static final int HACKBERRY = 8;
 
         /**
-         * March 2018: The 1st iteration of the platform sdk for LineageOS
+         * March 2018: The 1st iteration of the platform sdk for PortalRomOS
          * <p>Applications targeting this or a later version will get access to these
          * new features!</p>
          * <ul>

@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,31 +14,31 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.notification;
+package org.portalrom.internal.notification;
 
-public class LineageNotification {
+public class PortalRomNotification {
 
     ///////////////////////////////////////////////////
-    // Lineage-specific Notification bundle extras
+    // PortalRom-specific Notification bundle extras
     ///////////////////////////////////////////////////
 
     /**
      * Used by light picker in Settings to force
      * notification lights on when screen is on.
      */
-    public static final String EXTRA_FORCE_SHOW_LIGHTS = "lineage.forceShowLights";
+    public static final String EXTRA_FORCE_SHOW_LIGHTS = "portalrom.forceShowLights";
 
     /**
      * Used by light picker in Settings to force
      * a specific light brightness.
      */
-    public static final String EXTRA_FORCE_LIGHT_BRIGHTNESS = "lineage.forceLightBrightness";
+    public static final String EXTRA_FORCE_LIGHT_BRIGHTNESS = "portalrom.forceLightBrightness";
 
     /**
      * Used by light picker in Settings to force
      * a specific light color.
      */
-    public static final String EXTRA_FORCE_COLOR = "lineage.forceColor";
+    public static final String EXTRA_FORCE_COLOR = "portalrom.forceColor";
 
     /**
      * Used by light picker in Settings to force
@@ -46,7 +46,7 @@ public class LineageNotification {
      *
      * Value must be greater than or equal to 0.
      */
-    public static final String EXTRA_FORCE_LIGHT_ON_MS = "lineage.forceLightOnMs";
+    public static final String EXTRA_FORCE_LIGHT_ON_MS = "portalrom.forceLightOnMs";
 
     /**
      * Used by light picker in Settings to force
@@ -54,5 +54,5 @@ public class LineageNotification {
      *
      * Value must be greater than or equal to 0.
      */
-    public static final String EXTRA_FORCE_LIGHT_OFF_MS = "lineage.forceLightOffMs";
+    public static final String EXTRA_FORCE_LIGHT_OFF_MS = "portalrom.forceLightOffMs";
 }

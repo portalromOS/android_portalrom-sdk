@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package lineageos.util.palette;
+package portalrom.util.palette;
 
-import lineageos.util.palette.Palette.Swatch;
+import portalrom.util.palette.Palette.Swatch;
 
 import java.util.List;
 

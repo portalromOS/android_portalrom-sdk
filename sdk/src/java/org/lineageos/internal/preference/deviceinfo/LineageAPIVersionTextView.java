@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,21 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.preference.deviceinfo;
+package org.portalrom.internal.preference.deviceinfo;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-public class LineageAPIVersionTextView extends TextView {
-    private static final String TAG = "LineageAPIVersionTextView";
+public class PortalRomAPIVersionTextView extends TextView {
+    private static final String TAG = "PortalRomAPIVersionTextView";
 
-    public LineageAPIVersionTextView(Context context, AttributeSet attrs) {
+    public PortalRomAPIVersionTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        final int sdk = lineageos.os.Build.LINEAGE_VERSION.SDK_INT;
+        final int sdk = portalrom.os.Build.PORTALROM_VERSION.SDK_INT;
         StringBuilder builder = new StringBuilder();
-        builder.append(lineageos.os.Build.getNameForSDKInt(sdk))
+        builder.append(portalrom.os.Build.getNameForSDKInt(sdk))
                 .append(" (" + sdk + ")");
         setText(builder.toString());
     }

@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2015-2016 The CyanogenMod Project
- *               2017-2022 The LineageOS Project
+ *               2017-2022 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package lineageos.providers;
+package portalrom.providers;
 
 import com.android.internal.util.ArrayUtils;
 
@@ -45,19 +45,19 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import lineageos.trust.TrustInterface;
+import portalrom.trust.TrustInterface;
 
 /**
- * LineageSettings contains Lineage specific preferences in System, Secure, and Global.
+ * PortalRomSettings contains PortalRom specific preferences in System, Secure, and Global.
  */
-public final class LineageSettings {
-    private static final String TAG = "LineageSettings";
+public final class PortalRomSettings {
+    private static final String TAG = "PortalRomSettings";
     private static final boolean LOCAL_LOGV = false;
 
-    public static final String AUTHORITY = "lineagesettings";
+    public static final String AUTHORITY = "portalromsettings";
 
-    public static class LineageSettingNotFoundException extends AndroidException {
-        public LineageSettingNotFoundException(String msg) {
+    public static class PortalRomSettingNotFoundException extends AndroidException {
+        public PortalRomSettingNotFoundException(String msg) {
             super(msg);
         }
     }
@@ -70,7 +70,7 @@ public final class LineageSettings {
      * <p>
      * Output: Nothing.
      */
-    public static final String ACTION_DATA_USAGE = "lineageos.settings.ACTION_DATA_USAGE";
+    public static final String ACTION_DATA_USAGE = "portalrom.settings.ACTION_DATA_USAGE";
 
     /**
      * Activity Action: Show LiveDisplay settings
@@ -80,7 +80,7 @@ public final class LineageSettings {
      * Output: Nothing.
      */
     public static final String ACTION_LIVEDISPLAY_SETTINGS =
-            "lineageos.settings.LIVEDISPLAY_SETTINGS";
+            "portalrom.settings.LIVEDISPLAY_SETTINGS";
 
     /**
      * Activity Action: Show Trust interface settings
@@ -90,7 +90,7 @@ public final class LineageSettings {
      * Output: Nothing.
      */
     public static final String ACTION_TRUST_INTERFACE =
-            "lineageos.settings.TRUST_INTERFACE";
+            "portalrom.settings.TRUST_INTERFACE";
 
     // region Call Methods
 
@@ -130,12 +130,12 @@ public final class LineageSettings {
     public static final String CALL_METHOD_PUT_GLOBAL= "PUT_global";
 
     /**
-     * @hide - Private call() method on LineageSettingsProvider to migrate Lineage settings
+     * @hide - Private call() method on PortalRomSettingsProvider to migrate PortalRom settings
      */
     public static final String CALL_METHOD_MIGRATE_SETTINGS = "migrate_settings";
 
     /**
-     * @hide - Private call() method on LineageSettingsProvider to migrate Lineage settings for a user
+     * @hide - Private call() method on PortalRomSettingsProvider to migrate PortalRom settings for a user
      */
     public static final String CALL_METHOD_MIGRATE_SETTINGS_FOR_USER = "migrate_settings_for_user";
 
@@ -487,18 +487,18 @@ public final class LineageSettings {
     // endregion Validators
 
     /**
-     * System settings, containing miscellaneous Lineage system preferences. This table holds simple
+     * System settings, containing miscellaneous PortalRom system preferences. This table holds simple
      * name/value pairs. There are convenience functions for accessing individual settings entries.
      */
     public static final class System extends Settings.NameValueTable {
         public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/system");
 
-        public static final String SYS_PROP_LINEAGE_SETTING_VERSION = "sys.lineage_settings_system_version";
+        public static final String SYS_PROP_PORTALROM_SETTING_VERSION = "sys.portalrom_settings_system_version";
         private static final ContentProviderHolder sProviderHolder =
                 new ContentProviderHolder(CONTENT_URI);
 
         private static final NameValueCache sNameValueCache = new NameValueCache(
-                SYS_PROP_LINEAGE_SETTING_VERSION,
+                SYS_PROP_PORTALROM_SETTING_VERSION,
                 CONTENT_URI,
                 CALL_METHOD_GET_SYSTEM,
                 CALL_METHOD_PUT_SYSTEM,
@@ -586,9 +586,9 @@ public final class LineageSettings {
         public static String getStringForUser(ContentResolver resolver, String name,
                 int userId) {
             if (MOVED_TO_SECURE.contains(name)) {
-                Log.w(TAG, "Setting " + name + " has moved from LineageSettings.System"
-                        + " to LineageSettings.Secure, value is unchanged.");
-                return LineageSettings.Secure.getStringForUser(resolver, name, userId);
+                Log.w(TAG, "Setting " + name + " has moved from PortalRomSettings.System"
+                        + " to PortalRomSettings.Secure, value is unchanged.");
+                return PortalRomSettings.Secure.getStringForUser(resolver, name, userId);
             }
             return sNameValueCache.getStringForUser(resolver, name, userId);
         }
@@ -608,8 +608,8 @@ public final class LineageSettings {
         public static boolean putStringForUser(ContentResolver resolver, String name, String value,
                int userId) {
             if (MOVED_TO_SECURE.contains(name)) {
-                Log.w(TAG, "Setting " + name + " has moved from LineageSettings.System"
-                        + " to LineageSettings.Secure, value is unchanged.");
+                Log.w(TAG, "Setting " + name + " has moved from PortalRomSettings.System"
+                        + " to PortalRomSettings.Secure, value is unchanged.");
                 return false;
             }
             return sNameValueCache.putStringForUser(resolver, name, value, userId);
@@ -651,29 +651,29 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not an integer.
          *
          * @return The setting's current value.
          */
         public static int getInt(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getIntForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static int getIntForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String v = getStringForUser(cr, name, userId);
             try {
                 return Integer.parseInt(v);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -739,28 +739,28 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
          * @return The setting's current value.
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not an integer.
          */
         public static long getLong(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getLongForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static long getLongForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String valString = getStringForUser(cr, name, userId);
             try {
                 return Long.parseLong(valString);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -824,32 +824,32 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not a float.
          *
          * @return The setting's current value.
          */
         public static float getFloat(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getFloatForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static float getFloatForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String v = getStringForUser(cr, name, userId);
             if (v == null) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
             try {
                 return Float.parseFloat(v);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -2073,85 +2073,85 @@ public final class LineageSettings {
          * @hide
          */
         public static final String[] LEGACY_SYSTEM_SETTINGS = new String[]{
-                LineageSettings.System.NAV_BUTTONS,
-                LineageSettings.System.KEY_BACK_LONG_PRESS_ACTION,
-                LineageSettings.System.KEY_HOME_LONG_PRESS_ACTION,
-                LineageSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
-                LineageSettings.System.BACK_WAKE_SCREEN,
-                LineageSettings.System.MENU_WAKE_SCREEN,
-                LineageSettings.System.VOLUME_WAKE_SCREEN,
-                LineageSettings.System.KEY_MENU_ACTION,
-                LineageSettings.System.KEY_MENU_LONG_PRESS_ACTION,
-                LineageSettings.System.KEY_ASSIST_ACTION,
-                LineageSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
-                LineageSettings.System.KEY_APP_SWITCH_ACTION,
-                LineageSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
-                LineageSettings.System.HOME_WAKE_SCREEN,
-                LineageSettings.System.ASSIST_WAKE_SCREEN,
-                LineageSettings.System.APP_SWITCH_WAKE_SCREEN,
-                LineageSettings.System.CAMERA_WAKE_SCREEN,
-                LineageSettings.System.CAMERA_SLEEP_ON_RELEASE,
-                LineageSettings.System.CAMERA_LAUNCH,
-                LineageSettings.System.STYLUS_ICON_ENABLED,
-                LineageSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
-                LineageSettings.System.BATTERY_LIGHT_ENABLED,
-                LineageSettings.System.BATTERY_LIGHT_FULL_CHARGE_DISABLED,
-                LineageSettings.System.BATTERY_LIGHT_PULSE,
-                LineageSettings.System.BATTERY_LIGHT_LOW_COLOR,
-                LineageSettings.System.BATTERY_LIGHT_MEDIUM_COLOR,
-                LineageSettings.System.BATTERY_LIGHT_FULL_COLOR,
-                LineageSettings.System.ENABLE_MWI_NOTIFICATION,
-                LineageSettings.System.PROXIMITY_ON_WAKE,
-                LineageSettings.System.DISPLAY_TEMPERATURE_DAY,
-                LineageSettings.System.DISPLAY_TEMPERATURE_NIGHT,
-                LineageSettings.System.DISPLAY_TEMPERATURE_MODE,
-                LineageSettings.System.DISPLAY_AUTO_OUTDOOR_MODE,
-                LineageSettings.System.DISPLAY_ANTI_FLICKER,
-                LineageSettings.System.DISPLAY_READING_MODE,
-                LineageSettings.System.DISPLAY_CABC,
-                LineageSettings.System.DISPLAY_COLOR_ENHANCE,
-                LineageSettings.System.DISPLAY_COLOR_ADJUSTMENT,
-                LineageSettings.System.LIVE_DISPLAY_HINTED,
-                LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
-                LineageSettings.System.RECENTS_SHOW_SEARCH_BAR,
-                LineageSettings.System.NAVBAR_LEFT_IN_LANDSCAPE,
-                LineageSettings.System.T9_SEARCH_INPUT_LOCALE,
-                LineageSettings.System.BLUETOOTH_ACCEPT_ALL_FILES,
-                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
-                LineageSettings.System.SHOW_ALARM_ICON,
-                LineageSettings.System.STATUS_BAR_IME_SWITCHER,
-                LineageSettings.System.QS_SHOW_BRIGHTNESS_SLIDER,
-                LineageSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
-                LineageSettings.System.VOLBTN_MUSIC_CONTROLS,
-                LineageSettings.System.USE_EDGE_SERVICE_FOR_GESTURES,
-                LineageSettings.System.CALL_RECORDING_FORMAT,
-                LineageSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
-                LineageSettings.System.NOTIFICATION_LIGHT_SCREEN_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_COLOR,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES,
-                LineageSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
-                LineageSettings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED,
-                LineageSettings.System.INCREASING_RING,
-                LineageSettings.System.INCREASING_RING_START_VOLUME,
-                LineageSettings.System.INCREASING_RING_RAMP_UP_TIME,
-                LineageSettings.System.STATUS_BAR_CLOCK,
-                LineageSettings.System.STATUS_BAR_AM_PM,
-                LineageSettings.System.STATUS_BAR_BATTERY_STYLE,
-                LineageSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT,
-                LineageSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS,
-                LineageSettings.System.HEADSET_CONNECT_PLAYER,
-                LineageSettings.System.ZEN_ALLOW_LIGHTS,
-                LineageSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
+                PortalRomSettings.System.NAV_BUTTONS,
+                PortalRomSettings.System.KEY_BACK_LONG_PRESS_ACTION,
+                PortalRomSettings.System.KEY_HOME_LONG_PRESS_ACTION,
+                PortalRomSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
+                PortalRomSettings.System.BACK_WAKE_SCREEN,
+                PortalRomSettings.System.MENU_WAKE_SCREEN,
+                PortalRomSettings.System.VOLUME_WAKE_SCREEN,
+                PortalRomSettings.System.KEY_MENU_ACTION,
+                PortalRomSettings.System.KEY_MENU_LONG_PRESS_ACTION,
+                PortalRomSettings.System.KEY_ASSIST_ACTION,
+                PortalRomSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
+                PortalRomSettings.System.KEY_APP_SWITCH_ACTION,
+                PortalRomSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
+                PortalRomSettings.System.HOME_WAKE_SCREEN,
+                PortalRomSettings.System.ASSIST_WAKE_SCREEN,
+                PortalRomSettings.System.APP_SWITCH_WAKE_SCREEN,
+                PortalRomSettings.System.CAMERA_WAKE_SCREEN,
+                PortalRomSettings.System.CAMERA_SLEEP_ON_RELEASE,
+                PortalRomSettings.System.CAMERA_LAUNCH,
+                PortalRomSettings.System.STYLUS_ICON_ENABLED,
+                PortalRomSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
+                PortalRomSettings.System.BATTERY_LIGHT_ENABLED,
+                PortalRomSettings.System.BATTERY_LIGHT_FULL_CHARGE_DISABLED,
+                PortalRomSettings.System.BATTERY_LIGHT_PULSE,
+                PortalRomSettings.System.BATTERY_LIGHT_LOW_COLOR,
+                PortalRomSettings.System.BATTERY_LIGHT_MEDIUM_COLOR,
+                PortalRomSettings.System.BATTERY_LIGHT_FULL_COLOR,
+                PortalRomSettings.System.ENABLE_MWI_NOTIFICATION,
+                PortalRomSettings.System.PROXIMITY_ON_WAKE,
+                PortalRomSettings.System.DISPLAY_TEMPERATURE_DAY,
+                PortalRomSettings.System.DISPLAY_TEMPERATURE_NIGHT,
+                PortalRomSettings.System.DISPLAY_TEMPERATURE_MODE,
+                PortalRomSettings.System.DISPLAY_AUTO_OUTDOOR_MODE,
+                PortalRomSettings.System.DISPLAY_ANTI_FLICKER,
+                PortalRomSettings.System.DISPLAY_READING_MODE,
+                PortalRomSettings.System.DISPLAY_CABC,
+                PortalRomSettings.System.DISPLAY_COLOR_ENHANCE,
+                PortalRomSettings.System.DISPLAY_COLOR_ADJUSTMENT,
+                PortalRomSettings.System.LIVE_DISPLAY_HINTED,
+                PortalRomSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                PortalRomSettings.System.RECENTS_SHOW_SEARCH_BAR,
+                PortalRomSettings.System.NAVBAR_LEFT_IN_LANDSCAPE,
+                PortalRomSettings.System.T9_SEARCH_INPUT_LOCALE,
+                PortalRomSettings.System.BLUETOOTH_ACCEPT_ALL_FILES,
+                PortalRomSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
+                PortalRomSettings.System.SHOW_ALARM_ICON,
+                PortalRomSettings.System.STATUS_BAR_IME_SWITCHER,
+                PortalRomSettings.System.QS_SHOW_BRIGHTNESS_SLIDER,
+                PortalRomSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
+                PortalRomSettings.System.VOLBTN_MUSIC_CONTROLS,
+                PortalRomSettings.System.USE_EDGE_SERVICE_FOR_GESTURES,
+                PortalRomSettings.System.CALL_RECORDING_FORMAT,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_SCREEN_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_COLOR,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES,
+                PortalRomSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
+                PortalRomSettings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
+                PortalRomSettings.System.SYSTEM_PROFILES_ENABLED,
+                PortalRomSettings.System.INCREASING_RING,
+                PortalRomSettings.System.INCREASING_RING_START_VOLUME,
+                PortalRomSettings.System.INCREASING_RING_RAMP_UP_TIME,
+                PortalRomSettings.System.STATUS_BAR_CLOCK,
+                PortalRomSettings.System.STATUS_BAR_AM_PM,
+                PortalRomSettings.System.STATUS_BAR_BATTERY_STYLE,
+                PortalRomSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT,
+                PortalRomSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS,
+                PortalRomSettings.System.HEADSET_CONNECT_PLAYER,
+                PortalRomSettings.System.ZEN_ALLOW_LIGHTS,
+                PortalRomSettings.System.TOUCHSCREEN_GESTURE_HAPTIC_FEEDBACK,
         };
 
         /**
@@ -2328,20 +2328,20 @@ public final class LineageSettings {
     }
 
     /**
-     * Secure settings, containing miscellaneous Lineage secure preferences. This
+     * Secure settings, containing miscellaneous PortalRom secure preferences. This
      * table holds simple name/value pairs. There are convenience
      * functions for accessing individual settings entries.
      */
     public static final class Secure extends Settings.NameValueTable {
         public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/secure");
 
-        public static final String SYS_PROP_LINEAGE_SETTING_VERSION = "sys.lineage_settings_secure_version";
+        public static final String SYS_PROP_PORTALROM_SETTING_VERSION = "sys.portalrom_settings_secure_version";
 
         private static final ContentProviderHolder sProviderHolder =
                 new ContentProviderHolder(CONTENT_URI);
 
         private static final NameValueCache sNameValueCache = new NameValueCache(
-                SYS_PROP_LINEAGE_SETTING_VERSION,
+                SYS_PROP_PORTALROM_SETTING_VERSION,
                 CONTENT_URI,
                 CALL_METHOD_GET_SECURE,
                 CALL_METHOD_PUT_SECURE,
@@ -2429,9 +2429,9 @@ public final class LineageSettings {
         public static String getStringForUser(ContentResolver resolver, String name,
                 int userId) {
             if (MOVED_TO_GLOBAL.contains(name)) {
-                Log.w(TAG, "Setting " + name + " has moved from LineageSettings.Secure"
-                        + " to LineageSettings.Global, value is unchanged.");
-                return LineageSettings.Global.getStringForUser(resolver, name, userId);
+                Log.w(TAG, "Setting " + name + " has moved from PortalRomSettings.Secure"
+                        + " to PortalRomSettings.Global, value is unchanged.");
+                return PortalRomSettings.Global.getStringForUser(resolver, name, userId);
             }
             return sNameValueCache.getStringForUser(resolver, name, userId);
         }
@@ -2451,8 +2451,8 @@ public final class LineageSettings {
         public static boolean putStringForUser(ContentResolver resolver, String name, String value,
                int userId) {
             if (MOVED_TO_GLOBAL.contains(name)) {
-                Log.w(TAG, "Setting " + name + " has moved from LineageSettings.Secure"
-                        + " to LineageSettings.Global, value is unchanged.");
+                Log.w(TAG, "Setting " + name + " has moved from PortalRomSettings.Secure"
+                        + " to PortalRomSettings.Global, value is unchanged.");
                 return false;
             }
             return sNameValueCache.putStringForUser(resolver, name, value, userId);
@@ -2494,29 +2494,29 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not an integer.
          *
          * @return The setting's current value.
          */
         public static int getInt(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getIntForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static int getIntForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String v = getStringForUser(cr, name, userId);
             try {
                 return Integer.parseInt(v);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -2582,28 +2582,28 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
          * @return The setting's current value.
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not an integer.
          */
         public static long getLong(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getLongForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static long getLongForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String valString = getStringForUser(cr, name, userId);
             try {
                 return Long.parseLong(valString);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -2667,32 +2667,32 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not a float.
          *
          * @return The setting's current value.
          */
         public static float getFloat(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getFloatForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static float getFloatForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String v = getStringForUser(cr, name, userId);
             if (v == null) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
             try {
                 return Float.parseFloat(v);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -2970,7 +2970,7 @@ public final class LineageSettings {
          *
          * Stores flags for each feature
          *
-         * @see {@link lineageos.trust.TrustInterface.TRUST_WARN_MAX_VALUE}
+         * @see {@link portalrom.trust.TrustInterface.TRUST_WARN_MAX_VALUE}
          */
         public static final String TRUST_WARNINGS = "trust_warnings";
 
@@ -3009,24 +3009,24 @@ public final class LineageSettings {
          * @hide
          */
         public static final String[] LEGACY_SECURE_SETTINGS = new String[]{
-                LineageSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
-                LineageSettings.Secure.BUTTON_BRIGHTNESS,
-                LineageSettings.Secure.KEYBOARD_BRIGHTNESS,
-                LineageSettings.Secure.POWER_MENU_ACTIONS,
-                LineageSettings.Secure.STATS_COLLECTION,
-                LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
-                LineageSettings.Secure.NAVIGATION_RING_TARGETS[0],
-                LineageSettings.Secure.NAVIGATION_RING_TARGETS[1],
-                LineageSettings.Secure.NAVIGATION_RING_TARGETS[2],
-                LineageSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY,
-                LineageSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX,
-                LineageSettings.Secure.ADVANCED_REBOOT,
-                LineageSettings.Secure.LOCKSCREEN_TARGETS,
-                LineageSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
-                LineageSettings.Secure.DEVELOPMENT_SHORTCUT,
-                LineageSettings.Secure.QS_LOCATION_ADVANCED,
-                LineageSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED,
-                LineageSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW
+                PortalRomSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
+                PortalRomSettings.Secure.BUTTON_BRIGHTNESS,
+                PortalRomSettings.Secure.KEYBOARD_BRIGHTNESS,
+                PortalRomSettings.Secure.POWER_MENU_ACTIONS,
+                PortalRomSettings.Secure.STATS_COLLECTION,
+                PortalRomSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
+                PortalRomSettings.Secure.NAVIGATION_RING_TARGETS[0],
+                PortalRomSettings.Secure.NAVIGATION_RING_TARGETS[1],
+                PortalRomSettings.Secure.NAVIGATION_RING_TARGETS[2],
+                PortalRomSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY,
+                PortalRomSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX,
+                PortalRomSettings.Secure.ADVANCED_REBOOT,
+                PortalRomSettings.Secure.LOCKSCREEN_TARGETS,
+                PortalRomSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
+                PortalRomSettings.Secure.DEVELOPMENT_SHORTCUT,
+                PortalRomSettings.Secure.QS_LOCATION_ADVANCED,
+                PortalRomSettings.Secure.LOCKSCREEN_VISUALIZER_ENABLED,
+                PortalRomSettings.Secure.LOCK_PASS_TO_SECURITY_VIEW
         };
 
         /**
@@ -3060,20 +3060,20 @@ public final class LineageSettings {
     }
 
     /**
-     * Global settings, containing miscellaneous Lineage global preferences. This
+     * Global settings, containing miscellaneous PortalRom global preferences. This
      * table holds simple name/value pairs. There are convenience
      * functions for accessing individual settings entries.
      */
     public static final class Global extends Settings.NameValueTable {
         public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/global");
 
-        public static final String SYS_PROP_LINEAGE_SETTING_VERSION = "sys.lineage_settings_global_version";
+        public static final String SYS_PROP_PORTALROM_SETTING_VERSION = "sys.portalrom_settings_global_version";
 
         private static final ContentProviderHolder sProviderHolder =
                 new ContentProviderHolder(CONTENT_URI);
 
         private static final NameValueCache sNameValueCache = new NameValueCache(
-                SYS_PROP_LINEAGE_SETTING_VERSION,
+                SYS_PROP_PORTALROM_SETTING_VERSION,
                 CONTENT_URI,
                 CALL_METHOD_GET_GLOBAL,
                 CALL_METHOD_PUT_GLOBAL,
@@ -3211,29 +3211,29 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not an integer.
          *
          * @return The setting's current value.
          */
         public static int getInt(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getIntForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static int getIntForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String v = getStringForUser(cr, name, userId);
             try {
                 return Integer.parseInt(v);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -3299,28 +3299,28 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
          * @return The setting's current value.
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not an integer.
          */
         public static long getLong(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getLongForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static long getLongForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String valString = getStringForUser(cr, name, userId);
             try {
                 return Long.parseLong(valString);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -3384,32 +3384,32 @@ public final class LineageSettings {
          * <p>
          * This version does not take a default value.  If the setting has not
          * been set, or the string value is not a number,
-         * it throws {@link LineageSettingNotFoundException}.
+         * it throws {@link PortalRomSettingNotFoundException}.
          *
          * @param cr The ContentResolver to access.
          * @param name The name of the setting to retrieve.
          *
-         * @throws LineageSettingNotFoundException Thrown if a setting by the given
+         * @throws PortalRomSettingNotFoundException Thrown if a setting by the given
          * name can't be found or the setting value is not a float.
          *
          * @return The setting's current value.
          */
         public static float getFloat(ContentResolver cr, String name)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             return getFloatForUser(cr, name, cr.getUserId());
         }
 
         /** @hide */
         public static float getFloatForUser(ContentResolver cr, String name, int userId)
-                throws LineageSettingNotFoundException {
+                throws PortalRomSettingNotFoundException {
             String v = getStringForUser(cr, name, userId);
             if (v == null) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
             try {
                 return Float.parseFloat(v);
             } catch (NumberFormatException e) {
-                throw new LineageSettingNotFoundException(name);
+                throw new PortalRomSettingNotFoundException(name);
             }
         }
 
@@ -3495,9 +3495,9 @@ public final class LineageSettings {
          * @hide
          */
         public static final String[] LEGACY_GLOBAL_SETTINGS = new String[]{
-                LineageSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
-                LineageSettings.Global.ZEN_DISABLE_DUCKING_DURING_MEDIA_PLAYBACK,
-                LineageSettings.Global.WIFI_AUTO_PRIORITIES_CONFIGURATION
+                PortalRomSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+                PortalRomSettings.Global.ZEN_DISABLE_DUCKING_DURING_MEDIA_PLAYBACK,
+                PortalRomSettings.Global.WIFI_AUTO_PRIORITIES_CONFIGURATION
         };
 
         /**

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.util;
+package org.portalrom.internal.util;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

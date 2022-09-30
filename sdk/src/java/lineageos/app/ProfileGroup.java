@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package lineageos.app;
+package portalrom.app;
 
 import android.app.Notification;
 import android.app.NotificationGroup;
@@ -29,10 +29,10 @@ import android.os.ParcelUuid;
 import android.text.TextUtils;
 import android.util.Log;
 
-import lineageos.os.Build;
+import portalrom.os.Build;
 
-import lineageos.os.Concierge;
-import lineageos.os.Concierge.ParcelInfo;
+import portalrom.os.Concierge;
+import portalrom.os.Concierge.ParcelInfo;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -297,7 +297,7 @@ public final class ProfileGroup implements Parcelable {
         // Pattern here is that all new members should be added to the end of
         // the writeToParcel method. Then we step through each version, until the latest
         // API release to help unravel this parcel
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
             mName = in.readString();
             mUuid = ParcelUuid.CREATOR.createFromParcel(in).getUuid();
             mDefaultGroup = in.readInt() != 0;

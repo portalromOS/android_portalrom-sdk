@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.preference.deviceinfo;
+package org.portalrom.internal.preference.deviceinfo;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,28 +23,28 @@ import android.util.Log;
 
 import androidx.preference.Preference;
 
-import lineageos.preference.SelfRemovingPreference;
+import portalrom.preference.SelfRemovingPreference;
 
-import org.lineageos.platform.internal.R;
+import org.portalrom.platform.internal.R;
 
-public class LineageUpdatesPreference extends SelfRemovingPreference
+public class PortalRomUpdatesPreference extends SelfRemovingPreference
         implements Preference.OnPreferenceClickListener {
 
-    private static final String TAG = "LineageUpdatesPreference";
+    private static final String TAG = "PortalRomUpdatesPreference";
 
-    private static final String UPDATER_PACKAGE_NAME = "org.lineageos.updater";
+    private static final String UPDATER_PACKAGE_NAME = "org.portalrom.updater";
     private static final String UPDATER_ACTIVITY_CLASS =
             UPDATER_PACKAGE_NAME + ".UpdatesActivity";
 
-    public LineageUpdatesPreference(Context context, AttributeSet attrs, int defStyle) {
+    public PortalRomUpdatesPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public LineageUpdatesPreference(Context context, AttributeSet attrs) {
+    public PortalRomUpdatesPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public LineageUpdatesPreference(Context context) {
+    public PortalRomUpdatesPreference(Context context) {
         super(context);
     }
 
@@ -53,7 +53,7 @@ public class LineageUpdatesPreference extends SelfRemovingPreference
         super.onAttached();
 
         setOnPreferenceClickListener(this);
-        setTitle(R.string.lineage_updates);
+        setTitle(R.string.portalrom_updates);
     }
 
     @Override

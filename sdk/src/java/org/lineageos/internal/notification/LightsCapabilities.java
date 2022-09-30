@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017 The LineageOS Project
+ * Copyright (C) 2017 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.notification;
+package org.portalrom.internal.notification;
 
 import android.content.Context;
 
@@ -40,7 +40,7 @@ public final class LightsCapabilities {
     // via the alpha channel.
     // Note: if a device notification light supports LIGHTS_RGB_NOTIFICATION_LED
     // then HAL support is not necessary for brightness control.  In this case,
-    // brightness support will be provided by lineage-sdk through the scaling of
+    // brightness support will be provided by portalrom-sdk through the scaling of
     // RGB color values.
     public static final int LIGHTS_ADJUSTABLE_NOTIFICATION_LED_BRIGHTNESS = 32;
 
@@ -51,13 +51,13 @@ public final class LightsCapabilities {
     // the alpha channel.
     // Note: if a device battery light supports LIGHTS_RGB_BATTERY_LED then HAL
     // support is not necessary for brightness control.  In this case,
-    // brightness support will be provided by lineage-sdk through the scaling of
+    // brightness support will be provided by portalrom-sdk through the scaling of
     // RGB color values.
     public static final int LIGHTS_ADJUSTABLE_BATTERY_LED_BRIGHTNESS = 128;
 
     public static boolean supports(Context context, final int capability) {
         final int capabilities = context.getResources().getInteger(
-                org.lineageos.platform.internal.R.integer.config_deviceLightCapabilities);
+                org.portalrom.platform.internal.R.integer.config_deviceLightCapabilities);
         return (capabilities & capability) != 0;
     }
 }

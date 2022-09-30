@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2015 The CyanogenMod Project
- * Copyright (C) 2017-2018 The LineageOS Project
+ * Copyright (C) 2017-2018 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.notification;
+package org.portalrom.internal.notification;
 
 import static android.service.notification.NotificationListenerService.SUPPRESSED_EFFECT_SCREEN_OFF;
 import static android.service.notification.NotificationListenerService.SUPPRESSED_EFFECT_SCREEN_ON;
@@ -37,13 +37,13 @@ import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Slog;
 
-import lineageos.providers.LineageSettings;
-import lineageos.util.ColorUtils;
+import portalrom.providers.PortalRomSettings;
+import portalrom.util.ColorUtils;
 
 import java.util.Map;
 
-public final class LineageNotificationLights {
-    private static final String TAG = "LineageNotificationLights";
+public final class PortalRomNotificationLights {
+    private static final String TAG = "PortalRomNotificationLights";
     private static final boolean DEBUG = false;
 
     // Light capabilities
@@ -82,7 +82,7 @@ public final class LineageNotificationLights {
     }
     private final LedUpdater mLedUpdater;
 
-    public LineageNotificationLights(Context context, LedUpdater ledUpdater) {
+    public PortalRomNotificationLights(Context context, LedUpdater ledUpdater) {
         mContext = context;
         mLedUpdater = ledUpdater;
 
@@ -109,7 +109,7 @@ public final class LineageNotificationLights {
 
         mPackageNameMappings = new ArrayMap<String, String>();
         final String[] defaultMapping = res.getStringArray(
-                org.lineageos.platform.internal.R.array.notification_light_package_mapping);
+                org.portalrom.platform.internal.R.array.notification_light_package_mapping);
         for (String mapping : defaultMapping) {
             String[] map = mapping.split("\\|");
             mPackageNameMappings.put(map[0], map[1]);
@@ -206,35 +206,35 @@ public final class LineageNotificationLights {
 
     public boolean isForcedOn(Notification n) {
         if (n.extras != null) {
-            return n.extras.getBoolean(LineageNotification.EXTRA_FORCE_SHOW_LIGHTS, false);
+            return n.extras.getBoolean(PortalRomNotification.EXTRA_FORCE_SHOW_LIGHTS, false);
         }
         return false;
     }
 
     private int getForcedBrightness(Notification n) {
         if (n.extras != null) {
-            return n.extras.getInt(LineageNotification.EXTRA_FORCE_LIGHT_BRIGHTNESS, 0);
+            return n.extras.getInt(PortalRomNotification.EXTRA_FORCE_LIGHT_BRIGHTNESS, 0);
         }
         return 0;
     }
 
     public int getForcedColor(Notification n) {
         if (n.extras != null) {
-            return n.extras.getInt(LineageNotification.EXTRA_FORCE_COLOR, 0);
+            return n.extras.getInt(PortalRomNotification.EXTRA_FORCE_COLOR, 0);
         }
         return 0;
     }
 
     public int getForcedLightOnMs(Notification n) {
         if (n.extras != null) {
-            return n.extras.getInt(LineageNotification.EXTRA_FORCE_LIGHT_ON_MS, -1);
+            return n.extras.getInt(PortalRomNotification.EXTRA_FORCE_LIGHT_ON_MS, -1);
         }
         return -1;
     }
 
     public int getForcedLightOffMs(Notification n) {
         if (n.extras != null) {
-            return n.extras.getInt(LineageNotification.EXTRA_FORCE_LIGHT_OFF_MS, -1);
+            return n.extras.getInt(PortalRomNotification.EXTRA_FORCE_LIGHT_OFF_MS, -1);
         }
         return -1;
     }
@@ -246,7 +246,7 @@ public final class LineageNotificationLights {
 
     // Called by NotificationManagerService updateLightsLocked().
     // Takes the lights values as requested by a notification and
-    // updates them according to the active Lineage feature settings.
+    // updates them according to the active PortalRom feature settings.
     public void calcLights(LedValues ledValues, String packageName, Notification n,
             boolean screenActive, int suppressedEffects) {
         final boolean forcedOn = isForcedOn(n);
@@ -375,39 +375,39 @@ public final class LineageNotificationLights {
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.NOTIFICATION_LIGHT_PULSE),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR),
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON),
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF),
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE),
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES),
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.NOTIFICATION_LIGHT_SCREEN_ON),
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_SCREEN_ON),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.NOTIFICATION_LIGHT_COLOR_AUTO), false,
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_COLOR_AUTO), false,
                     this, UserHandle.USER_ALL);
 
             if (mCanAdjustBrightness) {
-                resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                        LineageSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL),
+                resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                        PortalRomSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL),
                         false, this, UserHandle.USER_ALL);
-                resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                        LineageSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL_ZEN),
+                resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                        PortalRomSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL_ZEN),
                         false, this, UserHandle.USER_ALL);
             }
 
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.ZEN_ALLOW_LIGHTS), false, this,
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.ZEN_ALLOW_LIGHTS), false, this,
                     UserHandle.USER_ALL);
 
             update();
@@ -428,23 +428,23 @@ public final class LineageNotificationLights {
                     0, UserHandle.USER_CURRENT) != 0;
 
             // Automatically pick a color for LED if not set
-            mAutoGenerateNotificationColor = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.NOTIFICATION_LIGHT_COLOR_AUTO,
+            mAutoGenerateNotificationColor = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_COLOR_AUTO,
                     1, UserHandle.USER_CURRENT) != 0;
 
             // LED default color
-            mDefaultNotificationColor = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR,
+            mDefaultNotificationColor = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR,
                     mDefaultNotificationColor, UserHandle.USER_CURRENT);
 
             // LED default on MS
-            mDefaultNotificationLedOn = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON,
+            mDefaultNotificationLedOn = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON,
                     mDefaultNotificationLedOn, UserHandle.USER_CURRENT);
 
             // LED default off MS
-            mDefaultNotificationLedOff = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF,
+            mDefaultNotificationLedOff = PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF,
                     mDefaultNotificationLedOff, UserHandle.USER_CURRENT);
 
             // LED generated notification colors
@@ -452,33 +452,33 @@ public final class LineageNotificationLights {
 
             // LED custom notification colors
             mNotificationPulseCustomLedValues.clear();
-            if (LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE, 0,
+            if (PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE, 0,
                     UserHandle.USER_CURRENT) != 0) {
-                parseNotificationPulseCustomValuesString(LineageSettings.System.getStringForUser(
-                        resolver, LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES,
+                parseNotificationPulseCustomValuesString(PortalRomSettings.System.getStringForUser(
+                        resolver, PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES,
                         UserHandle.USER_CURRENT));
             }
 
             // Notification lights with screen on
-            mScreenOnEnabled = (LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.NOTIFICATION_LIGHT_SCREEN_ON, 0,
+            mScreenOnEnabled = (PortalRomSettings.System.getIntForUser(resolver,
+                    PortalRomSettings.System.NOTIFICATION_LIGHT_SCREEN_ON, 0,
                     UserHandle.USER_CURRENT) != 0);
 
             // Adustable notification LED brightness.
             if (mCanAdjustBrightness) {
                 // Normal brightness.
-                mNotificationLedBrightnessLevel = LineageSettings.System.getIntForUser(resolver,
-                        LineageSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+                mNotificationLedBrightnessLevel = PortalRomSettings.System.getIntForUser(resolver,
+                        PortalRomSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
                         LedValues.LIGHT_BRIGHTNESS_MAXIMUM, UserHandle.USER_CURRENT);
                 // Brightness in Do Not Disturb mode.
-                mNotificationLedBrightnessLevelZen = LineageSettings.System.getIntForUser(
-                        resolver, LineageSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL_ZEN,
+                mNotificationLedBrightnessLevelZen = PortalRomSettings.System.getIntForUser(
+                        resolver, PortalRomSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL_ZEN,
                         LedValues.LIGHT_BRIGHTNESS_MAXIMUM, UserHandle.USER_CURRENT);
             }
 
-            mZenAllowLights = LineageSettings.System.getIntForUser(resolver,
-                        LineageSettings.System.ZEN_ALLOW_LIGHTS,
+            mZenAllowLights = PortalRomSettings.System.getIntForUser(resolver,
+                        PortalRomSettings.System.ZEN_ALLOW_LIGHTS,
                         1, UserHandle.USER_CURRENT) != 0;
 
             mLedUpdater.update();

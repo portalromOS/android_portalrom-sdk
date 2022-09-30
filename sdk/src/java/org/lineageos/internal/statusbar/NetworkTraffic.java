@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2017-2020 The LineageOS project
+ * Copyright (C) 2017-2020 The PortalRomOS project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.statusbar;
+package org.portalrom.internal.statusbar;
 
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
@@ -47,9 +47,9 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.TextView;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
-import org.lineageos.platform.internal.R;
+import org.portalrom.platform.internal.R;
 
 import java.util.HashMap;
 
@@ -139,8 +139,8 @@ public class NetworkTraffic extends TextView {
         mConnectivityManager.registerNetworkCallback(request, mNetworkCallback);
     }
 
-    private LineageStatusBarItem.DarkReceiver mDarkReceiver =
-            new LineageStatusBarItem.DarkReceiver() {
+    private PortalRomStatusBarItem.DarkReceiver mDarkReceiver =
+            new PortalRomStatusBarItem.DarkReceiver() {
         public void onDarkChanged(Rect area, float darkIntensity, int tint) {
             mIconTint = tint;
             setTextColor(mIconTint);
@@ -152,8 +152,8 @@ public class NetworkTraffic extends TextView {
         }
     };
 
-    private LineageStatusBarItem.VisibilityReceiver mVisibilityReceiver =
-            new LineageStatusBarItem.VisibilityReceiver() {
+    private PortalRomStatusBarItem.VisibilityReceiver mVisibilityReceiver =
+            new PortalRomStatusBarItem.VisibilityReceiver() {
         public void onVisibilityChanged(boolean isVisible) {
             if (mNetworkTrafficIsVisible != isVisible) {
                 mNetworkTrafficIsVisible = isVisible;
@@ -166,8 +166,8 @@ public class NetworkTraffic extends TextView {
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        LineageStatusBarItem.Manager manager =
-                LineageStatusBarItem.findManager((View) this);
+        PortalRomStatusBarItem.Manager manager =
+                PortalRomStatusBarItem.findManager((View) this);
         manager.addDarkReceiver(mDarkReceiver);
         manager.addVisibilityReceiver(mVisibilityReceiver);
 
@@ -363,17 +363,17 @@ public class NetworkTraffic extends TextView {
 
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
-            resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                    LineageSettings.Secure.NETWORK_TRAFFIC_MODE),
+            resolver.registerContentObserver(PortalRomSettings.Secure.getUriFor(
+                    PortalRomSettings.Secure.NETWORK_TRAFFIC_MODE),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                    LineageSettings.Secure.NETWORK_TRAFFIC_AUTOHIDE),
+            resolver.registerContentObserver(PortalRomSettings.Secure.getUriFor(
+                    PortalRomSettings.Secure.NETWORK_TRAFFIC_AUTOHIDE),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                    LineageSettings.Secure.NETWORK_TRAFFIC_UNITS),
+            resolver.registerContentObserver(PortalRomSettings.Secure.getUriFor(
+                    PortalRomSettings.Secure.NETWORK_TRAFFIC_UNITS),
                     false, this, UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.Secure.getUriFor(
-                    LineageSettings.Secure.NETWORK_TRAFFIC_SHOW_UNITS),
+            resolver.registerContentObserver(PortalRomSettings.Secure.getUriFor(
+                    PortalRomSettings.Secure.NETWORK_TRAFFIC_SHOW_UNITS),
                     false, this, UserHandle.USER_ALL);
         }
 
@@ -435,12 +435,12 @@ public class NetworkTraffic extends TextView {
     private void updateSettings() {
         ContentResolver resolver = mContext.getContentResolver();
 
-        mMode = LineageSettings.Secure.getInt(resolver,
-                LineageSettings.Secure.NETWORK_TRAFFIC_MODE, 0);
-        mAutoHide = LineageSettings.Secure.getInt(resolver,
-                LineageSettings.Secure.NETWORK_TRAFFIC_AUTOHIDE, 0) == 1;
-        mUnits = LineageSettings.Secure.getInt(resolver,
-                LineageSettings.Secure.NETWORK_TRAFFIC_UNITS, /* Mbps */ 1);
+        mMode = PortalRomSettings.Secure.getInt(resolver,
+                PortalRomSettings.Secure.NETWORK_TRAFFIC_MODE, 0);
+        mAutoHide = PortalRomSettings.Secure.getInt(resolver,
+                PortalRomSettings.Secure.NETWORK_TRAFFIC_AUTOHIDE, 0) == 1;
+        mUnits = PortalRomSettings.Secure.getInt(resolver,
+                PortalRomSettings.Secure.NETWORK_TRAFFIC_UNITS, /* Mbps */ 1);
 
         switch (mUnits) {
             case UNITS_KILOBITS:
@@ -460,8 +460,8 @@ public class NetworkTraffic extends TextView {
                 break;
         }
 
-        mShowUnits = LineageSettings.Secure.getInt(resolver,
-                LineageSettings.Secure.NETWORK_TRAFFIC_SHOW_UNITS, 1) == 1;
+        mShowUnits = PortalRomSettings.Secure.getInt(resolver,
+                PortalRomSettings.Secure.NETWORK_TRAFFIC_SHOW_UNITS, 1) == 1;
 
         if (mMode != MODE_DISABLED) {
             updateTrafficDrawable();

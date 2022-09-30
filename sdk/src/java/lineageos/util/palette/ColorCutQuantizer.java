@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package lineageos.util.palette;
+package portalrom.util.palette;
 
 import android.graphics.Color;
 import android.util.TimingLogger;
 
-import lineageos.util.palette.Palette.Swatch;
+import portalrom.util.palette.Palette.Swatch;
 
 import java.util.ArrayList;
 import java.util.Arrays;

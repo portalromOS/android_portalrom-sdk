@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.hardware;
+package portalrom.hardware;
 
-import static lineageos.hardware.LiveDisplayManager.FEATURE_COLOR_BALANCE;
-import static lineageos.hardware.LiveDisplayManager.FEATURE_PICTURE_ADJUSTMENT;
-import static lineageos.hardware.LiveDisplayManager.FEATURE_FIRST;
-import static lineageos.hardware.LiveDisplayManager.FEATURE_LAST;
-import static lineageos.hardware.LiveDisplayManager.MODE_FIRST;
-import static lineageos.hardware.LiveDisplayManager.MODE_LAST;
-import static lineageos.hardware.LiveDisplayManager.MODE_OFF;
+import static portalrom.hardware.LiveDisplayManager.FEATURE_COLOR_BALANCE;
+import static portalrom.hardware.LiveDisplayManager.FEATURE_PICTURE_ADJUSTMENT;
+import static portalrom.hardware.LiveDisplayManager.FEATURE_FIRST;
+import static portalrom.hardware.LiveDisplayManager.FEATURE_LAST;
+import static portalrom.hardware.LiveDisplayManager.MODE_FIRST;
+import static portalrom.hardware.LiveDisplayManager.MODE_LAST;
+import static portalrom.hardware.LiveDisplayManager.MODE_OFF;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -31,9 +31,9 @@ import java.util.Arrays;
 import java.util.BitSet;
 import java.util.List;
 
-import lineageos.os.Build;
-import lineageos.os.Concierge;
-import lineageos.os.Concierge.ParcelInfo;
+import portalrom.os.Build;
+import portalrom.os.Concierge;
+import portalrom.os.Concierge.ParcelInfo;
 
 /**
  * Holder class for LiveDisplay static configuration.
@@ -113,7 +113,7 @@ public class LiveDisplayConfig implements Parcelable {
         int maxColorBalance = 0;
         float[] paRanges = new float[10];
 
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.FIG) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.FIG) {
             capabilities = parcel.readLong();
             defaultMode = parcel.readInt();
             defaultDayTemperature = parcel.readInt();

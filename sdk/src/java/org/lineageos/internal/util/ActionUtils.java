@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018-2021 The LineageOS Project
+ * Copyright (C) 2018-2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.util;
+package org.portalrom.internal.util;
 
 import android.app.ActivityManager;
 import android.app.ActivityManagerNative;
@@ -34,7 +34,7 @@ import android.os.UserHandle;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.lineageos.platform.internal.R;
+import org.portalrom.platform.internal.R;
 
 import java.util.List;
 
@@ -109,8 +109,8 @@ public class ActionUtils {
         final String packageName = lastTask.baseIntent.getComponent().getPackageName();
         final IActivityManager am = ActivityManagerNative.getDefault();
         final ActivityOptions opts = ActivityOptions.makeCustomAnimation(context,
-                org.lineageos.platform.internal.R.anim.last_app_in,
-                org.lineageos.platform.internal.R.anim.last_app_out);
+                org.portalrom.platform.internal.R.anim.last_app_in,
+                org.portalrom.platform.internal.R.anim.last_app_out);
 
         if (DEBUG) Log.d(TAG, "switching to " + packageName);
         am.moveTaskToFront(null, null, lastTask.id,

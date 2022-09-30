@@ -14,6 +14,6 @@
  * limitations under the License.
  */
 
-package lineageos.hardware;
+package portalrom.hardware;
 
 parcelable LiveDisplayConfig;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package lineageos.util.palette;
+package portalrom.util.palette;
 
 import android.graphics.Color;
 

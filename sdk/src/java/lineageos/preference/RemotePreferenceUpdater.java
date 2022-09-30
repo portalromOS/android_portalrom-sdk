@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.preference;
+package portalrom.preference;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -25,7 +25,7 @@ import android.util.Log;
 
 import java.util.Objects;
 
-import lineageos.platform.Manifest;
+import portalrom.platform.Manifest;
 
 /**
  * Base class for remote summary providers.

@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 
-package lineageos.profiles;
+package portalrom.profiles;
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import lineageos.os.Build;
-import lineageos.os.Concierge;
-import lineageos.os.Concierge.ParcelInfo;
+import portalrom.os.Build;
+import portalrom.os.Concierge;
+import portalrom.os.Concierge.ParcelInfo;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -202,7 +202,7 @@ public final class RingModeSettings implements Parcelable {
         // Pattern here is that all new members should be added to the end of
         // the writeToParcel method. Then we step through each version, until the latest
         // API release to help unravel this parcel
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
             mOverride = in.readInt() != 0;
             mValue = in.readString();
             mDirty = in.readInt() != 0;

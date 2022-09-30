@@ -15,9 +15,9 @@
 ** limitations under the License.
 */
 
-package lineageos.app;
+package portalrom.app;
 
-import lineageos.app.Profile;
+import portalrom.app.Profile;
 import android.app.NotificationGroup;
 import android.os.ParcelUuid;
 

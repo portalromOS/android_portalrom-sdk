@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,20 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
 
-public class LineageSystemSettingListPreference extends SelfRemovingListPreference {
-    public LineageSystemSettingListPreference(Context context, AttributeSet attrs, int defStyle) {
+public class PortalRomSystemSettingListPreference extends SelfRemovingListPreference {
+    public PortalRomSystemSettingListPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public LineageSystemSettingListPreference(Context context, AttributeSet attrs) {
+    public PortalRomSystemSettingListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -37,17 +37,17 @@ public class LineageSystemSettingListPreference extends SelfRemovingListPreferen
 
     @Override
     protected boolean isPersisted() {
-        return LineageSettings.System.getString(getContext().getContentResolver(), getKey()) != null;
+        return PortalRomSettings.System.getString(getContext().getContentResolver(), getKey()) != null;
     }
 
     @Override
     protected void putString(String key, String value) {
-        LineageSettings.System.putString(getContext().getContentResolver(), key, value);
+        PortalRomSettings.System.putString(getContext().getContentResolver(), key, value);
     }
 
     @Override
     protected String getString(String key, String defaultValue) {
-        return LineageSettings.System.getString(getContext().getContentResolver(),
+        return PortalRomSettings.System.getString(getContext().getContentResolver(),
                 key, defaultValue);
     }
 }

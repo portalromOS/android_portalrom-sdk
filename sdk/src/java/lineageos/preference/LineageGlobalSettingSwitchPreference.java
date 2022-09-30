@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,40 +15,40 @@
  * limitations under the License.
  */
 
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
-public class LineageGlobalSettingSwitchPreference extends SelfRemovingSwitchPreference {
+public class PortalRomGlobalSettingSwitchPreference extends SelfRemovingSwitchPreference {
 
-    public LineageGlobalSettingSwitchPreference(Context context, AttributeSet attrs, int defStyle) {
+    public PortalRomGlobalSettingSwitchPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public LineageGlobalSettingSwitchPreference(Context context, AttributeSet attrs) {
+    public PortalRomGlobalSettingSwitchPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public LineageGlobalSettingSwitchPreference(Context context) {
+    public PortalRomGlobalSettingSwitchPreference(Context context) {
         super(context);
     }
 
     @Override
     protected boolean isPersisted() {
-        return LineageSettings.Global.getString(getContext().getContentResolver(), getKey()) != null;
+        return PortalRomSettings.Global.getString(getContext().getContentResolver(), getKey()) != null;
     }
 
     @Override
     protected void putBoolean(String key, boolean value) {
-        LineageSettings.Global.putInt(getContext().getContentResolver(), key, value ? 1 : 0);
+        PortalRomSettings.Global.putInt(getContext().getContentResolver(), key, value ? 1 : 0);
     }
 
     @Override
     protected boolean getBoolean(String key, boolean defaultValue) {
-        return LineageSettings.Global.getInt(getContext().getContentResolver(),
+        return PortalRomSettings.Global.getInt(getContext().getContentResolver(),
                 key, defaultValue ? 1 : 0) != 0;
     }
 }

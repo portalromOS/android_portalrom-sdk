@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2021 The LineageOS Project
+ * Copyright (C) 2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package lineageos.app;
+package portalrom.app;
 
 import java.util.List;
 
@@ -24,16 +24,16 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.util.Log;
 
-public class LineageGlobalActions {
+public class PortalRomGlobalActions {
 
     private Context mContext;
 
-    private static ILineageGlobalActions sService;
-    private static LineageGlobalActions sLineageGlobalActionsInstance;
+    private static IPortalRomGlobalActions sService;
+    private static PortalRomGlobalActions sPortalRomGlobalActionsInstance;
 
-    private static final String TAG = "LineageGlobalActions";
+    private static final String TAG = "PortalRomGlobalActions";
 
-    private LineageGlobalActions(Context context) {
+    private PortalRomGlobalActions(Context context) {
         Context appContext = context.getApplicationContext();
         if (appContext != null) {
             mContext = appContext;
@@ -48,36 +48,36 @@ public class LineageGlobalActions {
         }
 
         if (sService == null) {
-            Log.wtf(TAG, "Unable to get LineageGlobalActionsService. The service either" +
+            Log.wtf(TAG, "Unable to get PortalRomGlobalActionsService. The service either" +
                     " crashed, was not started, or the interface has been called to early in" +
                     " SystemServer init");
         }
     }
 
     /**
-     * Get or create an instance of the {@link lineageos.app.LineageGlobalActions}
+     * Get or create an instance of the {@link portalrom.app.PortalRomGlobalActions}
      * @param context
-     * @return {@link LineageGlobalActions}
+     * @return {@link PortalRomGlobalActions}
      */
-    public static LineageGlobalActions getInstance(Context context) {
-        if (sLineageGlobalActionsInstance == null) {
-            sLineageGlobalActionsInstance = new LineageGlobalActions(context);
+    public static PortalRomGlobalActions getInstance(Context context) {
+        if (sPortalRomGlobalActionsInstance == null) {
+            sPortalRomGlobalActionsInstance = new PortalRomGlobalActions(context);
         }
-        return sLineageGlobalActionsInstance;
+        return sPortalRomGlobalActionsInstance;
     }
 
     /** @hide */
-    static public ILineageGlobalActions getService() throws RemoteException {
+    static public IPortalRomGlobalActions getService() throws RemoteException {
         if (sService != null) {
             return sService;
         }
         IBinder b = ServiceManager.getService(
-                LineageContextConstants.LINEAGE_GLOBAL_ACTIONS_SERVICE);
-        sService = ILineageGlobalActions.Stub.asInterface(b);
+                PortalRomContextConstants.PORTALROM_GLOBAL_ACTIONS_SERVICE);
+        sService = IPortalRomGlobalActions.Stub.asInterface(b);
 
         if (sService == null) {
             throw new RemoteException("Couldn't get " +
-                    LineageContextConstants.LINEAGE_GLOBAL_ACTIONS_SERVICE +
+                    PortalRomContextConstants.PORTALROM_GLOBAL_ACTIONS_SERVICE +
                     " on binder");
         }
         return sService;

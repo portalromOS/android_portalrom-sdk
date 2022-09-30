@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 The LineageOS Project
+ * Copyright 2021 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package lineageos.app;
+package portalrom.app;
 
 /** @hide */
-interface ILineageGlobalActions {
+interface IPortalRomGlobalActions {
 
     void updateUserConfig(boolean enabled, String action);
 

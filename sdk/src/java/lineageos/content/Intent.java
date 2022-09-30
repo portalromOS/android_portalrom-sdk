@@ -15,12 +15,12 @@
  * limitations under the License.
  */
 
-package lineageos.content;
+package portalrom.content;
 
 import android.Manifest;
 
 /**
- * LineageOS specific intent definition class.
+ * PortalRomOS specific intent definition class.
  */
 public class Intent {
 
@@ -32,7 +32,7 @@ public class Intent {
      * @hide
      */
     public static final String ACTION_RECENTS_LONG_PRESS =
-            "lineageos.intent.action.RECENTS_LONG_PRESS";
+            "portalrom.intent.action.RECENTS_LONG_PRESS";
 
     /**
      * This field is part of the intent {@link #ACTION_RECENTS_LONG_PRESS}.
@@ -41,7 +41,7 @@ public class Intent {
      * @hide
      */
     public static final String EXTRA_RECENTS_LONG_PRESS_RELEASE =
-            "lineageos.intent.extra.RECENTS_LONG_PRESS_RELEASE";
+            "portalrom.intent.extra.RECENTS_LONG_PRESS_RELEASE";
 
     /**
      * Broadcast action: notify the system that the user has performed a gesture on the screen
@@ -50,25 +50,25 @@ public class Intent {
      * @hide
      */
     public static final String ACTION_SCREEN_CAMERA_GESTURE =
-            "lineageos.intent.action.SCREEN_CAMERA_GESTURE";
+            "portalrom.intent.action.SCREEN_CAMERA_GESTURE";
 
     /**
-     * Broadcast action: perform any initialization required for LineageHW services.
+     * Broadcast action: perform any initialization required for PortalRomHW services.
      * Runs when the service receives the signal the device has booted, but
      * should happen before {@link android.content.Intent#ACTION_BOOT_COMPLETED}.
      *
-     * Requires {@link lineageos.platform.Manifest.permission#HARDWARE_ABSTRACTION_ACCESS}.
+     * Requires {@link portalrom.platform.Manifest.permission#HARDWARE_ABSTRACTION_ACCESS}.
      * @hide
      */
-    public static final String ACTION_INITIALIZE_LINEAGE_HARDWARE =
-            "lineageos.intent.action.INITIALIZE_LINEAGE_HARDWARE";
+    public static final String ACTION_INITIALIZE_PORTALROM_HARDWARE =
+            "portalrom.intent.action.INITIALIZE_PORTALROM_HARDWARE";
 
     /**
      * Broadcast action: lid state changed
      * @hide
      */
     public static final String ACTION_LID_STATE_CHANGED =
-            "lineageos.intent.action.LID_STATE_CHANGED";
+            "portalrom.intent.action.LID_STATE_CHANGED";
 
     /**
      * This field is part of the intent {@link #ACTION_LID_STATE_CHANGED}.
@@ -76,7 +76,7 @@ public class Intent {
      * @hide
      */
     public static final String EXTRA_LID_STATE =
-            "lineageos.intent.extra.LID_STATE";
+            "portalrom.intent.extra.LID_STATE";
 
     /**
      * Broadcast Action: Update preferences for the power menu dialog. This is to provide a
@@ -87,12 +87,12 @@ public class Intent {
      *@hide
      */
     public static final String ACTION_UPDATE_POWER_MENU =
-            "lineageos.intent.action.UPDATE_POWER_MENU";
+            "portalrom.intent.action.UPDATE_POWER_MENU";
 
     /**
      * Broadcast action: notify SystemUI that LiveDisplay service has finished initialization.
      * @hide
      */
     public static final String ACTION_INITIALIZE_LIVEDISPLAY =
-            "lineageos.intent.action.INITIALIZE_LIVEDISPLAY";
+            "portalrom.intent.action.INITIALIZE_LIVEDISPLAY";
 }

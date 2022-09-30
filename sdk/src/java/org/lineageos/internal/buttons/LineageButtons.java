@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2018,2020 The LineageOS Project
+ * Copyright (C) 2018,2020 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.buttons;
+package org.portalrom.internal.buttons;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -32,12 +32,12 @@ import android.util.Slog;
 import android.view.KeyEvent;
 import android.view.ViewConfiguration;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
 import java.util.List;
 
-public final class LineageButtons {
-    private final String TAG = "LineageButtons";
+public final class PortalRomButtons {
+    private final String TAG = "PortalRomButtons";
     private final boolean DEBUG = false;
 
     private static final int MSG_DISPATCH_VOLKEY_WITH_WAKELOCK = 1;
@@ -66,7 +66,7 @@ public final class LineageButtons {
         }
     }
 
-    public LineageButtons(Context context) {
+    public PortalRomButtons(Context context) {
         mContext = context;
         mHandler = new ButtonHandler();
         mMediaSessionManager = mContext.getSystemService(MediaSessionManager.class);
@@ -173,8 +173,8 @@ public final class LineageButtons {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
 
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.VOLBTN_MUSIC_CONTROLS),
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.VOLBTN_MUSIC_CONTROLS),
                             false, this, UserHandle.USER_ALL);
 
             update();
@@ -189,8 +189,8 @@ public final class LineageButtons {
             ContentResolver resolver = mContext.getContentResolver();
             Resources res = mContext.getResources();
 
-            mVolBtnMusicControls = LineageSettings.System.getIntForUser(
-                    resolver, LineageSettings.System.VOLBTN_MUSIC_CONTROLS, 1,
+            mVolBtnMusicControls = PortalRomSettings.System.getIntForUser(
+                    resolver, PortalRomSettings.System.VOLBTN_MUSIC_CONTROLS, 1,
                     UserHandle.USER_CURRENT) == 1;
 
             if (DEBUG) {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.internal.lineageparts;
+package org.portalrom.internal.portalromparts;
 
 import android.content.Intent;
 import android.os.Parcel;
@@ -21,7 +21,7 @@ import android.os.Parcelable;
 
 import java.util.Objects;
 
-import lineageos.os.Concierge;
+import portalrom.os.Concierge;
 
 public class PartInfo implements Parcelable {
 
@@ -180,7 +180,7 @@ public class PartInfo implements Parcelable {
 
     public Intent getIntentForActivity() {
         Intent i = new Intent(getAction());
-        i.setComponent(PartsList.LINEAGEPARTS_ACTIVITY);
+        i.setComponent(PartsList.PORTALROMPARTS_ACTIVITY);
         return i;
     }
 

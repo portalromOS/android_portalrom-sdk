@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2018 The LineageOS project
+ * Copyright (C) 2018 The PortalRomOS project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.applications;
+package org.portalrom.internal.applications;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -28,7 +28,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
 public class LongScreen {
     private Set<String> mApps = new HashSet<>();
@@ -41,7 +41,7 @@ public class LongScreen {
         final Resources resources = mContext.getResources();
 
         mLongScreenAvailable = resources.getBoolean(
-                org.lineageos.platform.internal.R.bool.config_haveHigherAspectRatioScreen);
+                org.portalrom.platform.internal.R.bool.config_haveHigherAspectRatioScreen);
 
         if (!mLongScreenAvailable) {
             return;
@@ -66,14 +66,14 @@ public class LongScreen {
 
     public void addApp(String packageName) {
         mApps.add(packageName);
-        LineageSettings.System.putString(mContext.getContentResolver(),
-                LineageSettings.System.LONG_SCREEN_APPS, String.join(",", mApps));
+        PortalRomSettings.System.putString(mContext.getContentResolver(),
+                PortalRomSettings.System.LONG_SCREEN_APPS, String.join(",", mApps));
     }
 
     public void removeApp(String packageName) {
         mApps.remove(packageName);
-        LineageSettings.System.putString(mContext.getContentResolver(),
-                LineageSettings.System.LONG_SCREEN_APPS, String.join(",", mApps));
+        PortalRomSettings.System.putString(mContext.getContentResolver(),
+                PortalRomSettings.System.LONG_SCREEN_APPS, String.join(",", mApps));
     }
 
     public void setApps(Set<String> apps) {
@@ -88,8 +88,8 @@ public class LongScreen {
         void observe() {
             ContentResolver resolver = mContext.getContentResolver();
 
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.LONG_SCREEN_APPS), false, this,
+            resolver.registerContentObserver(PortalRomSettings.System.getUriFor(
+                    PortalRomSettings.System.LONG_SCREEN_APPS), false, this,
                     UserHandle.USER_ALL);
 
             update();
@@ -103,8 +103,8 @@ public class LongScreen {
         public void update() {
             ContentResolver resolver = mContext.getContentResolver();
 
-            String apps = LineageSettings.System.getStringForUser(resolver,
-                    LineageSettings.System.LONG_SCREEN_APPS,
+            String apps = PortalRomSettings.System.getStringForUser(resolver,
+                    PortalRomSettings.System.LONG_SCREEN_APPS,
                     UserHandle.USER_CURRENT);
             if (apps != null) {
                 setApps(new HashSet<>(Arrays.asList(apps.split(","))));

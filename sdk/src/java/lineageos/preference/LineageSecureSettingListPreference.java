@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2016 The CyanogenMod Project
- * Copyright (C) 2018 The LineageOS Project
+ * Copyright (C) 2018 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,21 +14,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package lineageos.preference;
+package portalrom.preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
 
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
 
-public class LineageSecureSettingListPreference extends SelfRemovingListPreference {
+public class PortalRomSecureSettingListPreference extends SelfRemovingListPreference {
 
-    public LineageSecureSettingListPreference(Context context, AttributeSet attrs, int defStyle) {
+    public PortalRomSecureSettingListPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
-    public LineageSecureSettingListPreference(Context context, AttributeSet attrs) {
+    public PortalRomSecureSettingListPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -38,17 +38,17 @@ public class LineageSecureSettingListPreference extends SelfRemovingListPreferen
 
     @Override
     protected boolean isPersisted() {
-        return LineageSettings.Secure.getString(getContext().getContentResolver(), getKey()) != null;
+        return PortalRomSettings.Secure.getString(getContext().getContentResolver(), getKey()) != null;
     }
 
     @Override
     protected void putString(String key, String value) {
-        LineageSettings.Secure.putString(getContext().getContentResolver(), key, value);
+        PortalRomSettings.Secure.putString(getContext().getContentResolver(), key, value);
     }
 
     @Override
     protected String getString(String key, String defaultValue) {
-        return LineageSettings.Secure.getString(getContext().getContentResolver(),
+        return PortalRomSettings.Secure.getString(getContext().getContentResolver(),
                 key, defaultValue);
     }
 }

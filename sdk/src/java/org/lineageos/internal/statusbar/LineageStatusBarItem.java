@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2018 The LineageOS project
+ * Copyright (C) 2018 The PortalRomOS project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.lineageos.internal.statusbar;
+package org.portalrom.internal.statusbar;
 
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewParent;
 
-public class LineageStatusBarItem {
+public class PortalRomStatusBarItem {
 
     public interface Manager {
         public void addDarkReceiver(DarkReceiver darkReceiver);
@@ -36,7 +36,7 @@ public class LineageStatusBarItem {
         public void onVisibilityChanged(boolean isVisible);
     }
 
-    // Locate parent LineageStatusBarItem.Manager
+    // Locate parent PortalRomStatusBarItem.Manager
     public static Manager findManager(View v) {
         ViewParent parent = v.getParent();
         if (parent == null) {

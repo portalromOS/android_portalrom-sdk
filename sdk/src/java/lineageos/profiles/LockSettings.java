@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package lineageos.profiles;
+package portalrom.profiles;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
@@ -26,10 +26,10 @@ import android.util.Log;
 import com.android.internal.policy.IKeyguardService;
 /* import com.android.internal.policy.PolicyManager; */
 
-import lineageos.app.Profile;
-import lineageos.os.Build;
-import lineageos.os.Concierge;
-import lineageos.os.Concierge.ParcelInfo;
+import portalrom.app.Profile;
+import portalrom.os.Build;
+import portalrom.os.Concierge;
+import portalrom.os.Concierge.ParcelInfo;
 
 /**
  * The {@link LockSettings} class allows for overriding and setting the
@@ -168,7 +168,7 @@ public final class LockSettings implements Parcelable {
         // Pattern here is that all new members should be added to the end of
         // the writeToParcel method. Then we step through each version, until the latest
         // API release to help unravel this parcel
-        if (parcelableVersion >= Build.LINEAGE_VERSION_CODES.BOYSENBERRY) {
+        if (parcelableVersion >= Build.PORTALROM_VERSION_CODES.BOYSENBERRY) {
             mValue = in.readInt();
             mDirty = in.readInt() != 0;
         }
