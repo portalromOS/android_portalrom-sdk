@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.providers;
+package org.portalrom.tests.providers;
 
 import android.content.ContentResolver;
 import android.database.ContentObserver;
@@ -24,11 +24,11 @@ import android.os.UserHandle;
 import android.provider.Settings;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
-import lineageos.providers.LineageSettings;
+import portalrom.providers.PortalRomSettings;
 
-public class LineageSettingsTest extends AndroidTestCase{
+public class PortalRomSettingsTest extends AndroidTestCase{
     private ContentResolver mContentResolver;
-    private LineageSettingsTestObserver mTestObserver;
+    private PortalRomSettingsTestObserver mTestObserver;
 
     private static boolean sIsOnChangedCalled = false;
     private static Uri sExpectedUriChange = null;
@@ -36,7 +36,7 @@ public class LineageSettingsTest extends AndroidTestCase{
     @Override
     public void setUp() {
         mContentResolver = getContext().getContentResolver();
-        mTestObserver = new LineageSettingsTestObserver(null);
+        mTestObserver = new PortalRomSettingsTestObserver(null);
     }
 
     @Override
@@ -46,34 +46,34 @@ public class LineageSettingsTest extends AndroidTestCase{
 
     @MediumTest
     public void testPutAndGetSystemString() {
-        final String key = LineageSettings.System.__MAGICAL_TEST_PASSING_ENABLER;
+        final String key = PortalRomSettings.System.__MAGICAL_TEST_PASSING_ENABLER;
 
         // put
         final String expectedValue = "1";
-        boolean isPutSuccessful = LineageSettings.System.putString(mContentResolver, key, expectedValue);
+        boolean isPutSuccessful = PortalRomSettings.System.putString(mContentResolver, key, expectedValue);
         assertTrue(isPutSuccessful);
 
         // get
-        String actualValue = LineageSettings.System.getString(mContentResolver, key);
+        String actualValue = PortalRomSettings.System.getString(mContentResolver, key);
         assertEquals(expectedValue, actualValue);
 
         // setup observer
         sIsOnChangedCalled = false;
-        sExpectedUriChange = LineageSettings.System.getUriFor(key);
+        sExpectedUriChange = PortalRomSettings.System.getUriFor(key);
         mContentResolver.registerContentObserver(sExpectedUriChange, false, mTestObserver,
                 UserHandle.USER_ALL);
 
         // replace
         final String expectedReplaceValue = "0";
-        isPutSuccessful = LineageSettings.System.putString(mContentResolver, key, expectedReplaceValue);
+        isPutSuccessful = PortalRomSettings.System.putString(mContentResolver, key, expectedReplaceValue);
         assertTrue(isPutSuccessful);
 
         // get
-        actualValue = LineageSettings.System.getString(mContentResolver, key);
+        actualValue = PortalRomSettings.System.getString(mContentResolver, key);
         assertEquals(expectedReplaceValue, actualValue);
 
         // delete to clean up
-        int rowsAffected = mContentResolver.delete(LineageSettings.System.CONTENT_URI,
+        int rowsAffected = mContentResolver.delete(PortalRomSettings.System.CONTENT_URI,
                 Settings.NameValueTable.NAME + " = ?", new String[]{ key });
         assertEquals(1, rowsAffected);
 
@@ -85,34 +85,34 @@ public class LineageSettingsTest extends AndroidTestCase{
     @MediumTest
     public void testPutAndGetSecureString() {
         /* TODO: FIXME
-        final String key = LineageSettings.Secure.__MAGICAL_TEST_PASSING_ENABLER;
+        final String key = PortalRomSettings.Secure.__MAGICAL_TEST_PASSING_ENABLER;
 
         // put
         final String expectedValue = "0";
-        boolean isPutSuccessful = LineageSettings.Secure.putString(mContentResolver, key, expectedValue);
+        boolean isPutSuccessful = PortalRomSettings.Secure.putString(mContentResolver, key, expectedValue);
         assertTrue(isPutSuccessful);
 
         // get
-        String actualValue = LineageSettings.Secure.getString(mContentResolver, key);
+        String actualValue = PortalRomSettings.Secure.getString(mContentResolver, key);
         assertEquals(expectedValue, actualValue);
 
         // setup observer
         sIsOnChangedCalled = false;
-        sExpectedUriChange = LineageSettings.Secure.getUriFor(key);
+        sExpectedUriChange = PortalRomSettings.Secure.getUriFor(key);
         mContentResolver.registerContentObserver(sExpectedUriChange, false, mTestObserver,
                 UserHandle.USER_ALL);
 
         // replace
         final String expectedReplaceValue = "1";
-        isPutSuccessful = LineageSettings.Secure.putString(mContentResolver, key, expectedReplaceValue);
+        isPutSuccessful = PortalRomSettings.Secure.putString(mContentResolver, key, expectedReplaceValue);
         assertTrue(isPutSuccessful);
 
         // get
-        actualValue = LineageSettings.Secure.getString(mContentResolver, key);
+        actualValue = PortalRomSettings.Secure.getString(mContentResolver, key);
         assertEquals(expectedReplaceValue, actualValue);
 
         // delete to clean up
-        int rowsAffected = mContentResolver.delete(LineageSettings.Secure.CONTENT_URI,
+        int rowsAffected = mContentResolver.delete(PortalRomSettings.Secure.CONTENT_URI,
                 Settings.NameValueTable.NAME + " = ?", new String[]{ key });
         assertEquals(1, rowsAffected);
 
@@ -127,30 +127,30 @@ public class LineageSettingsTest extends AndroidTestCase{
 
         // put
         final String expectedValue = "globalTestValue1";
-        boolean isPutSuccessful = LineageSettings.Global.putString(mContentResolver, key, expectedValue);
+        boolean isPutSuccessful = PortalRomSettings.Global.putString(mContentResolver, key, expectedValue);
         assertTrue(isPutSuccessful);
 
         // get
-        String actualValue = LineageSettings.Global.getString(mContentResolver, key);
+        String actualValue = PortalRomSettings.Global.getString(mContentResolver, key);
         assertEquals(expectedValue, actualValue);
 
         // setup observer
         sIsOnChangedCalled = false;
-        sExpectedUriChange = LineageSettings.Global.getUriFor(key);
+        sExpectedUriChange = PortalRomSettings.Global.getUriFor(key);
         mContentResolver.registerContentObserver(sExpectedUriChange, false, mTestObserver,
                 UserHandle.USER_SYSTEM);
 
         // replace
         final String expectedReplaceValue = "globalTestValue2";
-        isPutSuccessful = LineageSettings.Global.putString(mContentResolver, key, expectedReplaceValue);
+        isPutSuccessful = PortalRomSettings.Global.putString(mContentResolver, key, expectedReplaceValue);
         assertTrue(isPutSuccessful);
 
         // get
-        actualValue = LineageSettings.Global.getString(mContentResolver, key);
+        actualValue = PortalRomSettings.Global.getString(mContentResolver, key);
         assertEquals(expectedReplaceValue, actualValue);
 
         // delete to clean up
-        int rowsAffected = mContentResolver.delete(LineageSettings.Global.CONTENT_URI,
+        int rowsAffected = mContentResolver.delete(PortalRomSettings.Global.CONTENT_URI,
                 Settings.NameValueTable.NAME + " = ?", new String[]{ key });
         assertEquals(1, rowsAffected);
 
@@ -159,9 +159,9 @@ public class LineageSettingsTest extends AndroidTestCase{
         }
     }
 
-    private class LineageSettingsTestObserver extends ContentObserver {
+    private class PortalRomSettingsTestObserver extends ContentObserver {
 
-        public LineageSettingsTestObserver(Handler handler) {
+        public PortalRomSettingsTestObserver(Handler handler) {
             super(handler);
         }
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.versioning.unit;
+package org.portalrom.tests.versioning.unit;
 
 import android.content.Context;
 import android.test.AndroidTestCase;
@@ -22,10 +22,10 @@ import android.test.suitebuilder.annotation.LargeTest;
 import android.util.Log;
 import android.util.Pair;
 
-import org.lineageos.tests.LineageOSTestApplication;
-import org.lineageos.tests.versioning.unit.apiv2.ApiV2PriorReleaseInterfaces;
-import org.lineageos.tests.versioning.unit.apiv4.ApiV4PriorReleaseInterfaces;
-import org.lineageos.tests.versioning.unit.apiv5.ApiV5PriorReleaseInterfaces;
+import org.portalrom.tests.PortalRomOSTestApplication;
+import org.portalrom.tests.versioning.unit.apiv2.ApiV2PriorReleaseInterfaces;
+import org.portalrom.tests.versioning.unit.apiv4.ApiV4PriorReleaseInterfaces;
+import org.portalrom.tests.versioning.unit.apiv5.ApiV5PriorReleaseInterfaces;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -61,7 +61,7 @@ import java.util.regex.Pattern;
 public class BinderTransactionTest extends AndroidTestCase {
     private static final String TAG = BinderTransactionTest.class.getSimpleName();
     private static final String STUB_SUFFIX = "$Stub";
-    private static final String LINEAGEOS_NAMESPACE = "lineageos";
+    private static final String PORTALROMOS_NAMESPACE = "portalrom";
     private static final String TRANSACTION_PREFIX = "TRANSACTION_";
 
     private static final int NOT_FROM_PRIOR_RELEASE = -1;
@@ -91,8 +91,8 @@ public class BinderTransactionTest extends AndroidTestCase {
 
     private static void doSetup() {
         mKnownSdkClasses = MagicalDexHelper.getLoadedClasses(
-                LineageOSTestApplication.getStaticApplicationContext(), LINEAGEOS_NAMESPACE);
-        sContext = LineageOSTestApplication.getStaticApplicationContext();
+                PortalRomOSTestApplication.getStaticApplicationContext(), PORTALROMOS_NAMESPACE);
+        sContext = PortalRomOSTestApplication.getStaticApplicationContext();
         addInterfaces(ApiV2PriorReleaseInterfaces.getInterfaces());
         addInterfaces(ApiV4PriorReleaseInterfaces.getInterfaces());
         addInterfaces(ApiV5PriorReleaseInterfaces.getInterfaces());
@@ -121,7 +121,7 @@ public class BinderTransactionTest extends AndroidTestCase {
         for (String sClazz : mKnownSdkClasses) {
             if (sClazz.endsWith(STUB_SUFFIX)) {
                 try {
-                    Class clazz = MagicalDexHelper.loadClassForNameSpace(LineageOSTestApplication
+                    Class clazz = MagicalDexHelper.loadClassForNameSpace(PortalRomOSTestApplication
                             .getStaticApplicationContext(), sClazz);
                     Field[] fields = clazz.getDeclaredFields();
                     Pattern pattern = Pattern.compile("\\.([\\w]+)\\$");

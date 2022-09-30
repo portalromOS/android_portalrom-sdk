@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.profiles;
+package org.portalrom.tests.profiles;
 
 import android.media.AudioManager;
 import android.os.Bundle;
 
-import lineageos.app.Profile;
-import lineageos.app.Profile.Type;
+import portalrom.app.Profile;
+import portalrom.app.Profile.Type;
 
-import lineageos.app.ProfileManager;
-import lineageos.profiles.AirplaneModeSettings;
-import lineageos.profiles.BrightnessSettings;
-import lineageos.profiles.ConnectionSettings;
-import lineageos.profiles.LockSettings;
-import lineageos.profiles.RingModeSettings;
-import lineageos.profiles.StreamSettings;
-import org.lineageos.tests.TestActivity;
+import portalrom.app.ProfileManager;
+import portalrom.profiles.AirplaneModeSettings;
+import portalrom.profiles.BrightnessSettings;
+import portalrom.profiles.ConnectionSettings;
+import portalrom.profiles.LockSettings;
+import portalrom.profiles.RingModeSettings;
+import portalrom.profiles.StreamSettings;
+import org.portalrom.tests.TestActivity;
 
 import java.util.ArrayList;
 import java.util.UUID;

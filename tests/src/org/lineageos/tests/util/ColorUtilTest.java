@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.util;
+package org.portalrom.tests.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -23,7 +23,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.test.AndroidTestCase;
-import lineageos.util.ColorUtils;
+import portalrom.util.ColorUtils;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;

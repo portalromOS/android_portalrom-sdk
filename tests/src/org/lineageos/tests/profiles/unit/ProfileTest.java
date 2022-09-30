@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2015 The CyanogenMod Project
- *               2020 The LineageOS Project
+ *               2020 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.profiles.unit;
+package org.portalrom.tests.profiles.unit;
 
 import android.media.AudioManager;
 import android.os.Parcel;
@@ -24,14 +24,14 @@ import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import lineageos.app.LineageContextConstants;
-import lineageos.app.Profile;
-import lineageos.profiles.AirplaneModeSettings;
-import lineageos.profiles.BrightnessSettings;
-import lineageos.profiles.ConnectionSettings;
-import lineageos.profiles.LockSettings;
-import lineageos.profiles.RingModeSettings;
-import lineageos.profiles.StreamSettings;
+import portalrom.app.PortalRomContextConstants;
+import portalrom.app.Profile;
+import portalrom.profiles.AirplaneModeSettings;
+import portalrom.profiles.BrightnessSettings;
+import portalrom.profiles.ConnectionSettings;
+import portalrom.profiles.LockSettings;
+import portalrom.profiles.RingModeSettings;
+import portalrom.profiles.StreamSettings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -45,7 +45,7 @@ public class ProfileTest extends AndroidTestCase {
         super.setUp();
         // Only run this if we support profiles service
         org.junit.Assume.assumeTrue(mContext.getPackageManager().hasSystemFeature(
-                LineageContextConstants.Features.PROFILES));
+                PortalRomContextConstants.Features.PROFILES));
     }
 
     @MediumTest

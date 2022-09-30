@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.profiles.unit;
+package org.portalrom.tests.profiles.unit;
 
 import android.media.AudioManager;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
-import lineageos.profiles.StreamSettings;
+import portalrom.profiles.StreamSettings;
 
 public class StreamSettingsTest extends AndroidTestCase {
 

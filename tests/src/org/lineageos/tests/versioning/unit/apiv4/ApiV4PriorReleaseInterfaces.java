@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.versioning.unit.apiv4;
+package org.portalrom.tests.versioning.unit.apiv4;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,16 +31,16 @@ public class ApiV4PriorReleaseInterfaces {
         profilesMap.put("isEnabled", 20);
     }
 
-    //LineageHardwareManager Aidl (ILineageHardwareService)
+    //PortalRomHardwareManager Aidl (IPortalRomHardwareService)
     static {
-        Map<String, Integer> hardwareMap = getInternalInterfaceMap("ILineageHardwareService");
+        Map<String, Integer> hardwareMap = getInternalInterfaceMap("IPortalRomHardwareService");
         // APRICOT + BOYSENBERRY + CANTALOUPE to 24
         // DRAGONFRUIT BEGIN
         hardwareMap.put("isSunlightEnhancementSelfManaged", 25);
         hardwareMap.put("getUniqueDeviceId", 26);
     }
 
-    //LineageStatusBarManager Aidl (ILineageStatusBarManager)
+    //PortalRomStatusBarManager Aidl (IPortalRomStatusBarManager)
     static {
         // APRICOT + BOYSENBERRY + CANTALOUPE to 5
         // DRAGONFRUIT BEGIN
@@ -52,7 +52,7 @@ public class ApiV4PriorReleaseInterfaces {
         // DRAGONFRUIT BEGIN
     }
 
-    //LineageTelephonyManager Aidl (ILineageTelephonyManager)
+    //PortalRomTelephonyManager Aidl (IPortalRomTelephonyManager)
     static {
         // APRICOT + BOYSENBERRY + CANTALOUPE to 9
         // DRAGONFRUIT BEGIN

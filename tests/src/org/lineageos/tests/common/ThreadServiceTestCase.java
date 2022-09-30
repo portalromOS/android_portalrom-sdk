@@ -1,4 +1,4 @@
-package org.lineageos.tests.common;
+package org.portalrom.tests.common;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;

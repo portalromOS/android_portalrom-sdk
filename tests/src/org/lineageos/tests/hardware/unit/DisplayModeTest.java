@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.hardware.unit;
+package org.portalrom.tests.hardware.unit;
 
 import android.os.Parcel;
 import android.test.AndroidTestCase;
 
 import android.test.suitebuilder.annotation.SmallTest;
-import lineageos.app.LineageContextConstants;
-import lineageos.hardware.DisplayMode;
+import portalrom.app.PortalRomContextConstants;
+import portalrom.hardware.DisplayMode;
 
 /**
  * Created by adnan on 9/1/15.
@@ -32,7 +32,7 @@ public class DisplayModeTest extends AndroidTestCase {
         super.setUp();
         // Only run this if we support hardware abstraction
         org.junit.Assume.assumeTrue(mContext.getPackageManager().hasSystemFeature(
-                LineageContextConstants.Features.HARDWARE_ABSTRACTION));
+                PortalRomContextConstants.Features.HARDWARE_ABSTRACTION));
     }
 
     @SmallTest

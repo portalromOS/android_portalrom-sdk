@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.hardware;
+package org.portalrom.tests.hardware;
 
 import android.os.Bundle;
 
@@ -23,27 +23,27 @@ import android.widget.Toast;
 import java.util.Arrays;
 import java.util.List;
 
-import lineageos.hardware.LineageHardwareManager;
-import lineageos.hardware.DisplayMode;
+import portalrom.hardware.PortalRomHardwareManager;
+import portalrom.hardware.DisplayMode;
 
-import org.lineageos.tests.TestActivity;
+import org.portalrom.tests.TestActivity;
 
 /**
  * Created by adnan on 8/31/15.
  */
-public class LineageHardwareTest extends TestActivity {
-    private LineageHardwareManager mHardwareManager;
+public class PortalRomHardwareTest extends TestActivity {
+    private PortalRomHardwareManager mHardwareManager;
 
     private static final List<Integer> FEATURES = Arrays.asList(
-            LineageHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT,
-            LineageHardwareManager.FEATURE_COLOR_ENHANCEMENT,
-            LineageHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION,
-            LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
-            LineageHardwareManager.FEATURE_KEY_DISABLE,
-            LineageHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT,
-            LineageHardwareManager.FEATURE_TOUCH_HOVERING,
-            LineageHardwareManager.FEATURE_AUTO_CONTRAST,
-            LineageHardwareManager.FEATURE_DISPLAY_MODES
+            PortalRomHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT,
+            PortalRomHardwareManager.FEATURE_COLOR_ENHANCEMENT,
+            PortalRomHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION,
+            PortalRomHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
+            PortalRomHardwareManager.FEATURE_KEY_DISABLE,
+            PortalRomHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT,
+            PortalRomHardwareManager.FEATURE_TOUCH_HOVERING,
+            PortalRomHardwareManager.FEATURE_AUTO_CONTRAST,
+            PortalRomHardwareManager.FEATURE_DISPLAY_MODES
     );
 
     private static final List<String> FEATURE_STRINGS = Arrays.asList(
@@ -59,19 +59,19 @@ public class LineageHardwareTest extends TestActivity {
     );
 
     private static final List<Integer> BOOLEAN_FEATURES = Arrays.asList(
-            LineageHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT,
-            LineageHardwareManager.FEATURE_COLOR_ENHANCEMENT,
-            LineageHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
-            LineageHardwareManager.FEATURE_KEY_DISABLE,
-            LineageHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT,
-            LineageHardwareManager.FEATURE_TOUCH_HOVERING,
-            LineageHardwareManager.FEATURE_AUTO_CONTRAST
+            PortalRomHardwareManager.FEATURE_ADAPTIVE_BACKLIGHT,
+            PortalRomHardwareManager.FEATURE_COLOR_ENHANCEMENT,
+            PortalRomHardwareManager.FEATURE_HIGH_TOUCH_SENSITIVITY,
+            PortalRomHardwareManager.FEATURE_KEY_DISABLE,
+            PortalRomHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT,
+            PortalRomHardwareManager.FEATURE_TOUCH_HOVERING,
+            PortalRomHardwareManager.FEATURE_AUTO_CONTRAST
     );
 
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        mHardwareManager = LineageHardwareManager.getInstance(this);
+        mHardwareManager = PortalRomHardwareManager.getInstance(this);
     }
 
     @Override
@@ -85,30 +85,30 @@ public class LineageHardwareTest extends TestActivity {
     }
 
     private boolean vibratorSupported() {
-        if (mHardwareManager.isSupported(LineageHardwareManager.FEATURE_VIBRATOR)) {
+        if (mHardwareManager.isSupported(PortalRomHardwareManager.FEATURE_VIBRATOR)) {
             return true;
         } else {
-            Toast.makeText(LineageHardwareTest.this, "Vibrator not supported",
+            Toast.makeText(PortalRomHardwareTest.this, "Vibrator not supported",
                     Toast.LENGTH_SHORT).show();
             return false;
         }
     }
 
     private boolean displayColorCalibrationSupported() {
-        if (mHardwareManager.isSupported(LineageHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION)) {
+        if (mHardwareManager.isSupported(PortalRomHardwareManager.FEATURE_DISPLAY_COLOR_CALIBRATION)) {
             return true;
         } else {
-            Toast.makeText(LineageHardwareTest.this, "Display Color Calibration not supported",
+            Toast.makeText(PortalRomHardwareTest.this, "Display Color Calibration not supported",
                     Toast.LENGTH_SHORT).show();
             return false;
         }
     }
 
     private boolean displayModesSupported() {
-        if (mHardwareManager.isSupported(LineageHardwareManager.FEATURE_DISPLAY_MODES)) {
+        if (mHardwareManager.isSupported(PortalRomHardwareManager.FEATURE_DISPLAY_MODES)) {
             return true;
         } else {
-            Toast.makeText(LineageHardwareTest.this, "Display modes not supported",
+            Toast.makeText(PortalRomHardwareTest.this, "Display modes not supported",
                     Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -117,7 +117,7 @@ public class LineageHardwareTest extends TestActivity {
     private Test[] mTests = new Test[] {
             new Test("Test get supported features") {
                 public void run() {
-                    Toast.makeText(LineageHardwareTest.this, "Supported features " +
+                    Toast.makeText(PortalRomHardwareTest.this, "Supported features " +
                                     mHardwareManager.getSupportedFeatures(),
                             Toast.LENGTH_SHORT).show();
                 }
@@ -136,7 +136,7 @@ public class LineageHardwareTest extends TestActivity {
                         builder.append("Feature " + feature + "\n")
                                 .append("is supported " + supported + "\n");
                     }
-                    Toast.makeText(LineageHardwareTest.this, "Supported features " +
+                    Toast.makeText(PortalRomHardwareTest.this, "Supported features " +
                                     builder.toString(),
                             Toast.LENGTH_SHORT).show();
                 }
@@ -150,7 +150,7 @@ public class LineageHardwareTest extends TestActivity {
                                 .append("is enabled " + mHardwareManager.isSupported(feature)
                                         + "\n");
                     }
-                    Toast.makeText(LineageHardwareTest.this, "Features " +
+                    Toast.makeText(PortalRomHardwareTest.this, "Features " +
                                     builder.toString(),
                             Toast.LENGTH_SHORT).show();
                 }
@@ -159,7 +159,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (vibratorSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Vibrator intensity " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Vibrator intensity " +
                                         mHardwareManager.getVibratorIntensity(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -169,7 +169,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (vibratorSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Vibrator default intensity " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Vibrator default intensity " +
                                         mHardwareManager.getVibratorDefaultIntensity(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -179,7 +179,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (vibratorSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Vibrator max intensity " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Vibrator max intensity " +
                                         mHardwareManager.getVibratorMaxIntensity(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -189,7 +189,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (vibratorSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Vibrator min intensity " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Vibrator min intensity " +
                                         mHardwareManager.getVibratorMinIntensity(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -199,7 +199,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (vibratorSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Vibrator min intensity " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Vibrator min intensity " +
                                         mHardwareManager.getVibratorWarningIntensity(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -209,7 +209,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (displayColorCalibrationSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Display Color Calibration " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Display Color Calibration " +
                                         mHardwareManager.getDisplayColorCalibration(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -219,7 +219,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (displayColorCalibrationSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Default Display Color Calibration " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Default Display Color Calibration " +
                                         mHardwareManager.getDisplayColorCalibrationDefault(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -229,7 +229,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (displayColorCalibrationSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Display Color Calibration Max " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Display Color Calibration Max " +
                                         mHardwareManager.getDisplayColorCalibrationMax(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -239,7 +239,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (displayColorCalibrationSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Display Color Calibration Min " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Display Color Calibration Min " +
                                         mHardwareManager.getDisplayColorCalibrationMin(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -261,7 +261,7 @@ public class LineageHardwareTest extends TestActivity {
                         for (DisplayMode displayMode : mHardwareManager.getDisplayModes()) {
                             builder.append("Display mode " + displayMode.name + "\n");
                         }
-                        Toast.makeText(LineageHardwareTest.this, "Display modes: \n"
+                        Toast.makeText(PortalRomHardwareTest.this, "Display modes: \n"
                                         + builder.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -270,7 +270,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (displayModesSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Default Display Mode " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Default Display Mode " +
                                         mHardwareManager.getCurrentDisplayMode(),
                                 Toast.LENGTH_SHORT).show();
                     }
@@ -280,7 +280,7 @@ public class LineageHardwareTest extends TestActivity {
                 @Override
                 protected void run() {
                     if (displayModesSupported()) {
-                        Toast.makeText(LineageHardwareTest.this, "Default Display Mode " +
+                        Toast.makeText(PortalRomHardwareTest.this, "Default Display Mode " +
                                         mHardwareManager.getCurrentDisplayMode(),
                                 Toast.LENGTH_SHORT).show();
                     }

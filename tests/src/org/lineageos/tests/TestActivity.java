@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests;
+package org.portalrom.tests;
 
 import android.app.ListActivity;
 import android.os.Bundle;

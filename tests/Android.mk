@@ -19,7 +19,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := tests
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    org.lineageos.platform.sdk \
+    org.portalrom.platform.sdk \
     android-support-test \
     mockito-target
 
@@ -27,7 +27,7 @@ LOCAL_DEX_PREOPT := false
 
 LOCAL_SRC_FILES := $(call all-subdir-java-files, src/)
 
-LOCAL_PACKAGE_NAME := LineagePlatformTests
+LOCAL_PACKAGE_NAME := PortalRomPlatformTests
 LOCAL_CERTIFICATE := platform
 LOCAL_JAVA_LIBRARIES := android.test.runner
 LOCAL_PROGUARD_ENABLED := optimization
@@ -36,12 +36,12 @@ LOCAL_PRIVATE_PLATFORM_APIS := true
 
 include $(BUILD_PACKAGE)
 
-# Register as LineageTS
+# Register as PortalRomTS
 include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := tests
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
-    org.lineageos.platform.sdk \
+    org.portalrom.platform.sdk \
     android-support-test \
     mockito-target
 
@@ -54,4 +54,4 @@ LOCAL_CERTIFICATE := platform
 LOCAL_JAVA_LIBRARIES := android.test.runner
 LOCAL_PROGUARD_ENABLED := optimization
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
-include $(BUILD_LineageTS_PACKAGE)
+include $(BUILD_PortalRomTS_PACKAGE)

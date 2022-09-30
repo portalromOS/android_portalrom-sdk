@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.profiles.unit;
+package org.portalrom.tests.profiles.unit;
 
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
-import lineageos.profiles.RingModeSettings;
+import portalrom.profiles.RingModeSettings;
 
 public class RingModeSettingsTest extends AndroidTestCase {
 

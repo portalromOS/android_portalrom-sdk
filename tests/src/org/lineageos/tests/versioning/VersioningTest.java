@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.versioning;
+package org.portalrom.tests.versioning;
 
 import android.widget.Toast;
-import lineageos.os.Build;
+import portalrom.os.Build;
 
-import org.lineageos.tests.TestActivity;
+import org.portalrom.tests.TestActivity;
 
 public class VersioningTest extends TestActivity {
     @Override
@@ -36,23 +36,23 @@ public class VersioningTest extends TestActivity {
             new Test("test retrieve version") {
                 public void run() {
                     Toast.makeText(VersioningTest.this,
-                            "Current API version is " + Build.LINEAGE_VERSION.SDK_INT + " which is "
-                                    + Build.getNameForSDKInt(Build.LINEAGE_VERSION.SDK_INT),
+                            "Current API version is " + Build.PORTALROM_VERSION.SDK_INT + " which is "
+                                    + Build.getNameForSDKInt(Build.PORTALROM_VERSION.SDK_INT),
                             Toast.LENGTH_SHORT).show();
                 }
             },
             new Test("test target version larger") {
                 public void run() {
-                    int currentapiVersion = Build.LINEAGE_VERSION.SDK_INT;
-                    if (currentapiVersion >= Build.LINEAGE_VERSION_CODES.APRICOT){
+                    int currentapiVersion = Build.PORTALROM_VERSION.SDK_INT;
+                    if (currentapiVersion >= Build.PORTALROM_VERSION_CODES.APRICOT){
                         Toast.makeText(VersioningTest.this,
                                 "Current API version is greater or equal to "
-                                        + Build.getNameForSDKInt(Build.LINEAGE_VERSION_CODES.APRICOT),
+                                        + Build.getNameForSDKInt(Build.PORTALROM_VERSION_CODES.APRICOT),
                                 Toast.LENGTH_LONG).show();
                     } else{
                         Toast.makeText(VersioningTest.this,
                                 "Current API version is below target SKD version "
-                                        + Build.LINEAGE_VERSION_CODES.APRICOT,
+                                        + Build.PORTALROM_VERSION_CODES.APRICOT,
                                 Toast.LENGTH_SHORT).show();
                     }
                 }

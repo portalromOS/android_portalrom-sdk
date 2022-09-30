@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.profiles.unit;
+package org.portalrom.tests.profiles.unit;
 
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
-import lineageos.app.Profile;
-import lineageos.profiles.LockSettings;
+import portalrom.app.Profile;
+import portalrom.profiles.LockSettings;
 
 public class LockSettingsTest extends AndroidTestCase {
 

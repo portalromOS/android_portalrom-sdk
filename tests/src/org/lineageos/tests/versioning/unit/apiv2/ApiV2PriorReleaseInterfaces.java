@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.versioning.unit.apiv2;
+package org.portalrom.tests.versioning.unit.apiv2;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -51,9 +51,9 @@ public class ApiV2PriorReleaseInterfaces {
         profilesMap.put("resetAll", 19);
     }
 
-    //LineageHardwareManager Aidl (ILineageHardwareService)
+    //PortalRomHardwareManager Aidl (IPortalRomHardwareService)
     static {
-        Map<String, Integer> hardwareMap = getInternalInterfaceMap("ILineageHardwareService");
+        Map<String, Integer> hardwareMap = getInternalInterfaceMap("IPortalRomHardwareService");
         // APRICOT + BOYSENBERRY + CANTALOUPE
         hardwareMap.put("getSupportedFeatures", 1);
         hardwareMap.put("get", 2);
@@ -81,9 +81,9 @@ public class ApiV2PriorReleaseInterfaces {
         hardwareMap.put("unRegisterThermalListener", 24);
     }
 
-    //LineageStatusBarManager Aidl (ILineageStatusBarManager)
+    //PortalRomStatusBarManager Aidl (IPortalRomStatusBarManager)
     static {
-        Map<String, Integer> statusBarMap = getInternalInterfaceMap("ILineageStatusBarManager");
+        Map<String, Integer> statusBarMap = getInternalInterfaceMap("IPortalRomStatusBarManager");
         // APRICOT + BOYSENBERRY + CANTALOUPE
         statusBarMap.put("createCustomTileWithTag", 1);
         statusBarMap.put("removeCustomTileWithTag", 2);
@@ -100,9 +100,9 @@ public class ApiV2PriorReleaseInterfaces {
         suggestMap.put("getSuggestions", 2);
     }
 
-    //LineageTelephonyManager Aidl (ILineageTelephonyManager)
+    //PortalRomTelephonyManager Aidl (IPortalRomTelephonyManager)
     static {
-        Map<String, Integer> telephonyMap = getInternalInterfaceMap("ILineageTelephonyManager");
+        Map<String, Integer> telephonyMap = getInternalInterfaceMap("IPortalRomTelephonyManager");
         // APRICOT + BOYSENBERRY + CANTALOUPE
         telephonyMap.put("getSubInformation", 1);
         telephonyMap.put("isSubActive", 2);

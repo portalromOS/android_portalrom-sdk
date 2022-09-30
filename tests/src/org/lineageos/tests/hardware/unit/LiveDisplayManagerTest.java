@@ -1,4 +1,4 @@
-package org.lineageos.tests.hardware.unit;
+package org.portalrom.tests.hardware.unit;
 
 import android.content.Context;
 import android.os.PowerManager;
@@ -7,19 +7,19 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 import org.junit.Assume;
 
-import lineageos.app.LineageContextConstants;
-import lineageos.hardware.LineageHardwareManager;
-import lineageos.hardware.ILiveDisplayService;
-import lineageos.hardware.LiveDisplayConfig;
-import lineageos.hardware.LiveDisplayManager;
-import lineageos.util.ColorUtils;
+import portalrom.app.PortalRomContextConstants;
+import portalrom.hardware.PortalRomHardwareManager;
+import portalrom.hardware.ILiveDisplayService;
+import portalrom.hardware.LiveDisplayConfig;
+import portalrom.hardware.LiveDisplayManager;
+import portalrom.util.ColorUtils;
 
 public class LiveDisplayManagerTest extends AndroidTestCase {
 
     private static final String TAG = "LiveDisplayManagerTest";
 
     private LiveDisplayManager mLiveDisplay;
-    private LineageHardwareManager mHardware;
+    private PortalRomHardwareManager mHardware;
 
     private PowerManager mPower;
     private PowerManager.WakeLock mWakeLock;
@@ -33,7 +33,7 @@ public class LiveDisplayManagerTest extends AndroidTestCase {
         super.setUp();
 
         Assume.assumeTrue(mContext.getPackageManager().hasSystemFeature(
-                LineageContextConstants.Features.LIVEDISPLAY));
+                PortalRomContextConstants.Features.LIVEDISPLAY));
 
         mLiveDisplay = LiveDisplayManager.getInstance(mContext);
         if (mLiveDisplay.getConfig().hasModeSupport()) {
@@ -41,7 +41,7 @@ public class LiveDisplayManagerTest extends AndroidTestCase {
         }
         mConfig = mLiveDisplay.getConfig();
 
-        mHardware = LineageHardwareManager.getInstance(mContext);
+        mHardware = PortalRomHardwareManager.getInstance(mContext);
         mPower = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mWakeLock = mPower.newWakeLock(
                 PowerManager.ACQUIRE_CAUSES_WAKEUP | PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
@@ -125,15 +125,15 @@ public class LiveDisplayManagerTest extends AndroidTestCase {
     public void testOutdoorMode() throws Exception {
         Assume.assumeTrue(mConfig.hasFeature(LiveDisplayManager.MODE_OUTDOOR));
 
-        assertTrue(mHardware.isSupported(LineageHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
+        assertTrue(mHardware.isSupported(PortalRomHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
 
         mLiveDisplay.setMode(LiveDisplayManager.MODE_OUTDOOR);
         Thread.sleep(1000);
-        assertTrue(mHardware.get(LineageHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
+        assertTrue(mHardware.get(PortalRomHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
 
         mLiveDisplay.setMode(LiveDisplayManager.MODE_OFF);
         Thread.sleep(1000);
-        assertFalse(mHardware.get(LineageHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
+        assertFalse(mHardware.get(PortalRomHardwareManager.FEATURE_SUNLIGHT_ENHANCEMENT));
     }
 
     private void assertColorTemperature(int degK) throws Exception {

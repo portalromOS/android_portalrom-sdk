@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.profiles.unit;
+package org.portalrom.tests.profiles.unit;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,11 +22,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
-import lineageos.app.LineageContextConstants;
-import lineageos.app.Profile;
-import lineageos.app.ProfileManager;
-import lineageos.app.IProfileManager;
-import lineageos.providers.LineageSettings;
+import portalrom.app.PortalRomContextConstants;
+import portalrom.app.Profile;
+import portalrom.app.ProfileManager;
+import portalrom.app.IProfileManager;
+import portalrom.providers.PortalRomSettings;
 
 import java.util.Arrays;
 import java.util.UUID;
@@ -43,7 +43,7 @@ public class ProfileManagerTest extends AndroidTestCase {
         mProfileManager = ProfileManager.getInstance(mContext);
         // Only run this if we support profiles service
         org.junit.Assume.assumeTrue(mContext.getPackageManager().hasSystemFeature(
-                LineageContextConstants.Features.PROFILES));
+                PortalRomContextConstants.Features.PROFILES));
     }
 
     @SmallTest
@@ -61,32 +61,32 @@ public class ProfileManagerTest extends AndroidTestCase {
     public void testManagerProfileIsEnabled() {
         // first enable profiles
         final String enabledValue = "1";
-        assertTrue(LineageSettings.System.putString(getContext().getContentResolver(),
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED, enabledValue));
+        assertTrue(PortalRomSettings.System.putString(getContext().getContentResolver(),
+                PortalRomSettings.System.SYSTEM_PROFILES_ENABLED, enabledValue));
 
         // check that we successfully enabled them via system setting
-        assertEquals(enabledValue, LineageSettings.System.getString(getContext().getContentResolver(),
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED));
+        assertEquals(enabledValue, PortalRomSettings.System.getString(getContext().getContentResolver(),
+                PortalRomSettings.System.SYSTEM_PROFILES_ENABLED));
 
         // check that profile manger returns true
         assertTrue(mProfileManager.isProfilesEnabled());
 
         // now disable the setting
         final String disabledValue = "0";
-        assertTrue(LineageSettings.System.putString(getContext().getContentResolver(),
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED, disabledValue));
+        assertTrue(PortalRomSettings.System.putString(getContext().getContentResolver(),
+                PortalRomSettings.System.SYSTEM_PROFILES_ENABLED, disabledValue));
 
         // check that we successfully disable them via system setting
-        assertEquals(disabledValue, LineageSettings.System.getString(getContext().getContentResolver(),
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED));
+        assertEquals(disabledValue, PortalRomSettings.System.getString(getContext().getContentResolver(),
+                PortalRomSettings.System.SYSTEM_PROFILES_ENABLED));
 
         assertFalse(mProfileManager.isProfilesEnabled());
     }
 
     private void ensureProfilesEnabled() {
         final String enabledValue = "1";
-        assertTrue(LineageSettings.System.putString(getContext().getContentResolver(),
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED, enabledValue));
+        assertTrue(PortalRomSettings.System.putString(getContext().getContentResolver(),
+                PortalRomSettings.System.SYSTEM_PROFILES_ENABLED, enabledValue));
     }
 
     @SmallTest
@@ -129,7 +129,7 @@ public class ProfileManagerTest extends AndroidTestCase {
     public void testGetProfileNames() {
         ensureProfilesEnabled();
         String[] expectedProfileNames = new String[5];
-        // These defaults are pulled from the default xml in the lineage platform resource package
+        // These defaults are pulled from the default xml in the portalrom platform resource package
         Profile expectedProfile1 = mProfileManager.getProfile(
                 UUID.fromString("6a181391-12ef-4f43-a701-32b11ed69449"));
         Profile expectedProfile2 = mProfileManager.getProfile(
@@ -161,7 +161,7 @@ public class ProfileManagerTest extends AndroidTestCase {
     public void testGetProfiles() {
         ensureProfilesEnabled();
         Profile[] expectedProfiles = new Profile[5];
-        // These defaults are pulled from the default xml in the lineage platform resource package
+        // These defaults are pulled from the default xml in the portalrom platform resource package
         Profile expectedProfile1 = mProfileManager.getProfile(
                 UUID.fromString("6a181391-12ef-4f43-a701-32b11ed69449"));
         Profile expectedProfile2 = mProfileManager.getProfile(

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests;
+package org.portalrom.tests;
 
 import android.app.Application;
 import android.content.Context;
@@ -22,7 +22,7 @@ import android.content.Context;
 /**
  * Created by adnan on 2/4/16.
  */
-public class LineageOSTestApplication extends Application {
+public class PortalRomOSTestApplication extends Application {
     private static Context sApplicationContext;
 
     @Override

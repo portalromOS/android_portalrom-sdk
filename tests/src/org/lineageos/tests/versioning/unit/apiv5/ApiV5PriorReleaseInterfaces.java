@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.versioning.unit.apiv5;
+package org.portalrom.tests.versioning.unit.apiv5;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,12 +39,12 @@ public class ApiV5PriorReleaseInterfaces {
         // ELDERBERRY BEGIN
     }
 
-    //LineageAudioManager Aidl (ILineageAudioService)
+    //PortalRomAudioManager Aidl (IPortalRomAudioService)
     static {
-        Map<String, Integer> lineageAudioService =
-                getInternalInterfaceMap("ILineageAudioService");
+        Map<String, Integer> portalromAudioService =
+                getInternalInterfaceMap("IPortalRomAudioService");
         //ELDERBERRY BEGIN
-        lineageAudioService.put("listAudioSessions", 1);
+        portalromAudioService.put("listAudioSessions", 1);
     }
 
     //RequestInfoListener Aidl (IRequestInfoListener)

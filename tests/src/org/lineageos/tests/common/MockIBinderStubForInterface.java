@@ -14,7 +14,7 @@
   * limitations under the License.
   */
 
-package org.lineageos.tests.common;
+package org.portalrom.tests.common;
 
 import android.os.IBinder;
 import android.os.IInterface;

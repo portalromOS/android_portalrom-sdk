@@ -14,37 +14,37 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.hardware.unit;
+package org.portalrom.tests.hardware.unit;
 
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 
-import lineageos.app.LineageContextConstants;
-import lineageos.hardware.LineageHardwareManager;
-import lineageos.hardware.ILineageHardwareService;
+import portalrom.app.PortalRomContextConstants;
+import portalrom.hardware.PortalRomHardwareManager;
+import portalrom.hardware.IPortalRomHardwareService;
 
 /**
  * Created by adnan on 9/1/15.
  */
-public class LineageHardwareManagerTest extends AndroidTestCase {
-    private LineageHardwareManager mLineageHardwareManager;
+public class PortalRomHardwareManagerTest extends AndroidTestCase {
+    private PortalRomHardwareManager mPortalRomHardwareManager;
     @Override
     protected void setUp() throws Exception {
         super.setUp();
         // Only run this if we support hardware abstraction
         org.junit.Assume.assumeTrue(mContext.getPackageManager().hasSystemFeature(
-                LineageContextConstants.Features.HARDWARE_ABSTRACTION));
-        mLineageHardwareManager = LineageHardwareManager.getInstance(mContext);
+                PortalRomContextConstants.Features.HARDWARE_ABSTRACTION));
+        mPortalRomHardwareManager = PortalRomHardwareManager.getInstance(mContext);
     }
 
     @SmallTest
     public void testManagerExists() {
-        assertNotNull(mLineageHardwareManager);
+        assertNotNull(mPortalRomHardwareManager);
     }
 
     @SmallTest
     public void testManagerServiceIsAvailable() {
-        ILineageHardwareService ilineageStatusBarManager = mLineageHardwareManager.getService();
-        assertNotNull(ilineageStatusBarManager);
+        IPortalRomHardwareService iportalromStatusBarManager = mPortalRomHardwareManager.getService();
+        assertNotNull(iportalromStatusBarManager);
     }
 }

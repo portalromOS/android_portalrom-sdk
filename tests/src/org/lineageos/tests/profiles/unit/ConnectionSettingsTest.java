@@ -1,6 +1,6 @@
 /**
  * Copyright (C) 2016 The CyanogenMod Project
- *               2020 The LineageOS Project
+ *               2020 The PortalRomOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.lineageos.tests.profiles.unit;
+package org.portalrom.tests.profiles.unit;
 
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
-import lineageos.profiles.ConnectionSettings;
+import portalrom.profiles.ConnectionSettings;
 
 public class ConnectionSettingsTest extends AndroidTestCase {
 

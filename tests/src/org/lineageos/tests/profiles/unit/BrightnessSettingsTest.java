@@ -14,11 +14,11 @@
  * limitations under the License.
  */
 
-package org.lineageos.tests.profiles.unit;
+package org.portalrom.tests.profiles.unit;
 
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
-import lineageos.profiles.BrightnessSettings;
+import portalrom.profiles.BrightnessSettings;
 
 public class BrightnessSettingsTest extends AndroidTestCase {
 
