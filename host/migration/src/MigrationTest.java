@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2022 The Portal Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,9 +30,9 @@ class MigrationTest {
 
     public static final boolean DEBUG = true;
 
-    private static ArrayList<Setting> lineageSystemSettingList = new ArrayList<Setting>();
-    private static ArrayList<Setting> lineageSecureSettingList = new ArrayList<Setting>();
-    private static ArrayList<Setting> lineageGlobalSettingList = new ArrayList<Setting>();
+    private static ArrayList<Setting> portalromSystemSettingList = new ArrayList<Setting>();
+    private static ArrayList<Setting> portalromSecureSettingList = new ArrayList<Setting>();
+    private static ArrayList<Setting> portalromGlobalSettingList = new ArrayList<Setting>();
 
     private static ArrayList<Setting> legacySystemSettings = new ArrayList<Setting>();
     private static ArrayList<Setting> legacySecureSettings = new ArrayList<Setting>();
@@ -74,20 +74,20 @@ class MigrationTest {
         //Read settings
         legacySettings.execute();
 
-        SettingImageCommands legacyToLineageSettings =
+        SettingImageCommands legacyToPortalRomSettings =
                 new SettingImageCommands(SettingsConstants.SETTINGS_AUTHORITY);
         //For each example setting in the table, add inserts
         for (Setting setting : legacySystemSettings) {
-            legacyToLineageSettings.addInsert(SettingsConstants.SYSTEM, setting);
+            legacyToPortalRomSettings.addInsert(SettingsConstants.SYSTEM, setting);
         }
         for (Setting setting : legacySecureSettings) {
-            legacyToLineageSettings.addInsert(SettingsConstants.SECURE, setting);
+            legacyToPortalRomSettings.addInsert(SettingsConstants.SECURE, setting);
         }
         for (Setting setting : legacyGlobalSettings) {
-            legacyToLineageSettings.addInsert(SettingsConstants.GLOBAL, setting);
+            legacyToPortalRomSettings.addInsert(SettingsConstants.GLOBAL, setting);
         }
         //Write them to the database for verification later
-        legacyToLineageSettings.execute();
+        legacyToPortalRomSettings.execute();
 
         //Force update
         DebuggingCommands updateRom = new DebuggingCommands();
@@ -102,20 +102,20 @@ class MigrationTest {
         updateRom.execute();
 
         //Requery
-        SettingImageCommands lineageSettingImage =
-                new SettingImageCommands(SettingsConstants.LINEAGESETTINGS_AUTHORITY);
-        lineageSettingImage.addQuery(SettingsConstants.SYSTEM, lineageSystemSettingList);
-        lineageSettingImage.addQuery(SettingsConstants.SECURE, lineageSecureSettingList);
-        lineageSettingImage.addQuery(SettingsConstants.GLOBAL, lineageGlobalSettingList);
-        lineageSettingImage.execute();
+        SettingImageCommands portalromSettingImage =
+                new SettingImageCommands(SettingsConstants.PORTALROMSETTINGS_AUTHORITY);
+        portalromSettingImage.addQuery(SettingsConstants.SYSTEM, portalromSystemSettingList);
+        portalromSettingImage.addQuery(SettingsConstants.SECURE, portalromSecureSettingList);
+        portalromSettingImage.addQuery(SettingsConstants.GLOBAL, portalromGlobalSettingList);
+        portalromSettingImage.execute();
 
         //Validate
         System.out.println("\n\nValidating " + SettingsConstants.SYSTEM + "...");
-        validate(legacySystemSettings, lineageSystemSettingList);
+        validate(legacySystemSettings, portalromSystemSettingList);
         System.out.println("\n\nValidating " + SettingsConstants.SECURE + "...");
-        validate(legacySecureSettings, lineageSecureSettingList);
+        validate(legacySecureSettings, portalromSecureSettingList);
         System.out.println("\n\nValidating " + SettingsConstants.GLOBAL + "...");
-        validate(legacyGlobalSettings, lineageGlobalSettingList);
+        validate(legacyGlobalSettings, portalromGlobalSettingList);
         System.exit(0);
     }
 
@@ -150,43 +150,43 @@ class MigrationTest {
         return value;
     }
 
-    private static void validate(ArrayList<Setting> legacySettings, ArrayList<Setting> lineageSettings) {
+    private static void validate(ArrayList<Setting> legacySettings, ArrayList<Setting> portalromSettings) {
         Collections.sort(legacySettings);
-        Collections.sort(lineageSettings);
+        Collections.sort(portalromSettings);
 
-        if (legacySettings.size() != lineageSettings.size()) {
+        if (legacySettings.size() != portalromSettings.size()) {
             System.err.println("Warning: Size mismatch: " + " legacy "
-                    + legacySettings.size() + " lineage " + lineageSettings.size());
+                    + legacySettings.size() + " portalrom " + portalromSettings.size());
         }
 
         for (int i = 0; i < legacySettings.size(); i++) {
             Setting legacySetting = legacySettings.get(i);
-            Setting lineageSetting = lineageSettings.get(i);
+            Setting portalromSetting = portalromSettings.get(i);
             int error = 0;
 
-            System.out.println("Comparing: legacy " + legacySetting.getKey() + " and lineagesetting "
-                    + lineageSetting.getKey());
+            System.out.println("Comparing: legacy " + legacySetting.getKey() + " and portalromsetting "
+                    + portalromSetting.getKey());
 
-            if (!legacySetting.getKey().equals(lineageSetting.getKey())) {
+            if (!legacySetting.getKey().equals(portalromSetting.getKey())) {
                 System.err.println("    Key mismatch: " + legacySetting.getKey() + " and "
-                        + lineageSetting.getKey());
+                        + portalromSetting.getKey());
                 error = 1;
             }
-            if (!legacySetting.getKeyType().equals(lineageSetting.getKeyType())) {
+            if (!legacySetting.getKeyType().equals(portalromSetting.getKeyType())) {
                 System.err.println("    Key type mismatch: " + legacySetting.getKeyType() + " and "
-                        + lineageSetting.getKeyType());
+                        + portalromSetting.getKeyType());
                 error = 1;
             }
             if (legacySetting.getValue().length() > 0) {
-                if (!legacySetting.getValue().equals(lineageSetting.getValue())) {
+                if (!legacySetting.getValue().equals(portalromSetting.getValue())) {
                     System.err.println("    Value mismatch: " + legacySetting.getValue() + " and "
-                            + lineageSetting.getValue());
+                            + portalromSetting.getValue());
                     error = 1;
                 }
             }
-            if (!legacySetting.getValueType().equals(lineageSetting.getValueType())) {
+            if (!legacySetting.getValueType().equals(portalromSetting.getValueType())) {
                 System.err.println("    Value type mismatch: " + legacySetting.getValueType()
-                        + " and " + lineageSetting.getValueType());
+                        + " and " + portalromSetting.getValueType());
                 error = 1;
             }
 

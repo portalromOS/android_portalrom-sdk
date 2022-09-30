@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2017 The Android Open Source Project
- * Copyright (C) 2017-2021 The LineageOS Project
+ * Copyright (C) 2022 The Portal Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.lineageos.lib.phone;
+package org.portalrom.lib.phone;
 
 import android.content.Context;
 import android.os.Environment;
@@ -32,10 +32,10 @@ import com.google.i18n.phonenumbers.Phonenumber;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberFormat;
 
-import org.lineageos.lib.phone.spn.Item;
-import org.lineageos.lib.phone.spn.SensitivePN;
-import org.lineageos.lib.phone.spn.SensitivePNS;
-import org.lineageos.lib.phone.spn.XmlParser;
+import org.portalrom.lib.phone.spn.Item;
+import org.portalrom.lib.phone.spn.SensitivePN;
+import org.portalrom.lib.phone.spn.SensitivePNS;
+import org.portalrom.lib.phone.spn.XmlParser;
 
 import org.xmlpull.v1.XmlPullParserException;
 

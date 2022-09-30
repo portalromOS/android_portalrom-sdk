@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2022 The Portal Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ public class QueryCommand extends Command {
         commandList.add(SettingsConstants.CONTENT_URI + getAuthority() + uri);
         commandList.add("--projection");
         commandList.add(PROJECTION);
-        commandList.add("--show-type"); //this is totally awesomely lineage specific
+        commandList.add("--show-type"); //this is totally awesomely portal specific
         commandList.add("true");
         commands = commandList.toArray(new String[0]);
         if (MigrationTest.DEBUG) {

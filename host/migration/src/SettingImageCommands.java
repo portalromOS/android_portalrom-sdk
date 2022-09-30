@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2022 The Portal Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,7 @@
 
 import java.util.ArrayList;
 
-/**
- * Created by adnan on 11/16/15.
- */
+
 public class SettingImageCommands implements CommandExecutor {
     private ArrayList<Command> commandHistory = new ArrayList<Command>();
     private String authority;

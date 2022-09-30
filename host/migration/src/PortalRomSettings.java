@@ -1,6 +1,5 @@
 /**
- * Copyright (C) 2015 The CyanogenMod Project
- *               2019-2022 The LineageOS Project
+ * Copyright (C) 2022 The Portal Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +17,13 @@
 import java.util.Arrays;
 
 /**
- * LineageSettings contains Lineage specific preferences in System, Secure, and Global.
+ * PortalRomSettings contains PortalRom specific preferences in System, Secure, and Global.
  */
-public final class LineageSettings {
-    public static final String AUTHORITY = "lineagesettings";
+public final class PortalRomSettings {
+    public static final String AUTHORITY = "portalromsettings";
 
     /**
-     * System settings, containing miscellaneous Lineage system preferences. This table holds simple
+     * System settings, containing miscellaneous PortalRom system preferences. This table holds simple
      * name/value pairs. There are convenience functions for accessing individual settings entries.
      */
     public static final class System {
@@ -557,80 +556,80 @@ public final class LineageSettings {
          * @hide
          */
         public static final String[] LEGACY_SYSTEM_SETTINGS = new String[]{
-                LineageSettings.System.QS_QUICK_PULLDOWN,
-                LineageSettings.System.NAV_BUTTONS,
-                LineageSettings.System.KEY_HOME_LONG_PRESS_ACTION,
-                LineageSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
-                LineageSettings.System.BACK_WAKE_SCREEN,
-                LineageSettings.System.MENU_WAKE_SCREEN,
-                LineageSettings.System.VOLUME_WAKE_SCREEN,
-                LineageSettings.System.KEY_MENU_ACTION,
-                LineageSettings.System.KEY_MENU_LONG_PRESS_ACTION,
-                LineageSettings.System.KEY_ASSIST_ACTION,
-                LineageSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
-                LineageSettings.System.KEY_APP_SWITCH_ACTION,
-                LineageSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
-                LineageSettings.System.HOME_WAKE_SCREEN,
-                LineageSettings.System.ASSIST_WAKE_SCREEN,
-                LineageSettings.System.APP_SWITCH_WAKE_SCREEN,
-                LineageSettings.System.CAMERA_WAKE_SCREEN,
-                LineageSettings.System.CAMERA_SLEEP_ON_RELEASE,
-                LineageSettings.System.CAMERA_LAUNCH,
-                LineageSettings.System.STYLUS_ICON_ENABLED,
-                LineageSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
-                LineageSettings.System.BATTERY_LIGHT_ENABLED,
-                LineageSettings.System.BATTERY_LIGHT_PULSE,
-                LineageSettings.System.BATTERY_LIGHT_LOW_COLOR,
-                LineageSettings.System.BATTERY_LIGHT_MEDIUM_COLOR,
-                LineageSettings.System.BATTERY_LIGHT_FULL_COLOR,
-                LineageSettings.System.ENABLE_MWI_NOTIFICATION,
-                LineageSettings.System.PROXIMITY_ON_WAKE,
-                LineageSettings.System.DISPLAY_TEMPERATURE_DAY,
-                LineageSettings.System.DISPLAY_TEMPERATURE_NIGHT,
-                LineageSettings.System.DISPLAY_TEMPERATURE_MODE,
-                LineageSettings.System.DISPLAY_AUTO_OUTDOOR_MODE,
-                LineageSettings.System.DISPLAY_COLOR_ENHANCE,
-                LineageSettings.System.DISPLAY_COLOR_ADJUSTMENT,
-                LineageSettings.System.LIVE_DISPLAY_HINTED,
-                LineageSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
-                LineageSettings.System.RECENTS_SHOW_SEARCH_BAR,
-                LineageSettings.System.NAVBAR_LEFT_IN_LANDSCAPE,
-                LineageSettings.System.T9_SEARCH_INPUT_LOCALE,
-                LineageSettings.System.BLUETOOTH_ACCEPT_ALL_FILES,
-                LineageSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
-                LineageSettings.System.LOCKSCREEN_ROTATION,
-                LineageSettings.System.SHOW_ALARM_ICON,
-                LineageSettings.System.STATUS_BAR_IME_SWITCHER,
-                LineageSettings.System.QS_SHOW_BRIGHTNESS_SLIDER,
-                LineageSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
-                LineageSettings.System.VOLBTN_MUSIC_CONTROLS,
-                LineageSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
-                LineageSettings.System.USE_EDGE_SERVICE_FOR_GESTURES,
-                LineageSettings.System.CALL_RECORDING_FORMAT,
-                LineageSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
-                LineageSettings.System.NOTIFICATION_LIGHT_SCREEN_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_COLOR,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE,
-                LineageSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES,
-                LineageSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
-                LineageSettings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
-                LineageSettings.System.SYSTEM_PROFILES_ENABLED,
-                LineageSettings.System.INCREASING_RING,
-                LineageSettings.System.INCREASING_RING_START_VOLUME,
-                LineageSettings.System.INCREASING_RING_RAMP_UP_TIME,
-                LineageSettings.System.STATUS_BAR_CLOCK,
-                LineageSettings.System.STATUS_BAR_AM_PM,
-                LineageSettings.System.STATUS_BAR_BATTERY_STYLE,
-                LineageSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT,
-                LineageSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS,
+                PortalRomSettings.System.QS_QUICK_PULLDOWN,
+                PortalRomSettings.System.NAV_BUTTONS,
+                PortalRomSettings.System.KEY_HOME_LONG_PRESS_ACTION,
+                PortalRomSettings.System.KEY_HOME_DOUBLE_TAP_ACTION,
+                PortalRomSettings.System.BACK_WAKE_SCREEN,
+                PortalRomSettings.System.MENU_WAKE_SCREEN,
+                PortalRomSettings.System.VOLUME_WAKE_SCREEN,
+                PortalRomSettings.System.KEY_MENU_ACTION,
+                PortalRomSettings.System.KEY_MENU_LONG_PRESS_ACTION,
+                PortalRomSettings.System.KEY_ASSIST_ACTION,
+                PortalRomSettings.System.KEY_ASSIST_LONG_PRESS_ACTION,
+                PortalRomSettings.System.KEY_APP_SWITCH_ACTION,
+                PortalRomSettings.System.KEY_APP_SWITCH_LONG_PRESS_ACTION,
+                PortalRomSettings.System.HOME_WAKE_SCREEN,
+                PortalRomSettings.System.ASSIST_WAKE_SCREEN,
+                PortalRomSettings.System.APP_SWITCH_WAKE_SCREEN,
+                PortalRomSettings.System.CAMERA_WAKE_SCREEN,
+                PortalRomSettings.System.CAMERA_SLEEP_ON_RELEASE,
+                PortalRomSettings.System.CAMERA_LAUNCH,
+                PortalRomSettings.System.STYLUS_ICON_ENABLED,
+                PortalRomSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
+                PortalRomSettings.System.BATTERY_LIGHT_ENABLED,
+                PortalRomSettings.System.BATTERY_LIGHT_PULSE,
+                PortalRomSettings.System.BATTERY_LIGHT_LOW_COLOR,
+                PortalRomSettings.System.BATTERY_LIGHT_MEDIUM_COLOR,
+                PortalRomSettings.System.BATTERY_LIGHT_FULL_COLOR,
+                PortalRomSettings.System.ENABLE_MWI_NOTIFICATION,
+                PortalRomSettings.System.PROXIMITY_ON_WAKE,
+                PortalRomSettings.System.DISPLAY_TEMPERATURE_DAY,
+                PortalRomSettings.System.DISPLAY_TEMPERATURE_NIGHT,
+                PortalRomSettings.System.DISPLAY_TEMPERATURE_MODE,
+                PortalRomSettings.System.DISPLAY_AUTO_OUTDOOR_MODE,
+                PortalRomSettings.System.DISPLAY_COLOR_ENHANCE,
+                PortalRomSettings.System.DISPLAY_COLOR_ADJUSTMENT,
+                PortalRomSettings.System.LIVE_DISPLAY_HINTED,
+                PortalRomSettings.System.DOUBLE_TAP_SLEEP_GESTURE,
+                PortalRomSettings.System.RECENTS_SHOW_SEARCH_BAR,
+                PortalRomSettings.System.NAVBAR_LEFT_IN_LANDSCAPE,
+                PortalRomSettings.System.T9_SEARCH_INPUT_LOCALE,
+                PortalRomSettings.System.BLUETOOTH_ACCEPT_ALL_FILES,
+                PortalRomSettings.System.LOCKSCREEN_PIN_SCRAMBLE_LAYOUT,
+                PortalRomSettings.System.LOCKSCREEN_ROTATION,
+                PortalRomSettings.System.SHOW_ALARM_ICON,
+                PortalRomSettings.System.STATUS_BAR_IME_SWITCHER,
+                PortalRomSettings.System.QS_SHOW_BRIGHTNESS_SLIDER,
+                PortalRomSettings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
+                PortalRomSettings.System.VOLBTN_MUSIC_CONTROLS,
+                PortalRomSettings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
+                PortalRomSettings.System.USE_EDGE_SERVICE_FOR_GESTURES,
+                PortalRomSettings.System.CALL_RECORDING_FORMAT,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_BRIGHTNESS_LEVEL,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_SCREEN_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_COLOR,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE,
+                PortalRomSettings.System.NOTIFICATION_LIGHT_PULSE_CUSTOM_VALUES,
+                PortalRomSettings.System.STATUS_BAR_QUICK_QS_PULLDOWN,
+                PortalRomSettings.System.VOLUME_ADJUST_SOUNDS_ENABLED,
+                PortalRomSettings.System.SYSTEM_PROFILES_ENABLED,
+                PortalRomSettings.System.INCREASING_RING,
+                PortalRomSettings.System.INCREASING_RING_START_VOLUME,
+                PortalRomSettings.System.INCREASING_RING_RAMP_UP_TIME,
+                PortalRomSettings.System.STATUS_BAR_CLOCK,
+                PortalRomSettings.System.STATUS_BAR_AM_PM,
+                PortalRomSettings.System.STATUS_BAR_BATTERY_STYLE,
+                PortalRomSettings.System.STATUS_BAR_SHOW_BATTERY_PERCENT,
+                PortalRomSettings.System.NAVIGATION_BAR_MENU_ARROW_KEYS,
         };
 
         /**
@@ -642,7 +641,7 @@ public final class LineageSettings {
     }
 
     /**
-     * Secure settings, containing miscellaneous Lineage secure preferences. This
+     * Secure settings, containing miscellaneous PortalRom secure preferences. This
      * table holds simple name/value pairs. There are convenience
      * functions for accessing individual settings entries.
      */
@@ -821,25 +820,25 @@ public final class LineageSettings {
          * @hide
          */
         public static final String[] LEGACY_SECURE_SETTINGS = new String[]{
-                LineageSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
-                LineageSettings.Secure.BUTTON_BRIGHTNESS,
-                LineageSettings.Secure.DEV_FORCE_SHOW_NAVBAR,
-                LineageSettings.Secure.KEYBOARD_BRIGHTNESS,
-                LineageSettings.Secure.POWER_MENU_ACTIONS,
-                LineageSettings.Secure.STATS_COLLECTION,
-                LineageSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
-                LineageSettings.Secure.QS_TILES,
-                LineageSettings.Secure.QS_USE_MAIN_TILES,
-                LineageSettings.Secure.VOLUME_LINK_NOTIFICATION,
-                LineageSettings.Secure.NAVIGATION_RING_TARGETS[0],
-                LineageSettings.Secure.NAVIGATION_RING_TARGETS[1],
-                LineageSettings.Secure.NAVIGATION_RING_TARGETS[2],
-                LineageSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY,
-                LineageSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX,
-                LineageSettings.Secure.ADVANCED_REBOOT,
-                LineageSettings.Secure.LOCKSCREEN_TARGETS,
-                LineageSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
-                LineageSettings.Secure.DEVELOPMENT_SHORTCUT};
+                PortalRomSettings.Secure.BUTTON_BACKLIGHT_TIMEOUT,
+                PortalRomSettings.Secure.BUTTON_BRIGHTNESS,
+                PortalRomSettings.Secure.DEV_FORCE_SHOW_NAVBAR,
+                PortalRomSettings.Secure.KEYBOARD_BRIGHTNESS,
+                PortalRomSettings.Secure.POWER_MENU_ACTIONS,
+                PortalRomSettings.Secure.STATS_COLLECTION,
+                PortalRomSettings.Secure.QS_SHOW_BRIGHTNESS_SLIDER,
+                PortalRomSettings.Secure.QS_TILES,
+                PortalRomSettings.Secure.QS_USE_MAIN_TILES,
+                PortalRomSettings.Secure.VOLUME_LINK_NOTIFICATION,
+                PortalRomSettings.Secure.NAVIGATION_RING_TARGETS[0],
+                PortalRomSettings.Secure.NAVIGATION_RING_TARGETS[1],
+                PortalRomSettings.Secure.NAVIGATION_RING_TARGETS[2],
+                PortalRomSettings.Secure.RECENTS_LONG_PRESS_ACTIVITY,
+                PortalRomSettings.Secure.LIVE_DISPLAY_COLOR_MATRIX,
+                PortalRomSettings.Secure.ADVANCED_REBOOT,
+                PortalRomSettings.Secure.LOCKSCREEN_TARGETS,
+                PortalRomSettings.Secure.RING_HOME_BUTTON_BEHAVIOR,
+                PortalRomSettings.Secure.DEVELOPMENT_SHORTCUT};
 
         /**
          * @hide
@@ -850,7 +849,7 @@ public final class LineageSettings {
     }
 
     /**
-     * Global settings, containing miscellaneous Lineage global preferences. This
+     * Global settings, containing miscellaneous PortalRom global preferences. This
      * table holds simple name/value pairs. There are convenience
      * functions for accessing individual settings entries.
      */
@@ -887,9 +886,9 @@ public final class LineageSettings {
          * @hide
          */
         public static final String[] LEGACY_GLOBAL_SETTINGS = new String[]{
-                LineageSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
-                LineageSettings.Global.ZEN_DISABLE_DUCKING_DURING_MEDIA_PLAYBACK,
-                LineageSettings.Global.WIFI_AUTO_PRIORITIES_CONFIGURATION};
+                PortalRomSettings.Global.WAKE_WHEN_PLUGGED_OR_UNPLUGGED,
+                PortalRomSettings.Global.ZEN_DISABLE_DUCKING_DURING_MEDIA_PLAYBACK,
+                PortalRomSettings.Global.WIFI_AUTO_PRIORITIES_CONFIGURATION};
 
         /**
          * @hide

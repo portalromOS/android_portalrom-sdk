@@ -1,9 +1,7 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by adnan on 11/17/15.
- */
+
 public class RowParser {
     private static final String REGEX = "=(.+)";
     private static Pattern p = Pattern.compile(REGEX);

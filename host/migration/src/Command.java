@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2022 The Portal Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,17 +49,17 @@ public class Command implements Runnable {
     protected static boolean filter(String uri, Setting setting) {
         switch (uri) {
             case SettingsConstants.SYSTEM:
-                if (!LineageSettings.System.isLegacySetting(setting.getKey())) {
+                if (!PortalRomSettings.System.isLegacySetting(setting.getKey())) {
                     return true;
                 }
                 break;
             case SettingsConstants.SECURE:
-                if (!LineageSettings.Secure.isLegacySetting(setting.getKey())) {
+                if (!PortalRomSettings.Secure.isLegacySetting(setting.getKey())) {
                     return true;
                 }
                 break;
             case SettingsConstants.GLOBAL:
-                if (!LineageSettings.Global.isLegacySetting(setting.getKey())) {
+                if (!PortalRomSettings.Global.isLegacySetting(setting.getKey())) {
                     return true;
                 }
                 break;

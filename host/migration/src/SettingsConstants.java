@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The CyanogenMod Project
+ * Copyright (C) 2022 The Portal Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by adnan on 11/16/15.
  */
 public class SettingsConstants {
-    public static final String LINEAGESETTINGS_AUTHORITY = "lineagesettings";
+    public static final String PORTALROMSETTINGS_AUTHORITY = "portalromsettings";
     public static final String SETTINGS_AUTHORITY = "settings";
     public static final String CONTENT_URI = "content://";
     public static final String SYSTEM = "/system";
