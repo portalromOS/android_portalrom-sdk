@@ -18,7 +18,7 @@ package org.portalrom.platform.internal;
 
 import android.content.Context;
 
-import portalrom.app.portalromContextConstants;
+import portalrom.app.PortalRomContextConstants;
 
 /** @hide */
 public class PortalRomSettingsService extends PortalRomSystemService {
