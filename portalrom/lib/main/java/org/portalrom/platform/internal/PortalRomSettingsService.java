@@ -34,7 +34,7 @@ public class PortalRomSettingsService extends PortalRomSystemService {
 
     @Override
     public String getFeatureDeclaration() {
-        return portalromContextConstants.Features.SETTINGS;
+        return PortalRomContextConstants.Features.SETTINGS;
     }
 
     @Override
