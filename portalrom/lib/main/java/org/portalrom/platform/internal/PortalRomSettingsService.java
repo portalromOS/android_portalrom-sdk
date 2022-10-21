@@ -21,13 +21,13 @@ import android.content.Context;
 import portalrom.app.portalromContextConstants;
 
 /** @hide */
-public class portalromSettingsService extends portalromSystemService {
+public class PortalRomSettingsService extends PortalRomSystemService {
 
-    private static final String TAG = portalromSettingsService.class.getSimpleName();
+    private static final String TAG = PortalRomSettingsService.class.getSimpleName();
 
     private final Context mContext;
 
-    public portalromSettingsService(Context context) {
+    public PortalRomSettingsService(Context context) {
         super(context);
         mContext = context;
     }
